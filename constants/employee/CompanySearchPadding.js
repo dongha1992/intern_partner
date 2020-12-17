@@ -1,0 +1,1 @@
+export const SEARCH_COMPANY_PADDING_TOP = '43';
