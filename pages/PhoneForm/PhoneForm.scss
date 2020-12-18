@@ -1,0 +1,149 @@
+.color_blue {
+    color: #1877f2;
+}
+
+.background_color_blue {
+    background-color: #1877f2;
+}
+
+.shadow_phone_form {
+    position: relative;
+    width: 253px;
+    height: 451px;
+    margin: 0 auto;
+    border-radius: 20px;
+    box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.16);
+    font-family: NotoSansCJKkr;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.44;
+    letter-spacing: normal;
+    background-color: #ffffff;
+
+    .inner_logo {
+        width: 29.1px;
+        height: 12.8px;
+        margin: 26.8px 0 10.4px 10.1px;
+        object-fit: contain;
+    }
+
+    .inner_logo_dot {
+        width: 3.2px;
+        height: 3.2px;
+        margin: 9.5px 11.8px 10.4px 2.7px;
+        object-fit: contain;
+        @extend .background_color_blue;        
+    }
+
+    .rental_process_list {
+        width: 47px;
+        height: 24px;
+        margin: 10.4px 5px 10px 7px;
+        padding: 0 3px 5px 3px;
+        color: #bdbdbd;
+        font-size: 9px;
+        text-align: center;
+        object-fit: contain;
+    }
+
+    .call_container {
+        display: flex;
+        width: 233px;
+        height: 91px;
+        margin: 10px auto;
+        padding: 11px 0 11px 11px;
+        border-radius: 15px;
+        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.08);
+        background-color: #ffffff;
+
+        .suggestion_container {
+            width: 53px;
+            height: 69px;
+            padding: 8px 0 15px 0;
+            margin: 0 9px 0 0;
+            border-radius: 15px;
+            background-color: #f6f6f6;
+
+            .suggestion {
+                height: 10px;
+                font-size: 7px;
+                line-height: 1.29;
+                text-align: center;
+                color: #282828;
+            }
+
+            .count {
+                width: fit-content;
+                height: 29px;
+                margin: 0 auto;
+                margin-top: 20px;
+                font-size: 20px;
+                font-weight: bold;
+                line-height: 0.55;
+                color: #282828;
+            }
+        }
+
+        .company_suggestion {
+            width: 59px;
+            height: 16px;
+            padding-top: 1.5px;
+            object-fit: contain;
+            border-radius: 15px;
+            font-size: 9px;
+            text-align: center;
+            color: #ffffff;
+            background-color: #1877f2;
+        }
+
+        .customer_car_type_text {
+            width: 29px;
+            margin: 8px 10px 4px 0;
+            object-fit: contain;
+            line-height: 0.4;
+            font-size: 8px;
+            color: #bdbdbd;
+        }
+
+        .customer_car_type {
+            width: auto;
+            margin: 8px 0 4px 0;
+            object-fit: contain;
+            font-size: 8px;
+            font-weight: bold;
+            color: #282828;
+        }
+
+        .customer_car_number_text {
+            width: 29px;
+            margin: 0 10px 4px 0;
+            object-fit: contain;
+            font-size: 8px;
+            color: #bdbdbd;
+        }
+
+        .customer_car_number {
+            margin: 0 0 4px 0;
+            object-fit: contain;
+            font-size: 9px;
+            color: #282828;
+        }
+
+        .customer_call_date_text {
+            width: 22px;
+            margin: 0 18px 0 0;
+            object-fit: contain;
+            font-size: 8px;
+            color: #bdbdbd;
+        }
+
+        .customer_call_date {
+            width: 62px;
+            margin: 0 0 0 0;
+            object-fit: contain;
+            font-size: 8px;
+            color: #282828;
+        }
+    }
+}

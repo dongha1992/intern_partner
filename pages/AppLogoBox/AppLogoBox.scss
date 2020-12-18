@@ -1,0 +1,20 @@
+.flex {
+    display: flex;
+    margin-left: 23px;
+}
+.go_to_app_rectangle {
+    display: flex;
+    width: 138px;
+    height: 43px;
+    margin: 0 10px 0 0;
+    padding: 10px 0 10px 20px;
+    border-radius: 5px;
+    border: solid 1px #ffffff;
+
+    .app_text_logo {
+        margin-left: 13px;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 2;
+    }
+}

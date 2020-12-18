@@ -1,0 +1,10 @@
+export const HANDPHONE_TEXT = '핸드폰만 있으면 어디서든 업무가 가능합니다';
+export const MY_LOCATION_CALL = '내 지역콜';
+export const SUGGESTING = '제안중';
+export const RESERVATION_CONFIRMATION = '예약확정';
+export const DISPATCHING = '배차중';
+export const RETURNED = '반납완료';
+export const REALTIME_REQUEST_CONFIRMATION = '실시간 요청 확인';
+export const FIRST_DESCRIPTION = '공업사 요청을 실시간으로 확인할 수 있어 간편하게 제안을 할 수 있고,';
+export const SECOND_DESCRIPTION = '빠른 피드백을 통해 요청자와 원활하게';
+export const THIRD_DESCRIPTION = '소통할 수 있습니다.';

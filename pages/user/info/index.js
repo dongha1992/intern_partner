@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import apiUser from '../../../api/User';
-import Input from '../../../compnents/Input';
+// import Input from '../../../compnents/Input';
 
 class UserInfo extends Component {
   constructor(props) {

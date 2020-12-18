@@ -1,0 +1,199 @@
+* {
+    box-sizing: border-box;
+}
+
+.wrapper {
+    width: 375px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+
+    .main_wrap {
+        width: 100%;
+        height: 597px;
+        margin: 0;
+        padding: 20px 20px 94px;
+        opacity: 0.4;
+        background-color: #000000;
+        background-image: url(/back.jpg);
+
+        .innovative_rental_car_system {
+            width: 208px;
+            height: 68px;
+            margin: 62.9px 127px 19px 0;
+            font-family: NotoSansCJKkr;
+            font-size: 24px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.33;
+            letter-spacing: normal;
+            text-align: left;
+            color: #ffffff;
+        }
+
+        .perfect_business_partner_ims {
+            width: 247px;
+            height: 132px;
+            margin: 30px 0 103px 1px;
+            font-family: NotoSansCJKkr;
+            font-size: 30px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 0.7;
+            letter-spacing: normal;
+            text-align: left;
+            color: #ffffff;
+
+            .text_style_1 {
+                font-size: 34px;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .second_page_wrap {
+        width: 100%;
+        height: 658px;
+        margin: 0;
+        padding: 72px 30px 80px;
+        background-color: #f1f4f6;
+        
+        .with_us_text {
+            width: 312px;
+            height: 79px;
+            margin: 0 1px 24px 2px;
+            font-family: NotoSansCJKkr;
+            font-size: 28px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.36;
+            letter-spacing: normal;
+            text-align: center;
+            color: #282828;
+        }
+
+        .ims_role {
+            width: 254px;
+            height: 50px;
+            margin: 24px 30px 108px 31px;
+            font-family: NotoSansCJKkr;
+            font-size: 16px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.63;
+            letter-spacing: normal;
+            text-align: center;
+            color: #282828;
+        }
+
+        .date_of_update {
+            height: 18px;
+            margin: 41px 114px 0 113px;
+            font-family: NotoSansCJKkr;
+            font-size: 12px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.5;
+            letter-spacing: normal;
+            text-align: left;
+            color: #707070;
+        }
+    }
+
+    .third_page_wrap {
+        width: 100%;
+        margin: 0;
+        padding: 72px 30px 99px 30px;
+        background-color: #ffffff;
+
+        .handphone_text_box {
+            width: 186px;
+            height: 117px;
+            margin: 0 auto;
+            margin-bottom: 82px;
+            font-family: NotoSansCJKkr;
+            font-size: 28px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.36;
+            letter-spacing: normal;
+            text-align: center;
+            color: #282828;
+        }
+
+        .rectangle_box {
+            position: absolute;
+            height: 200px;
+            top: 1880px;
+            padding: 27px 23px 30px 24px;
+            background-color: #ffffff;
+
+            .realtime_confirmation {
+                width: 124px;
+                height: 27px;
+                margin: 0 72px 20px;
+                font-family: NotoSansCJKkr;
+                font-size: 18px;
+                font-weight: bold;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 2.22;
+                letter-spacing: normal;
+                text-align: left;
+                color: #282828;
+            }
+
+            .description {
+                width: 268px;
+                height: 96px;
+                margin: 20px 0 0;
+                font-family: NotoSansCJKkr;
+                font-size: 16px;
+                font-weight: 300;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.5;
+                letter-spacing: normal;
+                text-align: center;
+                color: #282828;
+            }
+        }
+    }
+    .fourth_page_wrap {
+        width: 100%;
+        height: auto;
+        margin-top: 29px;
+        padding: 57px 20px 67px 20px;
+        font-family: NotoSansCJKkr;
+        font-stretch: normal;
+        font-style: normal;
+        letter-spacing: normal;
+        text-align: left;
+        color: #ffffff;
+        background-color: #282828;
+        
+        .intelligent_mobility_system {
+            width: 221px;
+            height: 140px;
+            margin: 0 0 37px 23px;
+            font-size: 34px;
+            font-weight: bold;
+            line-height: 1.32;
+        }
+
+        .ims_form {
+            width: 277px;
+            height: 62px;
+            margin: 0 0 24px 23px;
+            font-size: 20px;
+            font-weight: normal;
+            line-height: 1.5;
+        }
+    }
+}
