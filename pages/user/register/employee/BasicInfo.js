@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { SignUpInput } from '../../../../components/Input';
 import ErrorMessage from '../../../../components/Error';
 import { inject, observer } from 'mobx-react';
-import styles from './BusinessInfo.scss';
+import styles from './BasicInfo.scss';
 
 import { BASIC_INFO } from '../../../../constants/employee/FormTitle';
 import { BASIC_INFO_PADDING_TOP } from '../../../../constants/employee/FormTitlePadding';

@@ -1,6 +1,7 @@
 .input_btn_container {
   position: relative;
   width: 100%;
+  margin-top: 50px;
   .input_wrap {
     position: relative;
     width: 100%;
@@ -34,7 +35,7 @@
     .input_label {
       display: block;
       position: absolute;
-      bottom: 10px;
+      bottom: 8px;
       left: 10px;
       width: auto;
       height: 29px;
@@ -58,7 +59,6 @@
       width: 100%;
       height: 8px;
       bottom: -5%;
-
       left: 3%;
       font-family: NotoSansCJKkr;
       font-size: 12px;
@@ -92,10 +92,10 @@
     .button_wrap {
       position: absolute;
       right: 0px;
-      bottom: 13px;
+      bottom: 22px;
       .input_button {
         width: auto;
-        height: 22px;
+        height: 28px;
         padding: 4px 8px 5px 10px;
         border-radius: 14px;
         background-color: #bdbdbd;
@@ -122,7 +122,7 @@
     .input_border {
       width: 100%;
       height: 1px;
-      margin-left: 6px;
+      margin-left: 10px;
       background-color: #bdbdbd;
       transition: all 0.2s;
       &:focus {

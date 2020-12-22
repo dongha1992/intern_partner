@@ -44,7 +44,7 @@ export default function SignUpInput({
 
   return (
     <div className={styles.input_btn_container}>
-      <div className={styles.input_wrap} style={{ paddingTop: `${padding}px` }}>
+      <div className={styles.input_wrap} style={{ marginTop: `${padding}px` }}>
         {isSearch ? (
           <>
             <input
