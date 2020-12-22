@@ -7,7 +7,7 @@ import axios from 'axios';
 import { SEARCH_COMPANY } from '../../../../../constants/employee/CompanySearchLabel';
 import { SEARCH_COMPANY_PADDING_TOP } from '../../../../../constants/employee/CompanySearchPadding';
 import { SERVER_URI } from '../../../../../config';
-const { createProxyMiddleware } = require('http-proxy-middleware');
+
 import styles from './CompanySearch.scss';
 
 const isImage = true;
