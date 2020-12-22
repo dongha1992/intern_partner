@@ -115,7 +115,7 @@ class BasicInfo extends Component {
             label={USER_NUMBER}
             isButton={isButton}
             padding={USER_ID_PADDING_TOP}
-            buttonValue={USER_NUMBER_BUTTON}
+            // buttonValue={USER_NUMBER_BUTTON}
             padding={USER_NUMBER_PADDING}
             onChange={SignUpEmployeeStore.setValue}
             name={USER_NUMBER_NAME}
