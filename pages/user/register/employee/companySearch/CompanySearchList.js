@@ -89,16 +89,19 @@ class CompanySearchList extends Component {
 
   getFilteredItem(data) {
     let filteredArray = data.filter((el) => {
-      return el.name.indexOf(this.state.inputSearchLetter);
+      return el.name.indexOf(this.state.inputSearchLetter) > -1;
     });
     return filteredArray.map((item) => {
+      console.log(item);
       return (
         <SearchItem
           key={item.id}
           name={item.name}
-          address={item.address}
-          setSearchResult={SearchCompanyStore.setSearchResult}
-          setModalClose={SearchCompanyStore.setModalClose}
+          address={item.address2}
+          id={item.id}
+          setSearchResult={this.props.SearchCompanyStore.setSearchResult}
+          setModalClose={this.props.SearchCompanyStore.setModalClose}
+          setCompanyId={this.props.SearchCompanyStore.setCompanyId}
         />
       );
     });
@@ -142,7 +145,6 @@ class CompanySearchList extends Component {
               SearchCompanyStore.setSearchInput(e.target.value);
               this.changeInputValue(e.target.value);
             }}
-            set
             searchResult={SearchCompanyStore.searchResult}
             inputSearchLetter={inputSearchLetter}
           />

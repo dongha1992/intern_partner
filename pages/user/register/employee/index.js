@@ -7,6 +7,8 @@ import EmpolyeeFormCreateButton from './EmployeeFormCreateButton';
 import SingUpModal from './SignUpModal';
 import { inject, observer } from 'mobx-react';
 import styles from './RegisterEmployeePage.scss';
+import { SERVER_URI } from '../../../../config';
+import axios from 'axios';
 
 @inject('SearchCompanyStore')
 @inject('SignUpEmployeeStore')
@@ -22,14 +24,35 @@ class RegisterEmployeePage extends Component {
   static async getInitialProps({ mobxStore }) {
     return { mobxStore };
   }
-
-  modalHandler() {
-    this.setState({
-      isModal: !this.state.isModal,
-    });
-  }
   goToServer() {
-    
+    const {
+      userEmail,
+      userName,
+      userPassword,
+      userPosition,
+      userNumber,
+      userId,
+    } = this.props.SignUpEmployeeStore.form;
+    const { companyId } = this.props.SearchCompanyStore;
+
+    axios
+      .post(`${SERVER_URI}/user/signup/employee`, {
+        userid: userId.value,
+        userpassword: userPassword.value,
+        username: userName.value,
+        usernumber: userNumber.value,
+        userposition: userPosition.value,
+        useremail: userEmail.value,
+        company_id: companyId,
+      })
+      .then((res) =>
+        this.setState({
+          isModal: !this.state.isModal,
+        })
+      )
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
@@ -62,7 +85,6 @@ class RegisterEmployeePage extends Component {
             userNumber={userNumber.value}
             userId={userId.value}
             onClick={() => {
-              this.modalHandler();
               this.goToServer();
             }}
           />

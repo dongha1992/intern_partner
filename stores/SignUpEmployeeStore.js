@@ -17,7 +17,7 @@ class SignUpEmployeeStore {
       status: {
         error: {
           valid: false,
-          message: 'ID must be longer than 6 character',
+          message: 'The duplicate check your ID to verify',
         },
         success: {
           valid: true,

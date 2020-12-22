@@ -3,12 +3,16 @@ import { observable, action } from 'mobx';
 class SearchCompanyStore {
   @observable searchInput = '';
   @observable searchResult = '';
-  // @observable isButtonActive = false;
+  @observable companyId = '';
   @observable isModalClose = false;
 
   constructor(root) {
     this.root = root;
   }
+
+  @action setCompanyId = (id) => {
+    this.companyId = id;
+  };
 
   @action setSearchInput = (value) => {
     this.searchInput = value;
@@ -21,10 +25,6 @@ class SearchCompanyStore {
   @action setModalClose = (boolean) => {
     this.isModalClose = boolean;
   };
-
-  // @action setButtonActive = () => {
-  //   this.isButtonActive = true;
-  // };
 }
 
 export default SearchCompanyStore;

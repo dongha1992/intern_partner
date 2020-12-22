@@ -47,6 +47,7 @@ class CreateAnAccount extends Component {
         message: '',
       },
       isTyping: '',
+      isIdDuplicate: true,
     };
   }
 
@@ -56,11 +57,10 @@ class CreateAnAccount extends Component {
 
   handlerMapper(name) {
     const { form } = this.props.SignUpEmployeeStore;
-
+    const { isIdDuplicate } = this.state;
     const mapper = {
       userId: () => {
-        let checkId = form.userId.value.length < 7;
-        if (checkId) {
+        if (isIdDuplicate) {
           this.setState({
             idValid: {
               valid: form.userId.status.error.valid,
@@ -80,9 +80,16 @@ class CreateAnAccount extends Component {
       userPassword: () => {
         let checkPasswordNumber = form.userPassword.value.search(/[0-9]/g);
         let checkPasswordLetter = form.userPassword.value.search(/[a-z]/gi);
+        let checkPasswordSpecial = form.userPassword.value.search(
+          /[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi
+        );
         let checkPasswordLength = form.userPassword.value.length;
 
-        if (checkPasswordNumber > 0 || checkPasswordLetter > 0) {
+        if (
+          checkPasswordNumber > 0 ||
+          checkPasswordLetter > 0 ||
+          checkPasswordSpecial > 0
+        ) {
           if (checkPasswordLength < 9) {
             this.setState({
               passwordValid: {
@@ -129,16 +136,25 @@ class CreateAnAccount extends Component {
     mapper[name]();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.isIdDuplicate !== this.state.isIdDuplicate) {
+      const userId = 'userId';
+      this.handlerMapper(userId);
+    }
+  }
+
   checkIdDuplicate() {
     const userId = this.props.SignUpEmployeeStore.form.userId.value;
     axios
-      .get(
-        `https://cors-anywhere.herokuapp.com/${SERVER_URI}/user/check/id/${userId}`
-      )
+      .get(`${SERVER_URI}/user/check/id/${userId}`)
       .then((response) => {
-        console.log(response, 'res');
+        if (response.status === 200) {
+          this.setState({
+            isIdDuplicate: false,
+          });
+        }
       })
-      .catch(function (error) {
+      .catch((error) => {
         if (error.response) {
           console.log(error.response, 'error response');
         } else if (error.request) {
@@ -166,7 +182,7 @@ class CreateAnAccount extends Component {
   render() {
     const { SignUpEmployeeStore } = this.props;
     const { idValid, passwordValid, passwordCheckValid, isTyping } = this.state;
-
+    console.log(this.state.isIdDuplicate);
     return (
       <div className={styles.createAnAccount_form_container}>
         <h2 className={styles.title}>{CREATE_ACCOUNT}</h2>

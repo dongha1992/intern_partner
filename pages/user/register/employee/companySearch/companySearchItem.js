@@ -6,6 +6,8 @@ const CompanySearchItem = ({
   address,
   setSearchResult,
   setModalClose,
+  setCompanyId,
+  id,
 }) => {
   return (
     <div
@@ -13,6 +15,7 @@ const CompanySearchItem = ({
       onClick={() => {
         setSearchResult(name);
         setModalClose(true);
+        setCompanyId(id);
       }}>
       <div className={styles.name}>{name}</div>
       <div className={styles.address}>{address}</div>
