@@ -1,4 +1,6 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
+import ErrorMessage from '../../components/Error';
+
 import styles from './SignUpInput.scss';
 
 export default function SignUpInput({
@@ -6,7 +8,6 @@ export default function SignUpInput({
   label,
   type,
   onChange,
-  onKeyPress,
   value,
   padding,
   isButton,
@@ -15,30 +16,92 @@ export default function SignUpInput({
   onClick,
   isSearchInput,
   isSearch,
+  name,
+  setSearchInput,
+  searchResult,
+  userSelectedCompany,
+  userInputValidation,
+  formValidation,
+  onKeyPress,
+  isTyping,
+  inputSearchValue,
 }) {
+  const [searchProps, setSearchProps] = useState('');
+
+  useEffect(() => {
+    setSearchProps(searchResult);
+  }, [searchResult]);
+
+  // const [inputValue, setInputValue] = useState('');
+
+  // useEffect(() => {
+  //   setInputValue(searchResult);
+  // }, [searchResult]);
+
+  const changeSearchProps = (value) => {
+    setSearchProps(value);
+  };
+
   return (
     <div className={styles.input_btn_container}>
       <div className={styles.input_wrap} style={{ paddingTop: `${padding}px` }}>
-        <input
-          id={id ? id : null}
-          type={type ? type : 'text'}
-          name={label}
-          onChange={(e) => {
-            isSearch ? searchCompanyHandler(e.target.value) : onChange(e);
-          }}
-          onClick={() => {
-            isSearchInput && onClick();
-          }}
-          value={value ? value : ''}
-          className={styles.user_input}
-        />
-        <label
-          htmlFor={id ? id : null}
-          children={label}
-          className={styles.input_label}
-        />
+        {isSearch ? (
+          <>
+            <input
+              id={id ? id : null}
+              type={type ? type : 'text'}
+              name={name}
+              onChange={(e) => {
+                searchProps ? changeSearchProps(e.target.value) : onChange(e);
+              }}
+              onKeyPress={onKeyPress}
+              value={searchProps ? searchProps : null}
+              className={styles.user_input}
+            />
+            <label
+              htmlFor={id ? id : null}
+              children={label}
+              className={styles.input_label}
+            />
+            <div className={styles.input_border} />
+          </>
+        ) : (
+          <>
+            <input
+              id={id ? id : null}
+              type={type ? type : 'text'}
+              name={name}
+              onChange={onChange}
+              onKeyPress={onKeyPress}
+              onClick={() => {
+                isSearchInput && onClick();
+              }}
+              placeholder={searchResult}
+              value={userSelectedCompany ? userSelectedCompany : value}
+              className={styles.user_input}
+              formValidation={formValidation}
+            />
+            <label
+              htmlFor={id ? id : null}
+              children={label}
+              className={styles.input_label}
+            />
+            {userInputValidation && isTyping && isTyping === name ? (
+              <div
+                className={
+                  formValidation !== undefined && formValidation.valid
+                    ? styles.successMessage
+                    : styles.errorMessage
+                }>
+                {formValidation && formValidation.message}
+              </div>
+            ) : (
+              <div className={styles.input_border} />
+            )}
+          </>
+        )}
         {isButton && buttonValue ? (
-          <div className={styles.button_wrap}>
+          <div className={styles.button_wrap} onClick={onClick}>
             <div className={styles.input_button}>
               <div>{buttonValue}</div>
             </div>
@@ -57,10 +120,7 @@ export default function SignUpInput({
         ) : (
           ''
         )}
-        <div className={styles.input_border}></div>
       </div>
     </div>
   );
 }
-
-// export default { SignUpInput, SignUpInputWithButton };

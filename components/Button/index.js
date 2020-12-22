@@ -1,12 +1,21 @@
 import React from 'react';
 import styles from './Button.scss';
 
-const Button = ({ value, margin }) => {
+const Button = ({ value, margin, searchInput, goToForm }) => {
   return (
     <div
-      className={styles.button_Container}
+      className={
+        searchInput.length > 0 ? styles.active : styles.button_Container
+      }
       style={{ marginTop: `${margin}px` }}>
-      <input type='button' value={value} className={styles.button} />
+      <input
+        type='button'
+        value={value}
+        className={styles.button}
+        onClick={() => {
+          goToForm();
+        }}
+      />
     </div>
   );
 };

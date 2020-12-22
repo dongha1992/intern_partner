@@ -1,6 +1,7 @@
 .item_card {
   display: flex;
   align-items: center;
+  margin-left: 5px;
   padding: 10px;
   border-bottom: 1px solid #f6f6f6;
   &:nth-last-child() {

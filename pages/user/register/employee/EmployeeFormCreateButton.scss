@@ -20,13 +20,13 @@
     color: #ffffff;
   }
 }
-.active {
+
+.button_Container_active {
   height: 32px;
   padding: 11px 0px;
   border-radius: 8px;
-  background-color: #bdbdbd;
-  text-align: center;
   background-color: #1877f2;
+  text-align: center;
   input {
     width: auto;
     height: 100%;

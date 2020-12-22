@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.21.0",
+    "http-proxy-middleware": "^1.0.6",
     "markdown-with-front-matter-loader": "^0.1.0",
     "mobx": "^4.15.7",
     "mobx-react": "^6.3.1",

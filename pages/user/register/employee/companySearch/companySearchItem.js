@@ -1,13 +1,23 @@
 import React from 'react';
-import styles from './companySearchItem.scss';
+import styles from './CompanySearchItem.scss';
 
-const companySearchItem = ({ name, address }) => {
+const CompanySearchItem = ({
+  name,
+  address,
+  setSearchResult,
+  setModalClose,
+}) => {
   return (
-    <div className={styles.item_card}>
+    <div
+      className={styles.item_card}
+      onClick={() => {
+        setSearchResult(name);
+        setModalClose(true);
+      }}>
       <div className={styles.name}>{name}</div>
       <div className={styles.address}>{address}</div>
     </div>
   );
 };
 
-export default companySearchItem;
+export default CompanySearchItem;
