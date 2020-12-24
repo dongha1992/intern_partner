@@ -1,0 +1,88 @@
+.selectStatus_container {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-image: url('/img-signup.png');
+  background-size: cover;
+  height: 100vh;
+  background-repeat: no-repeat;
+  position: relative;
+  .select_your_status {
+    padding: 83px 157px 20px 25px;
+  }
+  .selectStatus_btn_group {
+    .company_button {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 78px;
+        height: 27px;
+        object-fit: contain;
+        font-family: NotoSansCJKkr;
+        font-size: 20px;
+        font-weight: 300;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 2.44;
+        letter-spacing: normal;
+        text-align: left;
+        color: #ffffff;
+      }
+      .check_img {
+        width: 28px;
+        height: 28px;
+        position: absolute;
+        top: 10px;
+        right: 28px;
+      }
+      &.active {
+        border: solid 1px #1877f2;
+      }
+    }
+  }
+  .employee_button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      width: 78px;
+      height: 27px;
+      object-fit: contain;
+      font-family: NotoSansCJKkr;
+      font-size: 20px;
+      font-weight: 300;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 2.44;
+      letter-spacing: normal;
+      text-align: left;
+      color: #ffffff;
+    }
+    .check_img {
+      width: 28px;
+      height: 28px;
+      position: absolute;
+      top: 10px;
+      right: 28px;
+    }
+  }
+}
+.rectangle1 {
+  margin-bottom: 12px;
+}
+.next_button {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+}

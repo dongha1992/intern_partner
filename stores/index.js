@@ -2,6 +2,7 @@ import { useStaticRendering } from 'mobx-react';
 import SignUpEmployeeStore from './SignUpEmployeeStore';
 import SearchCompanyStore from './SearchCompanyStore';
 import SearchAddressStore from './SearchAddressStore';
+import LoginStore from './LoginStore';
 
 const isServer = typeof window === 'undefined';
 useStaticRendering(isServer);
@@ -13,7 +14,7 @@ class RootStore {
     this.SignUpEmployeeStore = new SignUpEmployeeStore();
     this.SearchCompanyStore = new SearchCompanyStore();
     this.SearchAddressStore = new SearchAddressStore();
-
+    this.LoginStore = new LoginStore();
   }
 }
 
