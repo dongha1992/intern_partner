@@ -37,13 +37,11 @@ class LoginPage extends Component {
     })
       .then((res) => res.json())
       .then((result) => {
-        if (result.Authorization) {
-          console.log(result.Authorization);
-          localStorage.setItem('token', result.Authorization);
+        if (result.token) {
+          localStorage.setItem('token', result.token);
           alert('로그인에 성공하셨습니다.');
           this.props.router.push('/user/main');
         }
-
         if (result.error === 403) {
           alert(result.message);
         } else if (result.error === 404) {
