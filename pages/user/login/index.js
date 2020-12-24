@@ -5,6 +5,7 @@ import { withRouter, useRouter } from 'next/router';
 import styles from './LoginPage.scss';
 import { USER_ID, USER_PASSWORD } from '../../../constants/login/LoginLabel';
 import { inject, observer } from 'mobx-react';
+import { SERVER_URI } from '../../../config';
 import axios from 'axios';
 
 @withRouter
@@ -27,7 +28,7 @@ class LoginPage extends Component {
     // const { id, password } = this.state;
     const { idValue, passwordValue } = this.props.LoginStore;
 
-    fetch('http://52.79.55.158:8000/user/login', {
+    fetch(`${SERVER_URI}/user/login`, {
       method: 'POST',
       body: JSON.stringify({
         login_id: idValue,
@@ -37,7 +38,9 @@ class LoginPage extends Component {
       .then((res) => res.json())
       .then((result) => {
         if (result.Authorization) {
+          console.log(result.Authorization);
           localStorage.setItem('token', result.Authorization);
+          alert('로그인에 성공하셨습니다.');
           this.props.router.push('/user/main');
         }
 
