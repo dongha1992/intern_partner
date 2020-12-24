@@ -25,12 +25,6 @@ class RegisterCompanyPage extends Component {
     return { mobxStore };
   }
 
-  modalHandler() {
-    this.setState({
-      isModal: !this.state.isModal,
-    });
-  }
-
   goToServer() {
     const {
       companyUserEmail,
@@ -69,7 +63,6 @@ class RegisterCompanyPage extends Component {
         companyintro: companyIntro,
       })
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
           this.setState({
             isModal: !this.state.isModal,
@@ -93,6 +86,7 @@ class RegisterCompanyPage extends Component {
         }
       })
       .catch((error) => {
+        alert("다시 확인해주세요.")
         console.log(error);
       });
   }
@@ -134,7 +128,6 @@ class RegisterCompanyPage extends Component {
             companyUserNumber={companyUserNumber.value}
             companyUserId={companyUserId.value}
             onClick={() => {
-              this.modalHandler();
               this.goToServer();
             }}
           />

@@ -48,7 +48,6 @@ class RegisterEmployeePage extends Component {
         company_id: companyId,
       })
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
           this.setState({
             isModal: !this.state.isModal,
@@ -66,6 +65,7 @@ class RegisterEmployeePage extends Component {
         }
       })
       .catch((error) => {
+        alert('다시 확인해주세요.');
         console.log(error);
       });
   }

@@ -34,8 +34,7 @@ export default function SignUpInput({
   const changeSearchProps = (value) => {
     setSearchProps(value);
   };
-  console.log(userSelectedCompany, 'USER SLECET');
-  console.log(isSubmit, 'SUIBMIT');
+
   return (
     <div className={styles.input_btn_container}>
       <div className={styles.input_wrap} style={{ marginTop: `${padding}px` }}>

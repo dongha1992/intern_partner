@@ -47,6 +47,7 @@ class BusinessInfo extends Component {
             isSearchInput={isSearchInput}
             name={USER_COMPANY_NAME}
             userSelectedCompany={SearchCompanyStore.searchResult}
+            value={SearchCompanyStore.searchResult}
             isSubmit={SignUpEmployeeStore.isRegisterValid}
           />
         </form>
