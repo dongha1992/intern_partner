@@ -58,8 +58,8 @@ class SignUpCompanyStore {
     companyUserName: { value: '' },
     companyUserNumber: { value: '' },
     companyUserPosition: { value: '' },
-    isRegisterValid: false,
   };
+  @observable isRegisterValid = false;
 
   constructor(root) {
     this.root = root;
@@ -67,6 +67,10 @@ class SignUpCompanyStore {
 
   @action setValue = (e) => {
     this.form[e.target.name].value = e.target.value;
+  };
+
+  @action setValid = () => {
+    this.isRegisterValid = true;
   };
 }
 

@@ -17,6 +17,7 @@ import { USER_COMPANY_NAME } from '../../../../constants/company/FormNameForEven
 const isSearchInput = true;
 
 @withRouter
+@inject('SignUpCompanyStore')
 @inject('SearchAddressStore')
 @observer
 class BusinessInfo extends Component {
@@ -28,7 +29,7 @@ class BusinessInfo extends Component {
     return { mobxStore };
   }
   render() {
-    const { SearchAddressStore } = this.props;
+    const { SearchAddressStore, SignUpCompanyStore } = this.props;
 
     return (
       <div className={styles.businessInfo_form_container}>
@@ -57,6 +58,8 @@ class BusinessInfo extends Component {
             isSearchInput={isSearchInput}
             name={USER_COMPANY_NAME}
             userSelectedAddress={SearchAddressStore.searchAddressInput}
+            value={SearchAddressStore.searchAddressInput}
+            isSubmit={SignUpCompanyStore.isRegisterValid}
           />
           <SignUpInput
             className={USER_COMPANY_NAME}

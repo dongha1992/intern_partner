@@ -23,6 +23,7 @@ export default function SignUpInput({
   formValidation,
   onKeyPress,
   isTyping,
+  isSubmit,
 }) {
   const [searchProps, setSearchProps] = useState('');
 
@@ -33,7 +34,8 @@ export default function SignUpInput({
   const changeSearchProps = (value) => {
     setSearchProps(value);
   };
-
+  console.log(userSelectedCompany, 'USER SLECET');
+  console.log(isSubmit, 'SUIBMIT');
   return (
     <div className={styles.input_btn_container}>
       <div className={styles.input_wrap} style={{ marginTop: `${padding}px` }}>
@@ -68,8 +70,7 @@ export default function SignUpInput({
               onClick={() => {
                 isSearchInput && onClick();
               }}
-              placeholder={searchResult ? searchResult : ''}
-              value={userSelectedCompany ? userSelectedCompany : value}
+              value={isSubmit ? userSelectedCompany : value}
               className={styles.user_input}
               formValidation={formValidation}
             />

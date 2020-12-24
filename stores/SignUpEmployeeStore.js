@@ -58,13 +58,15 @@ class SignUpEmployeeStore {
     userName: { value: '' },
     userNumber: { value: '' },
     userPosition: { value: '' },
-    isRegisterValid: false,
   };
+  @observable isRegisterValid = false;
 
   constructor(root) {
     this.root = root;
   }
-
+  @action setValid = () => {
+    this.isRegisterValid = true;
+  };
   @action setValue = (e) => {
     this.form[e.target.name].value = e.target.value;
   };

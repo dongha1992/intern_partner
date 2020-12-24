@@ -50,6 +50,7 @@ class RegisterCompanyPage extends Component {
       searchZipCodeInput,
       companyIntro,
     } = this.props.SearchAddressStore;
+    const { SearchAddressStore, SignUpCompanyStore } = this.props;
 
     axios
       .post(`${SERVER_URI}/user/signup/company`, {
@@ -80,13 +81,15 @@ class RegisterCompanyPage extends Component {
           companyUserNumber.value = '';
           companyUserPosition.value = '';
           companyUserEmail.value = '';
-          companyName = '';
-          searchAddressInput = '';
-          searchAddress2Input = '';
-          searchCityInput = '';
-          searchStateInput = '';
-          searchZipCodeInput = '';
-          companyIntro = '';
+          SignUpCompanyStore.setValid();
+          SearchAddressStore.setCompanyName('');
+          SearchAddressStore.setCompanyIntro('');
+          SearchAddressStore.setSearchAddressInput('');
+          SearchAddressStore.setSearchAddress2Input('');
+          SearchAddressStore.setSearchCityInput('');
+          SearchAddressStore.setSearchStateInput('');
+          SearchAddressStore.setSearchZipCodeInput('');
+          SearchAddressStore.setSearchResult('');
         }
       })
       .catch((error) => {
