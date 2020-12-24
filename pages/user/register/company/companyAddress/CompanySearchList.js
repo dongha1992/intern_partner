@@ -11,7 +11,7 @@ import {
 } from '../../../../../constants/company/CompanyAddressLabel';
 import { SEARCH_COMPANY_PADDING_TOP } from '../../../../../constants/employee/CompanySearchPadding';
 import { SERVER_URI } from '../../../../../config';
-import styles from './CompanySearch.scss';
+import styles from './companySearch.scss';
 
 const isImage = true;
 const isSearch = true;

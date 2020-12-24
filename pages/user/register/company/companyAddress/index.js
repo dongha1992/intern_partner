@@ -6,7 +6,7 @@ import CompanySearchList from './CompanySearchList';
 // import Button from '../../../../../components/Button';
 import CompanyAddressButton from './CompanyAddressButton';
 import { THEME_COLOR } from '../../../../../constants/Color';
-import styles from './CompanySearch.scss';
+import styles from './companySearch.scss';
 import { COMPANY_ADDRESS } from '../../../../../constants/company/FormTitle';
 import { CONFIRM_BUTTON } from '../../../../../constants/employee/CompanySearchButton';
 
