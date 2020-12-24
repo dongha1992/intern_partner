@@ -4,20 +4,19 @@ import { inject, observer } from 'mobx-react';
 import { withRouter } from 'next/router';
 import styles from './BusinessInfo.scss';
 
-import { BUSINESS_INFO } from '../../../../constants/employee/FormTitle';
-import { BUSINESS_INFO_PADDING_TOP } from '../../../../constants/employee/FormTitlePadding';
+import { BUSINESS_INFO } from '../../../../constants/company/FormTitle';
+import { BUSINESS_INFO_PADDING_TOP } from '../../../../constants/company/FormTitlePadding';
 import {
   COMPANY_NAME,
   COMPANY_ADDRESS,
   COMPANY_INTRO,
 } from '../../../../constants/company/BusinessInfo';
-import { COMPANY_NAME_PADDING_TOP } from '../../../../constants/employee/BusinessInfoPadding';
-import { USER_COMPANY_NAME } from '../../../../constants/employee/FormNameForEvent';
+import { COMPANY_NAME_PADDING_TOP } from '../../../../constants/company/BusinessInfoPadding';
+import { USER_COMPANY_NAME } from '../../../../constants/company/FormNameForEvent';
 
 const isSearchInput = true;
 
 @withRouter
-@inject('SignUpEmployeeStore')
 @inject('SearchAddressStore')
 @observer
 class BusinessInfo extends Component {
@@ -29,7 +28,7 @@ class BusinessInfo extends Component {
     return { mobxStore };
   }
   render() {
-    const { SignUpEmployeeStore, SearchAddressStore } = this.props;
+    const { SearchAddressStore } = this.props;
 
     return (
       <div className={styles.businessInfo_form_container}>
@@ -47,7 +46,6 @@ class BusinessInfo extends Component {
             name={USER_COMPANY_NAME}
             value={SearchAddressStore.companyName}
             onChange={(e) => SearchAddressStore.setCompanyName(e.target.value)}
-            companyName={SearchAddressStore.companyName}
           />
           <SignUpInput
             className={USER_COMPANY_NAME}
@@ -67,7 +65,6 @@ class BusinessInfo extends Component {
             value={SearchAddressStore.companyIntro}
             name={USER_COMPANY_NAME}
             onChange={(e) => SearchAddressStore.setCompanyIntro(e.target.value)}
-            companyIntro={SearchAddressStore.companyIntro}
           />
         </form>
       </div>

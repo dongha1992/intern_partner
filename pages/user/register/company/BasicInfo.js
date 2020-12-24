@@ -28,7 +28,7 @@ import {
   USER_NAME_NAME,
   USER_NUMBER_NAME,
   USER_POSITION_NAME,
-} from '../../../../constants/employee/FormNameForEvent';
+} from '../../../../constants/company/FormNameForEvent';
 
 import { USER_NUMBER_BUTTON } from '../../../../constants/employee/ButtonValue';
 import { throws } from 'assert';
@@ -36,7 +36,7 @@ import { throws } from 'assert';
 const isButton = true;
 const userInputValidation = true;
 
-@inject('SignUpEmployeeStore')
+@inject('SignUpCompanyStore')
 @observer
 class BasicInfo extends Component {
   constructor(props) {
@@ -51,22 +51,22 @@ class BasicInfo extends Component {
   }
 
   handlerMapper(name) {
-    const { form } = this.props.SignUpEmployeeStore;
+    const { form } = this.props.SignUpCompanyStore;
     const mapper = {
-      userEmail: () => {
+      companyUserEmail: () => {
         let checkEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-        if (!checkEmail.test(form.userEmail.value)) {
+        if (!checkEmail.test(form.companyUserEmail.value)) {
           this.setState({
             emailValid: {
-              valid: form.userEmail.status.error.valid,
-              message: form.userEmail.status.error.message,
+              valid: form.companyUserEmail.status.error.valid,
+              message: form.companyUserEmail.status.error.message,
             },
           });
         } else {
           this.setState({
             emailValid: {
-              valid: form.userEmail.status.success.valid,
-              message: form.userEmail.status.success.message,
+              valid: form.companyUserEmail.status.success.valid,
+              message: form.companyUserEmail.status.success.message,
             },
           });
         }
@@ -75,7 +75,7 @@ class BasicInfo extends Component {
     mapper[name]();
   }
   getInputLength(e) {
-    const inputValue = this.props.SignUpEmployeeStore.form[e].value.length;
+    const inputValue = this.props.SignUpCompanyStore.form[e].value.length;
     if (inputValue > 0) {
       this.setState({
         isTyping: e,
@@ -92,7 +92,7 @@ class BasicInfo extends Component {
   }
 
   render() {
-    const { SignUpEmployeeStore } = this.props;
+    const { SignUpCompanyStore } = this.props;
     const { emailValid, isTyping } = this.state;
     return (
       <div className={styles.basicInfo_form_container}>
@@ -103,11 +103,11 @@ class BasicInfo extends Component {
         </h2>
         <form action='post' className={styles.input_form}>
           <SignUpInput
-            onChange={SignUpEmployeeStore.setValue}
+            onChange={SignUpCompanyStore.setValue}
             label={USER_NAME}
             padding={USER_NAME_PADDING}
             name={USER_NAME_NAME}
-            value={SignUpEmployeeStore.form.userName.value}
+            value={SignUpCompanyStore.form.companyUserName.value}
           />
 
           <SignUpInput
@@ -115,29 +115,29 @@ class BasicInfo extends Component {
             padding={USER_ID_PADDING_TOP}
             buttonValue={USER_NUMBER_BUTTON}
             padding={USER_NUMBER_PADDING}
-            onChange={SignUpEmployeeStore.setValue}
+            onChange={SignUpCompanyStore.setValue}
             name={USER_NUMBER_NAME}
-            value={SignUpEmployeeStore.form.userNumber.value}
+            value={SignUpCompanyStore.form.companyUserNumber.value}
           />
 
           <SignUpInput
             label={USER_POSITION}
             padding={USER_POSITION_PADDING}
-            onChange={SignUpEmployeeStore.setValue}
+            onChange={SignUpCompanyStore.setValue}
             name={USER_POSITION_NAME}
-            value={SignUpEmployeeStore.form.userPosition.value}
+            value={SignUpCompanyStore.form.companyUserPosition.value}
           />
 
           <SignUpInput
             label={USER_EMAIL}
             padding={USER_EMAIL_PADDING}
             onChange={(e) => {
-              SignUpEmployeeStore.setValue(e);
+              SignUpCompanyStore.setValue(e);
               this.handlerMapper(e.target.name);
               this.getInputLength(e.target.name);
             }}
             name={USER_EMAIL_NAME}
-            value={SignUpEmployeeStore.form.userEmail.value}
+            value={SignUpCompanyStore.form.companyUserEmail.value}
             userInputValidation={userInputValidation}
             formValidation={emailValid}
             isTyping={isTyping}

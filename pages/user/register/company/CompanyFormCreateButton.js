@@ -1,31 +1,31 @@
 import React, { Fragment } from 'react';
 import Link from 'next/link';
-import styles from './EmployeeFormCreateButton.scss';
+import styles from './CompanyFormCreateButton.scss';
 
 import { CREATE_BUTTON } from '../../../../constants/employee/CreateButton';
 import { CREATE_BUTTON_MARGIN_TOP } from '../../../../constants/employee/CreateButtonMargin';
 
-const EmployeeFormCreateButton = ({
-  userEmail,
-  userName,
-  userPassword,
-  userPasswordCheck,
-  userPosition,
-  userNumber,
-  userId,
+const CompanyFormCreateButton = ({
+  companyUserEmail,
+  companyUserName,
+  companyUserPassword,
+  companyUserPasswordCheck,
+  companyUserPosition,
+  companyUserNumber,
+  companyUserId,
   companyName,
   searchAddressInput,
   companyIntro,
   onClick,
 }) => {
   const condition =
-    userEmail &&
-    userName &&
-    userPassword &&
-    userPasswordCheck &&
-    userPosition &&
-    userNumber &&
-    userId &&
+    companyUserEmail &&
+    companyUserName &&
+    companyUserPassword &&
+    companyUserPasswordCheck &&
+    companyUserPosition &&
+    companyUserNumber &&
+    companyUserId &&
     companyName &&
     searchAddressInput &&
     companyIntro;
@@ -49,4 +49,4 @@ const EmployeeFormCreateButton = ({
   );
 };
 
-export default EmployeeFormCreateButton;
+export default CompanyFormCreateButton;

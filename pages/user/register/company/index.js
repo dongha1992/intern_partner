@@ -3,7 +3,7 @@ import Header from '../../../../components/Header';
 import BasicInfo from './BasicInfo';
 import BusinessInfo from './BusinessInfo';
 import CreateAnAccount from './CreateAnAccount';
-import EmpolyeeFormCreateButton from './EmployeeFormCreateButton';
+import CompanyFormCreateButton from './CompanyFormCreateButton';
 import SingUpModal from './SignUpModal';
 import { inject, observer } from 'mobx-react';
 import styles from './RegisterEmployeePage.scss';
@@ -11,7 +11,7 @@ import axios from 'axios';
 import { SERVER_URI } from '../../../../config';
 
 @inject('SearchAddressStore')
-@inject('SignUpEmployeeStore')
+@inject('SignUpCompanyStore')
 @observer
 class RegisterCompanyPage extends Component {
   constructor(props) {
@@ -33,13 +33,14 @@ class RegisterCompanyPage extends Component {
 
   goToServer() {
     const {
-      userEmail,
-      userName,
-      userPassword,
-      userPosition,
-      userNumber,
-      userId,
-    } = this.props.SignUpEmployeeStore.form;
+      companyUserEmail,
+      companyUserName,
+      companyUserPassword,
+      companyUserPasswordCheck,
+      companyUserPosition,
+      companyUserNumber,
+      companyUserId,
+    } = this.props.SignUpCompanyStore.form;
     const {
       companyName,
       searchAddressInput,
@@ -52,12 +53,12 @@ class RegisterCompanyPage extends Component {
 
     axios
       .post(`${SERVER_URI}/user/signup/company`, {
-        userid: userId.value,
-        userpassword: userPassword.value,
-        username: userName.value,
-        usernumber: userNumber.value,
-        userposition: userPosition.value,
-        useremail: userEmail.value,
+        userid: companyUserId.value,
+        userpassword: companyUserPassword.value,
+        username: companyUserName.value,
+        usernumber: companyUserNumber.value,
+        userposition: companyUserPosition.value,
+        useremail: companyUserEmail.value,
         companyname: companyName,
         companyaddress1: searchAddressInput,
         companyaddress2: searchAddress2Input,
@@ -67,22 +68,24 @@ class RegisterCompanyPage extends Component {
         companyintro: companyIntro,
       })
       .then((res) => {
+        console.log(res);
         if (res.status === 200) {
           this.setState({
             isModal: !this.state.isModal,
           });
-          userId.value = '';
-          userPassword.value = '';
-          userName.value = '';
-          userNumber.value = '';
-          userPosition.value = '';
-          userEmail.value = '';
+          companyUserId.value = '';
+          companyUserPassword.value = '';
+          companyUserPasswordCheck.value = '';
+          companyUserName.value = '';
+          companyUserNumber.value = '';
+          companyUserPosition.value = '';
+          companyUserEmail.value = '';
           companyName = '';
-          comsearchAddressInput = '';
-          comsearchAddress2Input = '';
+          searchAddressInput = '';
+          searchAddress2Input = '';
           searchCityInput = '';
           searchStateInput = '';
-          cosearchZipCodeInput = '';
+          searchZipCodeInput = '';
           companyIntro = '';
         }
       })
@@ -99,14 +102,14 @@ class RegisterCompanyPage extends Component {
     } = this.props.SearchAddressStore;
 
     const {
-      userEmail,
-      userName,
-      userPassword,
-      userPasswordCheck,
-      userPosition,
-      userNumber,
-      userId,
-    } = this.props.SignUpEmployeeStore.form;
+      companyUserEmail,
+      companyUserName,
+      companyUserPassword,
+      companyUserPasswordCheck,
+      companyUserPosition,
+      companyUserNumber,
+      companyUserId,
+    } = this.props.SignUpCompanyStore.form;
     const { isModal } = this.state;
 
     return (
@@ -116,17 +119,17 @@ class RegisterCompanyPage extends Component {
           <CreateAnAccount />
           <BasicInfo />
           <BusinessInfo />
-          <EmpolyeeFormCreateButton
+          <CompanyFormCreateButton
             companyName={companyName}
             searchAddressInput={searchAddressInput}
             companyIntro={companyIntro}
-            userEmail={userEmail.value}
-            userName={userName.value}
-            userPassword={userPassword.value}
-            userPasswordCheck={userPasswordCheck.value}
-            userPosition={userPosition.value}
-            userNumber={userNumber.value}
-            userId={userId.value}
+            companyUserEmail={companyUserEmail.value}
+            companyUserName={companyUserName.value}
+            companyUserPassword={companyUserPassword.value}
+            companyUserPasswordCheck={companyUserPasswordCheck.value}
+            companyUserPosition={companyUserPosition.value}
+            companyUserNumber={companyUserNumber.value}
+            companyUserId={companyUserId.value}
             onClick={() => {
               this.modalHandler();
               this.goToServer();

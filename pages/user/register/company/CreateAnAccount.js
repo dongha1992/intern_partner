@@ -18,7 +18,7 @@ import {
   USER_ID_NAME,
   USER_PASSWORD_CHECK_NAME,
   USER_PASSWORD_NAME,
-} from '../../../../constants/employee/FormNameForEvent';
+} from '../../../../constants/company/FormNameForEvent';
 import { USER_ID_BUTTON } from '../../../../constants/employee/ButtonValue';
 import { TYPE_PASSWORD } from '../../../../constants/employee/InputType';
 import { SERVER_URI } from '../../../../config';
@@ -28,7 +28,7 @@ const isButton = true;
 const isPassword = true;
 const userInputValidation = true;
 
-@inject('SignUpEmployeeStore')
+@inject('SignUpCompanyStore')
 @observer
 class CreateAnAccount extends Component {
   constructor(props) {
@@ -57,72 +57,72 @@ class CreateAnAccount extends Component {
   }
 
   handlerMapper(name) {
-    const { form } = this.props.SignUpEmployeeStore;
+    const { form } = this.props.SignUpCompanyStore;
     const { isIdDuplicate } = this.state;
 
     const mapper = {
-      userId: () => {
+      companyUserId: () => {
         if (isIdDuplicate) {
           this.setState({
             idValid: {
-              valid: form.userId.status.error.valid,
-              message: form.userId.status.error.message,
+              valid: form.companyUserId.status.error.valid,
+              message: form.companyUserId.status.error.message,
             },
           });
         } else {
           this.setState({
             idValid: {
-              valid: form.userId.status.success.valid,
-              message: form.userId.status.success.message,
+              valid: form.companyUserId.status.success.valid,
+              message: form.companyUserId.status.success.message,
             },
           });
         }
       },
 
-      userPassword: () => {
-        let checkPasswordNumber = form.userPassword.value.search(/[0-9]/g);
-        let checkPasswordLetter = form.userPassword.value.search(/[a-z]/gi);
-        let checkPasswordLength = form.userPassword.value.length;
+      companyUserPassword: () => {
+        let checkPasswordNumber = form.companyUserPassword.value.search(/[0-9]/g);
+        let checkPasswordLetter = form.companyUserPassword.value.search(/[a-z]/gi);
+        let checkPasswordLength = form.companyUserPassword.value.length;
 
         if (checkPasswordNumber > 0 || checkPasswordLetter > 0) {
           if (checkPasswordLength < 9) {
             this.setState({
               passwordValid: {
-                valid: form.userPassword.status.error.valid,
-                message: form.userPassword.status.error.message,
+                valid: form.companyUserPassword.status.error.valid,
+                message: form.companyUserPassword.status.error.message,
               },
             });
           } else {
             this.setState({
               passwordValid: {
-                valid: form.userPassword.status.success.valid,
-                message: form.userPassword.status.success.message,
+                valid: form.companyUserPassword.status.success.valid,
+                message: form.companyUserPassword.status.success.message,
               },
             });
           }
         } else {
           this.setState({
             passwordValid: {
-              valid: form.userPassword.status.error.valid,
-              message: form.userPassword.status.error.message,
+              valid: form.companyUserPassword.status.error.valid,
+              message: form.companyUserPassword.status.error.message,
             },
           });
         }
       },
 
-      userPasswordCheck: () => {
-        if (form.userPasswordCheck.value !== form.userPassword.value) {
+      companyUserPasswordCheck: () => {
+        if (form.companyUserPasswordCheck.value !== form.companyUserPassword.value) {
           this.setState({
             passwordCheckValid: {
-              valid: form.userPasswordCheck.status.error.valid,
-              message: form.userPasswordCheck.status.error.message,
+              valid: form.companyUserPasswordCheck.status.error.valid,
+              message: form.companyUserPasswordCheck.status.error.message,
             },
           });
         } else {
           this.setState({
             passwordCheckValid: {
-              valid: form.userPasswordCheck.status.success.valid,
-              message: form.userPasswordCheck.status.success.message,
+              valid: form.companyUserPasswordCheck.status.success.valid,
+              message: form.companyUserPasswordCheck.status.success.message,
             },
           });
         }
@@ -132,15 +132,15 @@ class CreateAnAccount extends Component {
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.isIdDuplicate !== this.state.isIdDuplicate) {
-      const userId = 'userId';
-      this.handlerMapper(userId);
+      const companyUserId = 'companyUserId';
+      this.handlerMapper(companyUserId);
     }
   }
 
   checkIdDuplicate() {
-    const userId = this.props.SignUpEmployeeStore.form.userId.value;
+    const companyUserId = this.props.SignUpCompanyStore.form.companyUserId.value;
     axios
-      .get(`${SERVER_URI}/user/check/id/${userId}`)
+      .get(`${SERVER_URI}/user/check/id/${companyUserId}`)
       .then((response) => {
         if (response.status === 200) {
           this.setState({
@@ -160,7 +160,7 @@ class CreateAnAccount extends Component {
   }
 
   getInputLength(e) {
-    const inputValue = this.props.SignUpEmployeeStore.form[e].value.length;
+    const inputValue = this.props.SignUpCompanyStore.form[e].value.length;
     if (inputValue > 0) {
       this.setState({
         isTyping: e,
@@ -174,7 +174,7 @@ class CreateAnAccount extends Component {
   }
 
   render() {
-    const { SignUpEmployeeStore } = this.props;
+    const { SignUpCompanyStore } = this.props;
     const { idValid, passwordValid, passwordCheckValid, isTyping } = this.state;
 
     return (
@@ -187,7 +187,7 @@ class CreateAnAccount extends Component {
             padding={USER_ID_PADDING_TOP}
             buttonValue={USER_ID_BUTTON}
             onChange={(e) => {
-              SignUpEmployeeStore.setValue(e);
+              SignUpCompanyStore.setValue(e);
               this.handlerMapper(e.target.name);
               this.getInputLength(e.target.name);
             }}
@@ -195,7 +195,7 @@ class CreateAnAccount extends Component {
               this.checkIdDuplicate();
             }}
             name={USER_ID_NAME}
-            value={SignUpEmployeeStore.form.userId.value}
+            value={SignUpCompanyStore.form.companyUserId.value}
             userInputValidation={userInputValidation}
             formValidation={idValid}
             isTyping={isTyping}
@@ -204,13 +204,13 @@ class CreateAnAccount extends Component {
           <SignUpInput
             label={PASSWORD}
             onChange={(e) => {
-              SignUpEmployeeStore.setValue(e);
+              SignUpCompanyStore.setValue(e);
               this.handlerMapper(e.target.name);
               this.getInputLength(e.target.name);
             }}
             padding={PASSWORD_PADDING_TOP}
             name={USER_PASSWORD_NAME}
-            value={SignUpEmployeeStore.form.userPassword.value}
+            value={SignUpCompanyStore.form.companyUserPassword.value}
             type={TYPE_PASSWORD}
             userInputValidation={userInputValidation}
             formValidation={passwordValid}
@@ -220,14 +220,14 @@ class CreateAnAccount extends Component {
           <SignUpInput
             label={PASSWORD_CHECK}
             onChange={(e) => {
-              SignUpEmployeeStore.setValue(e);
+              SignUpCompanyStore.setValue(e);
               this.handlerMapper(e.target.name);
               this.getInputLength(e.target.name);
             }}
             padding={PASSWORD_CHECK_PADDING_TOP}
             name={USER_PASSWORD_CHECK_NAME}
             isPassword={isPassword}
-            value={SignUpEmployeeStore.form.userPasswordCheck.value}
+            value={SignUpCompanyStore.form.companyUserPasswordCheck.value}
             type={TYPE_PASSWORD}
             userInputValidation={userInputValidation}
             formValidation={passwordCheckValid}
