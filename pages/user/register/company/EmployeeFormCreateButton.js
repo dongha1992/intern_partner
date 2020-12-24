@@ -29,14 +29,12 @@ const EmployeeFormCreateButton = ({
     companyName &&
     searchAddressInput &&
     companyIntro;
-    console.log(condition, "Asdas")
+
   return (
     <Fragment>
       <div
         className={
-          condition
-            ? styles.button_Container_active
-            : styles.button_Container
+          condition ? styles.button_Container_active : styles.button_Container
         }
         style={{ marginTop: `${CREATE_BUTTON_MARGIN_TOP}px` }}>
         <input

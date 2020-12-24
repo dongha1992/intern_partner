@@ -21,7 +21,6 @@ class CompanySearch extends Component {
     return { mobxStore };
   }
   goToForm = () => {
-    console.log(this.props.router);
     this.props.router.push('/user/register/employee');
   };
   render() {

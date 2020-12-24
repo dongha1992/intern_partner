@@ -34,7 +34,6 @@ function findCompany(name) {
 }
 
 export default async (req, res) => {
-  console.log(req, res);
   const name = req.query.name;
   const result = await findCompany(name);
 

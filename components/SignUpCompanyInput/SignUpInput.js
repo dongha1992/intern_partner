@@ -31,18 +31,10 @@ export default function SignUpInput({
     setSearchProps(searchResult);
   }, [searchResult]);
 
-  // const [inputValue, setInputValue] = useState('');
-
-  // useEffect(() => {
-  //   setInputValue(searchResult);
-  // }, [searchResult]);
-
   const changeSearchProps = (value) => {
     setSearchProps(value);
   };
 
-  // console.log('placeholder',placeholder);
-  // console.log('id',id);
   return (
     <div className={styles.input_btn_container}>
       <div className={styles.input_wrap} style={{ marginTop: `${padding}px` }}>

@@ -15,13 +15,11 @@ class SelectStatus extends Component {
     };
   }
   goToSignUp = (e) => {
-    if (this.state.isChecked === 0) {
+    if (this.state.isChecked == 0) {
       this.props.router.push('/user/register/company');
-    } else if (this.state.isChecked === 1) {
-      this.props.history.push('/register/company');
+    } else if (this.state.isChecked == 1) {
+      this.props.router.push('/user/register/employee');
     }
-
-    this.props.router.push('/user/register/employee');
   };
 
   handleCheckButton = (e) => {

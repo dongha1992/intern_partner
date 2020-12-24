@@ -40,9 +40,9 @@ class RegisterCompanyPage extends Component {
       userNumber,
       userId,
     } = this.props.SignUpEmployeeStore.form;
-    const { 
+    const {
       companyName,
-      searchAddressInput, 
+      searchAddressInput,
       searchAddress2Input,
       searchCityInput,
       searchStateInput,
@@ -66,21 +66,22 @@ class RegisterCompanyPage extends Component {
         companyzipcode: searchZipCodeInput,
         companyintro: companyIntro,
       })
-      .then((res) =>
-        console.log('zzzzzz',res),
-        this.setState({
-          isModal: !this.state.isModal,
-        })
-      )
+      .then((res) => {
+        if (res.status === 200) {
+          this.setState({
+            isModal: !this.state.isModal,
+          });
+        }
+      })
       .catch((error) => {
         console.log(error);
       });
   }
 
   render() {
-    const { 
+    const {
       companyName,
-      searchAddressInput, 
+      searchAddressInput,
       searchAddress2Input,
       searchCityInput,
       searchStateInput,

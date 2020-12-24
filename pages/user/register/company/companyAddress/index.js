@@ -22,13 +22,11 @@ class CompanySearch extends Component {
     return { mobxStore };
   }
   goToForm = () => {
-    console.log(this.props.router);
     this.props.router.push('/user/register/company');
   };
 
   render() {
     const { SearchAddressStore } = this.props;
-    console.log('<><><><><',this.props.SearchAddressStore.searchAddressInput);
 
     return (
       <div className={styles.company_search_container}>

@@ -45,11 +45,13 @@ class RegisterEmployeePage extends Component {
         useremail: userEmail.value,
         company_id: companyId,
       })
-      .then((res) =>
-        this.setState({
-          isModal: !this.state.isModal,
-        })
-      )
+      .then((res) => {
+        if (res.status === 200) {
+          this.setState({
+            isModal: !this.state.isModal,
+          });
+        }
+      })
       .catch((error) => {
         console.log(error);
       });

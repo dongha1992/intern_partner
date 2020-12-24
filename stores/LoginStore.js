@@ -7,7 +7,6 @@ class LoginStore {
   constructor() {}
 
   @action setValue = (e) => {
-    // console.log(e);
     this[e.target.name] = e.target.value;
   };
 }

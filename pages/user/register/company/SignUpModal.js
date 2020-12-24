@@ -13,7 +13,7 @@ const SignUpModal = ({ isModal }) => {
           <input
             type='button'
             className={styles.modalButton}
-            onClick={() => router.push('/user/register')}
+            onClick={() => router.push('/user/login')}
             value={'로그인'}
           />
         </div>

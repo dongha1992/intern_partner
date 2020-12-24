@@ -16,20 +16,17 @@ const CompanyAddressButton = ({
   goToForm,
 }) => {
   const condition =
-  searchAddressInput &&
-  searchAddress2Input &&
-  searchCityInput &&
-  searchStateInput &&
-  searchZipCodeInput;
+    searchAddressInput &&
+    searchAddress2Input &&
+    searchCityInput &&
+    searchStateInput &&
+    searchZipCodeInput;
 
-//   console.log('>>>>>>',searchAddressInput);
   return (
     <Fragment>
       <div
         className={
-         condition
-            ? styles.button_Container_active
-            : styles.button_Container
+          condition ? styles.button_Container_active : styles.button_Container
         }
         style={{ marginTop: `${CREATE_BUTTON_MARGIN_TOP}px` }}>
         <input

@@ -24,23 +24,9 @@ class CompanySearchList extends Component {
     };
   }
 
-  //   const [inputValue, setInputValue] = useState('');
-
-  //   useEffect(() => {
-  //     setInputValue(searchResult);
-  //   }, [searchResult]);
-
-  //   const changeInputValue = (value) => {
-  //     setInputValue(value);
-  //   };
-
   static async getInitialProps({ mobxStore }) {
     return { mobxStore };
   }
-
-  // this.setState({
-  //   inputSearchValue: this.props.SearchCompanyStore.searchResult,
-  // });
 
   componentDidUpdate(prevProps) {
     if (prevProps.SearchCompanyStore.searchInput.length === 0) {
@@ -48,18 +34,6 @@ class CompanySearchList extends Component {
       this.props.SearchCompanyStore.setSearchResult('');
     }
   }
-
-  // changeInputValue = async (value) => {
-  //   console.log(value, 'value');
-  //   const data = { name: value };
-  //   console.log(data);
-  //   const response = await apiSearchItem.getSearchItem(data);
-  //   const responseData = response.data.searchResult;
-  //   console.log(responseData, 'response data');
-  //   this.setState({
-  //     result: [responseData],
-  //   });
-  // };
 
   componentDidMount() {
     axios
@@ -92,7 +66,6 @@ class CompanySearchList extends Component {
       return el.name.indexOf(this.state.inputSearchLetter) > -1;
     });
     return filteredArray.map((item) => {
-      console.log(item);
       return (
         <SearchItem
           key={item.id}
@@ -108,25 +81,9 @@ class CompanySearchList extends Component {
   }
 
   render() {
-    console.log(this.state.result && this.state.result);
     const { SearchCompanyStore } = this.props;
     const { result, inputSearchLetter } = this.state;
     const isModal = SearchCompanyStore.searchInput.length;
-
-    // const searchItem =
-    //   this.state.result &&
-    //   this.state.result.length > 0 &&
-    //   this.state.result[0].map((item) => {
-    //     return (
-    //       <SearchItem
-    //         key={item.id}
-    //         name={item.name}
-    //         address={item.address}
-    //         setSearchResult={SearchCompanyStore.setSearchResult}
-    //         setModalClose={SearchCompanyStore.setModalClose}
-    //       />
-    //     );
-    //   });
 
     return (
       <div className={styles.form_container}>

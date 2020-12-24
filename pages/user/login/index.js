@@ -36,8 +36,6 @@ class LoginPage extends Component {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log('야호 +_+', result);
-
         if (result.Authorization) {
           localStorage.setItem('token', result.Authorization);
           this.props.router.push('/user/main');
@@ -45,39 +43,32 @@ class LoginPage extends Component {
 
         if (result.error === 403) {
           alert(result.message);
-          console.log('403');
         } else if (result.error === 404) {
           alert(result.message);
-          console.log('404');
         } else if (result.error === 405) {
           alert(result.message);
-          console.log('405');
         } else if (result.error === 406) {
           alert(result.message);
-          console.log('406');
         }
       });
   };
 
   render() {
-    console.log(this.props);
-
     const { LoginStore } = this.props;
-    console.log(LoginStore.idValue);
-    console.log(LoginStore.passwordValue);
+
     return (
       <div className={styles.login_container}>
         <div className={styles.text_wrap}>
           <img
             src='/welcome.png'
-            srcset='/welcome-to@2x.png 2x,
+            srcSet='/welcome-to@2x.png 2x,
         /welcome-to@3x.png 3x'
             className={styles.welcome_to}
           />
 
           <img
             src='/1338.png'
-            srcset='/1338@2x.png 2x,
+            srcSet='/1338@2x.png 2x,
             /1338@3x.png 3x'
             className={styles.logo_IMS}
           />
@@ -95,7 +86,7 @@ class LoginPage extends Component {
             />
             <img
               src='img/1641.png'
-              srcset='img/1641@2x.png 2x,
+              srcSet='img/1641@2x.png 2x,
             img/1641@3x.png 3x'
               className={styles.inputBottomLine}
             />
@@ -113,7 +104,7 @@ class LoginPage extends Component {
             />
             <img
               src='img/1641.png'
-              srcset='img/1641@2x.png 2x,
+              srcSet='img/1641@2x.png 2x,
             img/1641@3x.png 3x'
               className={styles.inputBottomLine}
             />{' '}
@@ -126,13 +117,13 @@ class LoginPage extends Component {
             onClick={this.checkValidation}>
             <img
               src='/rectangle.png'
-              srcset='/rectangle@2x.png 2x,
+              srcSet='/rectangle@2x.png 2x,
             /rectangle@3x.png 3x'
               className={styles.login_Button}
             />
             <img
               src='/log-in.png'
-              srcset='/log-in@2x.png 2x,
+              srcSet='/log-in@2x.png 2x,
             /log-in@3x.png 3x'
               className={styles.login_Button_text}
             />
@@ -141,17 +132,16 @@ class LoginPage extends Component {
           <div className={styles.signupButton_wrap}>
             <img
               src='/rectangle.png'
-              srcset='/rectangle@2x.png 2x,
+              srcSet='/rectangle@2x.png 2x,
             /rectangle@3x.png 3x'
               className={styles.signup_Button}
             />
             <img
               src='/creat-an-account.png'
-              srcset='/creat-an-account@2x.png 2x,
+              srcSet='/creat-an-account@2x.png 2x,
             /creat-an-account@3x.png 3x'
               className={styles.signup_Button_text}
               onClick={() => {
-                console.log(this.props.router);
                 this.props.router.push('/user/login/select_status');
               }}
             />

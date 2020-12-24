@@ -47,7 +47,7 @@ class CreateAnAccount extends Component {
         message: '',
       },
       isTyping: '',
-      
+
       isIdDuplicate: true,
     };
   }
@@ -59,7 +59,7 @@ class CreateAnAccount extends Component {
   handlerMapper(name) {
     const { form } = this.props.SignUpEmployeeStore;
     const { isIdDuplicate } = this.state;
-    
+
     const mapper = {
       userId: () => {
         if (isIdDuplicate) {
@@ -140,11 +140,8 @@ class CreateAnAccount extends Component {
   checkIdDuplicate() {
     const userId = this.props.SignUpEmployeeStore.form.userId.value;
     axios
-      .get(
-        `${SERVER_URI}/user/check/id/${userId}`
-      )
+      .get(`${SERVER_URI}/user/check/id/${userId}`)
       .then((response) => {
-
         if (response.status === 200) {
           this.setState({
             isIdDuplicate: false,

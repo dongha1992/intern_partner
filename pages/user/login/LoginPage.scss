@@ -3,26 +3,20 @@
   margin: 0;
   box-sizing: border-box;
   background-image: url('/img-signup.png');
-  // background-image: url('/img-signup@3x.png');
+
   background-size: cover;
   height: 100vh;
   background-repeat: no-repeat;
   position: relative;
-  // .img_signup {
-  //   width: 375px;
-  //   height: 667px;
-  //   padding: 127px 15px 83px;
-  //   object-fit: contain;
-  // }
+
   .text_wrap {
     width: 117px;
-    // border: 1px solid wheat;
+
     padding: 127px 233px 467px 25px;
     .welcome_to {
       width: 117px;
       height: 33px;
       margin: 0 61px 8px 10px;
-      // padding: 127px 233px 507px 25px;
       object-fit: contain;
       font-family: NotoSansCJKkr;
       font-size: 22px;

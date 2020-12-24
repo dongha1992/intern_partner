@@ -3,6 +3,7 @@ import SignUpEmployeeStore from './SignUpEmployeeStore';
 import SearchCompanyStore from './SearchCompanyStore';
 import SearchAddressStore from './SearchAddressStore';
 import LoginStore from './LoginStore';
+import ChatStore from './ChatStore';
 
 const isServer = typeof window === 'undefined';
 useStaticRendering(isServer);

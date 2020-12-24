@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import '../styles/globals.scss'
+import '../styles/globals.scss';
 import App from 'next/app';
 import { Provider } from 'mobx-react';
 import Router, { withRouter } from 'next/router';
@@ -24,36 +24,39 @@ class CustomApp extends App {
   constructor(props) {
     super(props);
     const isServer = typeof window === 'undefined';
-    this.mobxStore = isServer ? props.initialMobxState : initializeStore(props.initialMobxState);
-    this.cacheURL = []
+    this.mobxStore = isServer
+      ? props.initialMobxState
+      : initializeStore(props.initialMobxState);
+    this.cacheURL = [];
   }
 
-  componentDidMount () {
+  componentDidMount() {
     if (process.env.NODE_ENV !== 'production') {
-      Router.events.on('routeChangeComplete', this.handleLoadStyle)
+      Router.events.on('routeChangeComplete', this.handleLoadStyle);
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     if (process.env.NODE_ENV !== 'production') {
-      Router.events.off('routeChangeComplete', this.handleLoadStyle)
+      Router.events.off('routeChangeComplete', this.handleLoadStyle);
     }
   }
 
   handleLoadStyle = (url) => {
-    if (this.cacheURL.includes(url)) return
+    if (this.cacheURL.includes(url)) return;
     const els = document.querySelectorAll(
-      'link[href*="/_next/static/css/styles.chunk.css"]')
-    const timestamp = new Date().valueOf()
+      'link[href*="/_next/static/css/styles.chunk.css"]'
+    );
+    const timestamp = new Date().valueOf();
     for (let i = 0; i < els.length; i++) {
       if (els[i].rel === 'stylesheet') {
-        els[i].href = '/_next/static/css/styles.chunk.css?v=' + timestamp
-        console.log('Style loaded')
-        this.cacheURL.push(url)
-        break
+        els[i].href = '/_next/static/css/styles.chunk.css?v=' + timestamp;
+
+        this.cacheURL.push(url);
+        break;
       }
     }
-  }
+  };
 
   render() {
     const { Component, pageProps } = this.props;

@@ -20,7 +20,7 @@ class SearchAddressStore {
   };
 
   @action setCompanyIntro = (intro) => {
-  this.companyIntro = intro;
+    this.companyIntro = intro;
   };
 
   @action setSearchAddressInput = (value) => {
@@ -44,7 +44,6 @@ class SearchAddressStore {
   };
 
   @action setSearchResult = (name) => {
-    console.log('dddddz',name);
     this.searchResult = name;
   };
 

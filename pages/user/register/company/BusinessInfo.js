@@ -6,7 +6,11 @@ import styles from './BusinessInfo.scss';
 
 import { BUSINESS_INFO } from '../../../../constants/employee/FormTitle';
 import { BUSINESS_INFO_PADDING_TOP } from '../../../../constants/employee/FormTitlePadding';
-import { COMPANY_NAME, COMPANY_ADDRESS, COMPANY_INTRO } from '../../../../constants/company/BusinessInfo';
+import {
+  COMPANY_NAME,
+  COMPANY_ADDRESS,
+  COMPANY_INTRO,
+} from '../../../../constants/company/BusinessInfo';
 import { COMPANY_NAME_PADDING_TOP } from '../../../../constants/employee/BusinessInfoPadding';
 import { USER_COMPANY_NAME } from '../../../../constants/employee/FormNameForEvent';
 
@@ -26,7 +30,7 @@ class BusinessInfo extends Component {
   }
   render() {
     const { SignUpEmployeeStore, SearchAddressStore } = this.props;
-    console.log(this.props.SearchAddressStore.companyName);
+
     return (
       <div className={styles.businessInfo_form_container}>
         <h2
@@ -35,11 +39,11 @@ class BusinessInfo extends Component {
           {BUSINESS_INFO}
         </h2>
         <form action='post' className={styles.input_business_form}>
-        <SignUpInput
+          <SignUpInput
             className={USER_COMPANY_NAME}
             label={COMPANY_NAME}
             padding={COMPANY_NAME_PADDING_TOP}
-            style={{color: 'black'}}
+            style={{ color: 'black' }}
             // isSearch={isSearch}
             name={USER_COMPANY_NAME}
             value={SearchAddressStore.companyName}
@@ -58,7 +62,7 @@ class BusinessInfo extends Component {
             name={USER_COMPANY_NAME}
             userSelectedAddress={SearchAddressStore.searchAddressInput}
           />
-           <SignUpInput
+          <SignUpInput
             className={USER_COMPANY_NAME}
             label={COMPANY_INTRO}
             padding={COMPANY_NAME_PADDING_TOP}
