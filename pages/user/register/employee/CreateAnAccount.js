@@ -180,7 +180,7 @@ class CreateAnAccount extends Component {
   }
 
   render() {
-    const { SignUpEmployeeStore } = this.props;
+    const { SignUpEmployeeStore, isSubmit } = this.props;
     const { idValid, passwordValid, passwordCheckValid, isTyping } = this.state;
     console.log(this.state.isIdDuplicate);
     return (

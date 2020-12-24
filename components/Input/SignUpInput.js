@@ -17,26 +17,18 @@ export default function SignUpInput({
   isSearchInput,
   isSearch,
   name,
-  setSearchInput,
   searchResult,
   userSelectedCompany,
   userInputValidation,
   formValidation,
   onKeyPress,
   isTyping,
-  inputSearchValue,
 }) {
   const [searchProps, setSearchProps] = useState('');
 
   useEffect(() => {
     setSearchProps(searchResult);
   }, [searchResult]);
-
-  // const [inputValue, setInputValue] = useState('');
-
-  // useEffect(() => {
-  //   setInputValue(searchResult);
-  // }, [searchResult]);
 
   const changeSearchProps = (value) => {
     setSearchProps(value);
@@ -76,7 +68,7 @@ export default function SignUpInput({
               onClick={() => {
                 isSearchInput && onClick();
               }}
-              placeholder={searchResult}
+              placeholder={searchResult ? searchResult : ''}
               value={userSelectedCompany ? userSelectedCompany : value}
               className={styles.user_input}
               formValidation={formValidation}

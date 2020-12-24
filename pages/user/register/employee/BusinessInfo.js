@@ -25,7 +25,7 @@ class BusinessInfo extends Component {
     return { mobxStore };
   }
   render() {
-    const { SignUpEmployeeStore, SearchCompanyStore } = this.props;
+    const { SearchCompanyStore, isSubmit } = this.props;
 
     return (
       <div className={styles.businessInfo_form_container}>
@@ -44,7 +44,12 @@ class BusinessInfo extends Component {
             }}
             isSearchInput={isSearchInput}
             name={USER_COMPANY_NAME}
-            userSelectedCompany={SearchCompanyStore.searchResult}
+            userSelectedCompany={
+              SearchCompanyStore.searchResult
+                ? SearchCompanyStore.searchResult
+                : ''
+            }
+            isSubmit={isSubmit}
           />
         </form>
       </div>

@@ -71,6 +71,19 @@ class RegisterCompanyPage extends Component {
           this.setState({
             isModal: !this.state.isModal,
           });
+          userId.value = '';
+          userPassword.value = '';
+          userName.value = '';
+          userNumber.value = '';
+          userPosition.value = '';
+          userEmail.value = '';
+          companyName = '';
+          comsearchAddressInput = '';
+          comsearchAddress2Input = '';
+          searchCityInput = '';
+          searchStateInput = '';
+          cosearchZipCodeInput = '';
+          companyIntro = '';
         }
       })
       .catch((error) => {
@@ -82,10 +95,6 @@ class RegisterCompanyPage extends Component {
     const {
       companyName,
       searchAddressInput,
-      searchAddress2Input,
-      searchCityInput,
-      searchStateInput,
-      searchZipCodeInput,
       companyIntro,
     } = this.props.SearchAddressStore;
 
@@ -108,13 +117,8 @@ class RegisterCompanyPage extends Component {
           <BasicInfo />
           <BusinessInfo />
           <EmpolyeeFormCreateButton
-            // searchResult={searchResult}
             companyName={companyName}
             searchAddressInput={searchAddressInput}
-            // searchAddress2Input={searchAddress2Input}
-            // searchCityInput={searchCityInput}
-            // searchStateInput={searchStateInput}
-            // searchZipCodeInput={searchZipCodeInput}
             companyIntro={companyIntro}
             userEmail={userEmail.value}
             userName={userName.value}

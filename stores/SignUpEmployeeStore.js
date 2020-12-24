@@ -1,15 +1,6 @@
 import { observable, action } from 'mobx';
 
 class SignUpEmployeeStore {
-  // @observable userId = '';
-  // @observable userPassword = '';
-  // @observable userPasswordCheck = '';
-  // @observable userName = '';
-  // @observable userNumber = '';
-  // @observable userPosition = '';
-  // @observable userEmail = '';
-  // @observable userCompany = '';
-
   @observable
   form = {
     userId: {

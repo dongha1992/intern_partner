@@ -18,6 +18,7 @@ class RegisterEmployeePage extends Component {
     super(props);
     this.state = {
       isModal: false,
+      isSubmit: false,
     };
   }
 
@@ -31,9 +32,10 @@ class RegisterEmployeePage extends Component {
       userPassword,
       userPosition,
       userNumber,
+      userPasswordCheck,
       userId,
     } = this.props.SignUpEmployeeStore.form;
-    const { companyId } = this.props.SearchCompanyStore;
+    const { companyId, searchResult } = this.props.SearchCompanyStore;
 
     axios
       .post(`${SERVER_URI}/user/signup/employee`, {
@@ -50,6 +52,15 @@ class RegisterEmployeePage extends Component {
           this.setState({
             isModal: !this.state.isModal,
           });
+          userEmail.value = '';
+          userName.value = '';
+          userPassword.value = '';
+          userPosition.value = '';
+          userNumber.value = '';
+          userId.value = '';
+          userPasswordCheck.value = '';
+          company_id = '';
+          searchResult = '';
         }
       })
       .catch((error) => {
@@ -68,7 +79,7 @@ class RegisterEmployeePage extends Component {
       userNumber,
       userId,
     } = this.props.SignUpEmployeeStore.form;
-    const { isModal } = this.state;
+    const { isModal, isSubmit } = this.state;
 
     return (
       <div className={styles.register_container}>
@@ -76,7 +87,7 @@ class RegisterEmployeePage extends Component {
         <div className={styles.form_wrap}>
           <CreateAnAccount />
           <BasicInfo />
-          <BusinessInfo />
+          <BusinessInfo isSubmit={isSubmit} />
           <EmpolyeeFormCreateButton
             searchResult={searchResult}
             userEmail={userEmail.value}

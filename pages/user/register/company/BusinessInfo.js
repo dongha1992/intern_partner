@@ -44,12 +44,10 @@ class BusinessInfo extends Component {
             label={COMPANY_NAME}
             padding={COMPANY_NAME_PADDING_TOP}
             style={{ color: 'black' }}
-            // isSearch={isSearch}
             name={USER_COMPANY_NAME}
             value={SearchAddressStore.companyName}
             onChange={(e) => SearchAddressStore.setCompanyName(e.target.value)}
             companyName={SearchAddressStore.companyName}
-            // userSelectedCompany={SearchCompanyStore.searchResult}
           />
           <SignUpInput
             className={USER_COMPANY_NAME}
@@ -67,11 +65,9 @@ class BusinessInfo extends Component {
             label={COMPANY_INTRO}
             padding={COMPANY_NAME_PADDING_TOP}
             value={SearchAddressStore.companyIntro}
-            // isSearchInput={isSearchInput}
             name={USER_COMPANY_NAME}
             onChange={(e) => SearchAddressStore.setCompanyIntro(e.target.value)}
             companyIntro={SearchAddressStore.companyIntro}
-            // userSelectedCompany={SearchCompanyStore.searchResult}
           />
         </form>
       </div>
