@@ -1,0 +1,136 @@
+.input_btn_container {
+  position: relative;
+  width: 100%;
+  margin-top: 50px;
+  .input_wrap {
+    position: relative;
+    width: 100%;
+    height: 28px;
+    text-align: center;
+    // &:focus-within {
+    //   transform: scale(1.02, 1.02);
+    // }
+    .user_input {
+      width: 305px;
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+      &:focus {
+        outline: none !important;
+      }
+      &:focus + .input_label,
+      .user_input:not(:placeholder-shown) + .input_label {
+        transform: translateY(-20px) scale(0.8);
+      }
+      &::placeholder {
+        line-height: 1.71;
+        font-size: 14px;
+        color: #bebdbd;
+      }
+      .userCompany {
+        &::placeholder {
+          color: black;
+        }
+      }
+    }
+
+    .input_label {
+      display: block;
+      position: absolute;
+      bottom: 8px;
+      left: 10px;
+      width: auto;
+      height: 29px;
+      opacity: 1;
+      transform: translateY(-13px);
+      transform-origin: 0 0;
+      transition: all 0.3s;
+      font-family: NotoSansCJKkr;
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.85;
+      letter-spacing: normal;
+      text-align: left;
+      color: #bdbdbd;
+    }
+
+    .errorMessage {
+      position: absolute;
+      width: 100%;
+      height: 8px;
+      bottom: -5%;
+      left: 3%;
+      font-family: NotoSansCJKkr;
+      font-size: 12px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 2;
+      letter-spacing: normal;
+      text-align: left;
+      border-top: 1px solid #ff2929;
+      color: #ff2929;
+    }
+    .successMessage {
+      position: absolute;
+      width: 100%;
+      height: 8px;
+      bottom: -5%;
+      left: 3%;
+      font-family: NotoSansCJKkr;
+      font-size: 12px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 2;
+      letter-spacing: normal;
+      text-align: left;
+      border-top: 1px solid #01b856;
+      color: #01b856;
+    }
+
+    .button_wrap {
+      position: absolute;
+      right: 0px;
+      bottom: 22px;
+      .input_button {
+        width: auto;
+        height: 28px;
+        padding: 4px 8px 5px 10px;
+        border-radius: 14px;
+        background-color: #bdbdbd;
+        div {
+          width: auto;
+          height: 19px;
+          font-family: NotoSansCJKkr;
+          font-size: 13px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.85;
+          letter-spacing: normal;
+          text-align: left;
+          color: #ffffff;
+        }
+      }
+    }
+    .image_wrap {
+      position: absolute;
+      right: 0px;
+      bottom: 13px;
+    }
+    .input_border {
+      width: 100%;
+      height: 1px;
+      margin-left: 10px;
+      background-color: #bdbdbd;
+      transition: all 0.2s;
+      &:focus {
+        outline: none !important;
+        border-color: black;
+      }
+    }
+  }
+}

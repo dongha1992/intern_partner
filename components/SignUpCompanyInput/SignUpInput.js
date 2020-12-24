@@ -1,11 +1,12 @@
 import React, { Fragment, useState, useEffect } from 'react';
-// import ErrorMessage from '../../components/Error';
+import ErrorMessage from '../../components/Error';
 
 import styles from './SignUpInput.scss';
 
 export default function SignUpInput({
   id,
   label,
+  placeholder,
   type,
   onChange,
   value,
@@ -17,14 +18,12 @@ export default function SignUpInput({
   isSearchInput,
   isSearch,
   name,
-  setSearchInput,
   searchResult,
-  userSelectedCompany,
+  userSelectedAddress,
   userInputValidation,
   formValidation,
   onKeyPress,
   isTyping,
-  inputSearchValue,
 }) {
   const [searchProps, setSearchProps] = useState('');
 
@@ -42,18 +41,19 @@ export default function SignUpInput({
     setSearchProps(value);
   };
 
+  // console.log('placeholder',placeholder);
+  // console.log('id',id);
   return (
     <div className={styles.input_btn_container}>
       <div className={styles.input_wrap} style={{ marginTop: `${padding}px` }}>
         {isSearch ? (
           <>
             <input
+              placeholder={placeholder}
               id={id ? id : null}
               type={type ? type : 'text'}
               name={name}
-              onChange={(e) => {
-                searchProps ? changeSearchProps(e.target.value) : onChange(e);
-              }}
+              onChange={onChange}
               onKeyPress={onKeyPress}
               value={searchProps ? searchProps : null}
               className={styles.user_input}
@@ -76,8 +76,7 @@ export default function SignUpInput({
               onClick={() => {
                 isSearchInput && onClick();
               }}
-              placeholder={searchResult}
-              value={userSelectedCompany ? userSelectedCompany : value}
+              value={userSelectedAddress ? userSelectedAddress : value}
               className={styles.user_input}
               formValidation={formValidation}
             />
@@ -112,8 +111,8 @@ export default function SignUpInput({
         {isImage ? (
           <div className={styles.image_wrap}>
             <img
-              src='/1366.png'
-              srcSet='/1366@2x.png 2x, /1366@3x.png 3x'
+              src='/194.png'
+              srcSet='/194@2x.png 2x, /194@3x.png 3x'
               className={styles.input_button}
             />
           </div>
