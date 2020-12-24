@@ -18,8 +18,7 @@ import { INTELLIGENT, PROMOTION, } from '../constants/landingPage/FourthPage';
 export default function LandingPage() {
   const router = useRouter();
   const handleGoToLogin = () => {
-    console.log(">>>", router);
-    router.push('/user/register/employee')
+    router.push('/user/login')
   }
 
   return (

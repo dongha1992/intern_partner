@@ -47,6 +47,8 @@ class CreateAnAccount extends Component {
         message: '',
       },
       isTyping: '',
+      
+      isIdDuplicate: true,
     };
   }
 
@@ -56,11 +58,11 @@ class CreateAnAccount extends Component {
 
   handlerMapper(name) {
     const { form } = this.props.SignUpEmployeeStore;
-
+    const { isIdDuplicate } = this.state;
+    
     const mapper = {
       userId: () => {
-        let checkId = form.userId.value.length < 7;
-        if (checkId) {
+        if (isIdDuplicate) {
           this.setState({
             idValid: {
               valid: form.userId.status.error.valid,
@@ -128,15 +130,26 @@ class CreateAnAccount extends Component {
     };
     mapper[name]();
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.isIdDuplicate !== this.state.isIdDuplicate) {
+      const userId = 'userId';
+      this.handlerMapper(userId);
+    }
+  }
 
   checkIdDuplicate() {
     const userId = this.props.SignUpEmployeeStore.form.userId.value;
     axios
       .get(
-        `https://cors-anywhere.herokuapp.com/${SERVER_URI}/user/check/id/${userId}`
+        `${SERVER_URI}/user/check/id/${userId}`
       )
       .then((response) => {
-        console.log(response, 'res');
+
+        if (response.status === 200) {
+          this.setState({
+            isIdDuplicate: false,
+          });
+        }
       })
       .catch(function (error) {
         if (error.response) {
