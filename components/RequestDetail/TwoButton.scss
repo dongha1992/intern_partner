@@ -1,0 +1,32 @@
+.button_wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  object-fit: contain;
+  font-size: 16px;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+
+  .left_button {
+    width: 167px;
+    height: 46px;
+    margin-right: 11px;
+    padding: 11px 52px 11px 53px;
+    border: solid 1px #1877f2;
+    border-radius: 8px;
+    font-weight: 300;
+    background-color: #ffffff;
+    color: #1877f2;
+  }
+  .right_button {
+    width: 167px;
+    height: 46px;
+    padding: 11px 52px 11px 53px;
+    border: solid 1px #1877f2;
+    border-radius: 8px;
+    font-weight: 300;
+    background-color: #1877f2;
+    color: #ffffff;
+  }
+}

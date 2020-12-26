@@ -1,0 +1,33 @@
+.header_wrap {
+    display: flex;
+    justify-content: space-between;
+    object-fit: contain;
+    font-family: NotoSansCJKkr;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    text-align: left;
+
+    .header_left {
+        margin-left: 15px;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: left;
+        color: #000000;
+    }
+    .header_right {
+        margin-right: 9px;
+        font-size: 13px;
+        font-weight: normal;
+        .text_wrap {
+            width: auto;
+            padding: 5px 8px 4px;
+            object-fit: contain;
+            border-radius: 12px;
+            border: solid 1px #1877f2;
+            font-size: 13px;
+            text-align: center;
+            color: #1877f2;
+        }
+    }
+}

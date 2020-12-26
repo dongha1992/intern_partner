@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment } from "react";
 
 function ReservationConfirmation() {
-  return <div></div>;
+  return(
+  <Fragment><div>reservation page</div></Fragment>);
 }
 
 export default ReservationConfirmation;

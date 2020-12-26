@@ -1,0 +1,23 @@
+.detail_list_container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px 0 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f6f6f6;
+  font-family: NotoSansCJKkr;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  .list_request {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    color: #bdbdbd;
+  }
+  .list_response {
+    font-size: 14px;
+    color: #282828;
+  }
+}

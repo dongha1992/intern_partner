@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Suggestion extends Component {
-  render() {
-    return <div>Suggestion</div>;
-  }
+	render() {
+		return <div>Suggestion</div>;
+	}
 }
 
 export default Suggestion;

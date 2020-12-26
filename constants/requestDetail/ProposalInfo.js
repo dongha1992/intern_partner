@@ -1,0 +1,9 @@
+export const PROPOSAL_INFO = "Proposal info.";
+export const PROPOSAL_CAR1 = "제안차량 1";
+export const PROPOSAL_CAR2 = "제안차량 2";
+export const PROPOSAL_REQUESTS = "추가 요청사항";
+export const NONE = "-";
+export const SUGGESTION_CANCEL = "제안 취소";
+export const SUGGESTION_EDIT = "제안 수정";
+export const DISPATCH_CANCEL = "배차 포기";
+export const DISPATCH_COMPLETE = "배차 완료";
