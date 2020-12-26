@@ -1,4 +1,3 @@
-import React from "react";
 import RequestDetailHeader from "../../../../../components/Header/RequestDetailHeader";
 import RequestInfo from "../../../../../components/RequestDetail/RequestInfo";
 import ProposalInfo from "../../../../../components/RequestDetail/ProposalInfo";
@@ -10,6 +9,7 @@ import {
 } from "../../../../../constants/requestDetail/ProposalInfo";
 
 const isReservation = true;
+
 const ConfirmationDetail = () => {
 	return (
 		<div className={styles.container}>
@@ -33,3 +33,25 @@ const ConfirmationDetail = () => {
 };
 
 export default ConfirmationDetail;
+
+// export async function getStaticPaths() {
+// 	return {
+// 		paths: [{ params: { id: "1" } }, { params: { id: "2" } }],
+// 		fallback: false,
+// 	};
+// }
+
+// export async function getStaticProps(context) {
+// 	const id = context.params.id;
+// 	const API = "http://localhost:5700/api/getRequestInfo";
+// 	const apiUrl = `API/${id}`;
+// 	const res = await axios.get(apiUrl);
+// 	const data = res.data;
+
+// 	return {
+// 		props: {
+// 			item: data,
+// 			name: process.env.name,
+// 		},
+// 	};
+// }

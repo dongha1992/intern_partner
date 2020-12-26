@@ -5,7 +5,8 @@ import { Fragment } from "react";
 const RequestInfoHeader = (
 	{ requestNumber, style, requestInfo, requestNumberText,
 		proposalInfo, isProposal, proposal }) =>
-	 {
+	
+	 {	
 	return (
 		<Fragment>
 					{!isProposal ?

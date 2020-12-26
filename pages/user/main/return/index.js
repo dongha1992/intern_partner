@@ -1,11 +1,9 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Component } from "react";
 
-function Return() {
-  return (
-    <Fragment>
-      <div>return page</div>
-    </Fragment>
-  );
-}
-
-export default Return;
+export default Return = () => {
+	return (
+		<Fragment>
+			<div>return page</div>
+		</Fragment>
+	);
+};
