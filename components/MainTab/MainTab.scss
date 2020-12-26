@@ -19,10 +19,21 @@
       align-items: center;
       color: lightgray;
 
-      &:focus {
-        color: black;
-        border-bottom: 2px solid #1877f2;
+      &:last-child {
+        margin-right: 0px;
       }
+    }
+    .activetabName {
+      width: 69px;
+      height: 35px;
+      margin-right: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      color: black;
+      border-bottom: 2px solid #1877f2;
+
       &:last-child {
         margin-right: 0px;
       }
