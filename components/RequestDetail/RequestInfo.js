@@ -2,8 +2,9 @@ import React, { Fragment, useEffect } from "react";
 import RequestInfoHeader from "../Header/RequestInfoHeader";
 import DetailList from "./DetailList";
 import styles from "./RequestInfo.scss";
-// import axios from "axios";
-// import apiUser from "../../api/User";
+import axios from "axios";
+import { baseUrl } from "../../config";
+import apiUser from "../../api/User";
 import {
 	REQUEST_INFO,
 	REQUEST_NUMBER_TEXT,
@@ -15,35 +16,42 @@ import {
 	REQUEST_DATE,
 	ADDITIONAL_REQUESTS,
 } from "../../constants/requestDetail/RequestInfo";
-export default function RequestInfo() {
-	const requestNumber = "54321";
-	// useEffect = async () => {
-	//   const id = { id: this.state.id };
-	//   const response = await apiUser.getRequestInfo(id);
-	//   const responseData = response.data;
 
-	//   this.setState({ info: responseData.userInfo })
-	// }
+export default function RequestInfo({ getRequestInfo }) {
+	const requestNumber = "54321";
+	console.log(",,,", getRequestInfo);
+	// useEffect = async () => {
+	// 	const id = { id: this.state.id };
+	// 	const response = await apiUser.getRequestInfo(id);
+	// 	const responseData = response.data;
+
+	// 	this.setState({ info: responseData.userInfo });
+	// };
 	// useEffect(() => {
-	//   axios
-	//     .get(`${baseUrl}/api`)
-	//     .then((response) => {
-	//       if (response.status === 200) {
-	//         this.setState({
-	//           isIdDuplicate: false,
-	//         });
-	//       }
-	//     })
-	//     .catch(function (error) {
-	//       if (error.response) {
-	//         console.log(error.response, 'error response');
-	//       } else if (error.request) {
-	//         console.log(error.request, 'error request');
-	//       } else {
-	//         console.log('Error');
-	//       }
-	//     });
-	// }, [])
+	// 	axios.get(`${baseUrl}/api`).then((response) => {
+	// 		if (response.status === 200) {
+	// 			this.setState({
+	// 				isIdDuplicate: false,
+	// 			});
+	// 		}
+	// 	});
+	// 	.catch(function (error) {
+	// 	  if (error.response) {
+	// 	    console.log(error.response, 'error response');
+	// 	  } else if (error.request) {
+	// 	    console.log(error.request, 'error request');
+	// 	  } else {
+	// 	    console.log('Error');
+	// 	  }
+	// 	});
+	// }, []);
+	// useEffect = async () => {
+	// 	const data = { name: this.state.name };
+	// 	const response = await apiUser.getUserInfo(data);
+	// 	const responseData = response.data;
+	// 	this.setState({ info: responseData.userInfo });
+	// };
+
 	function requestDate() {
 		const date = new Date();
 		const year = date.getFullYear();
