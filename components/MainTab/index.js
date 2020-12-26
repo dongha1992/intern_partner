@@ -3,7 +3,6 @@ import styles from './MainTab.scss';
 import Link from 'next/link';
 import { withRouter, useRouter } from 'next/router';
 import { TabName_Data } from '../../constants/main/tabName';
-import { route } from 'next/dist/next-server/server/router';
 
 const MainTab = () => {
   const router = useRouter();
@@ -21,7 +20,6 @@ const MainTab = () => {
               className={active ? styles.activetabName : styles.tabName}
               key={item.id}
               onClick={() => {
-                console.log(item.id);
                 setSeleted(item.id);
                 router.push(`/user/main/${item.url}`);
               }}>

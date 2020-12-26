@@ -31,9 +31,6 @@ import {
   USER_POSITION_NAME,
 } from '../../../../constants/employee/FormNameForEvent';
 
-import { USER_NUMBER_BUTTON } from '../../../../constants/employee/ButtonValue';
-import { throws } from 'assert';
-
 const isButton = true;
 const userInputValidation = true;
 

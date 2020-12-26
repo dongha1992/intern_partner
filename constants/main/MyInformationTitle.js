@@ -1,0 +1,1 @@
+export const MY_INFORMATION_TITLE = "내 정보 수정"

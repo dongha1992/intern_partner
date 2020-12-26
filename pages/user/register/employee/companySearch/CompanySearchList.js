@@ -39,7 +39,6 @@ class CompanySearchList extends Component {
     axios
       .get(`${SERVER_URI}/company`)
       .then((response) => {
-        console.log(response.data);
         this.setState({
           result: response.data.data,
         });

@@ -1,0 +1,231 @@
+.container {
+  width: 375px;
+  height: auto;
+
+  .userInformationWrap {
+    width: 100%;
+    height: 118px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 15px 44px 15px;
+    .left {
+      .userCompany {
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+        text-align: left;
+        color: #282828;
+      }
+      .userName {
+        font-family: NotoSansCJKkr;
+        font-size: 20px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.45;
+        letter-spacing: normal;
+        text-align: left;
+      }
+    }
+    .right {
+      .myInformation {
+        background-color: transparent;
+        padding: 6px 8px 5px 8px;
+        border-radius: 20px;
+        border: 1px solid #1877f2;
+        color: #1877f2;
+        align-self: center;
+      }
+    }
+  }
+  .dividerBottom {
+    height: 4px;
+    object-fit: contain;
+    background-color: #f6f6f6;
+  }
+  .listWrap {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    padding: 10px;
+    .lists {
+      padding: 15px;
+      border-bottom: 1px solid #f6f6f6;
+      a {
+        font-family: NotoSansCJKkr;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.43;
+        letter-spacing: normal;
+        text-decoration: none;
+        text-align: left;
+        color: #282828;
+      }
+    }
+  }
+  .wrap {
+    object-fit: contain;
+    font-family: NotoSansCJKkr;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2.2;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+    .subject {
+      margin: 10px 20px;
+    }
+  }
+  .listTitle {
+    object-fit: contain;
+    background-color: #f6f6f6;
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    .status {
+      padding-right: 96px;
+    }
+    div {
+      padding: 10px 20px;
+      object-fit: contain;
+      font-family: NotoSansCJKkr;
+      font-size: 12px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      text-align: left;
+      color: #bdbdbd;
+    }
+  }
+  .listWrap {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      width: 100%;
+      margin: 10px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      .name {
+        align-self: center;
+        object-fit: contain;
+        font-family: NotoSansCJKkr;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.43;
+        letter-spacing: normal;
+        text-align: left;
+        color: #282828;
+      }
+      .statusWrap {
+        display: flex;
+        justify-content: space-between;
+
+        .statusButton {
+          .switch {
+            position: relative;
+            display: inline-block;
+            width: 65px;
+            height: 30px;
+            input {
+              opacity: 0;
+              width: 0;
+              height: 0;
+              z-index: 1;
+              &::placeholder {
+                color: #000000;
+              }
+              &:checked + .slider::before {
+                transform: translateX(26px);
+              }
+              &:checked + .slider {
+                background-color: gray;
+              }
+            }
+          }
+          .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #1877f2;
+            border-radius: 20px;
+            &:before {
+              position: absolute;
+              content: '';
+              height: 26px;
+              width: 26px;
+              left: 4px;
+              bottom: 2px;
+              background-color: white;
+              border-radius: 50%;
+              transition: all 0.4s;
+            }
+          }
+          .on {
+            position: absolute;
+            right: 10px;
+            top: 7px;
+            opacity: 0.78;
+            font-family: NotoSansCJKkr;
+            font-size: 13px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.46;
+            letter-spacing: normal;
+            text-align: left;
+            color: #ffffff;
+          }
+          .off {
+            position: absolute;
+            left: 5px;
+            top: 7px;
+            opacity: 0.78;
+            font-family: NotoSansCJKkr;
+            font-size: 13px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.46;
+            letter-spacing: normal;
+            text-align: left;
+            color: #ffffff;
+          }
+        }
+        .deleteButton {
+          padding: 0px 30px;
+          align-self: center;
+          object-fit: contain;
+          font-family: NotoSansCJKkr;
+          font-size: 14px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.43;
+          letter-spacing: normal;
+          text-align: left;
+          color: #282828;
+        }
+      }
+    }
+  }
+}

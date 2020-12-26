@@ -27,8 +27,7 @@ class BusinessInfo extends Component {
 
   render() {
     const { SearchCompanyStore, SignUpEmployeeStore } = this.props;
-    console.log(SearchCompanyStore.searchResult);
-    console.log(SignUpEmployeeStore.isRegisterValid);
+
     return (
       <div className={styles.businessInfo_form_container}>
         <h2

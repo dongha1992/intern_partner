@@ -9,22 +9,25 @@
   object-fit: contain;
   font-size: 16px;
   font-stretch: normal;
+  text-align: center;
   font-style: normal;
   letter-spacing: normal;
 
   .left_button {
-    width: 167px;
+    text-align: center;
     height: 46px;
     margin-right: 11px;
+    text-align: center;
     padding: 11px 52px 11px 53px;
     border: solid 1px #1877f2;
     border-radius: 8px;
     font-weight: 300;
+    text-align: center;
     background-color: #ffffff;
     color: #1877f2;
   }
   .right_button {
-    width: 167px;
+    text-align: center;
     height: 46px;
     padding: 11px 52px 11px 53px;
     border: solid 1px #1877f2;

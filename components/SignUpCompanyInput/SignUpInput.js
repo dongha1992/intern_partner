@@ -35,8 +35,7 @@ export default function SignUpInput({
   const changeSearchProps = (value) => {
     setSearchProps(value);
   };
-  console.log(userSelectedAddress, 'select address');
-  console.log(isSubmit, 'is submit');
+
   return (
     <div className={styles.input_btn_container}>
       <div className={styles.input_wrap} style={{ marginTop: `${padding}px` }}>

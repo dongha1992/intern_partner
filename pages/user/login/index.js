@@ -6,7 +6,6 @@ import styles from './LoginPage.scss';
 import { USER_ID, USER_PASSWORD } from '../../../constants/login/LoginLabel';
 import { inject, observer } from 'mobx-react';
 import { SERVER_URI } from '../../../config';
-import axios from 'axios';
 
 @withRouter
 @inject('LoginStore')
@@ -26,6 +25,7 @@ class LoginPage extends Component {
 
     // 2. 구조분해 할당
     // const { id, password } = this.state;
+
     const { idValue, passwordValue } = this.props.LoginStore;
 
     fetch(`${SERVER_URI}/user/login`, {
