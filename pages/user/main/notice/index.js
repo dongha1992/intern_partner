@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 
-function Dispatcher() {
+function Notice() {
   return (
     <Fragment>
-      <div>Dispatcher page</div>
+      <div>Notice page</div>
     </Fragment>
   );
 }
 
-export default Dispatcher;
+export default Notice;

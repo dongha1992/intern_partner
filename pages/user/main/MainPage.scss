@@ -1,6 +1,7 @@
 .main_container {
   display: flex;
   flex-direction: column;
+  position: relative;
 
   .main_background {
     height: 100vh;

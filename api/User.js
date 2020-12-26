@@ -1,12 +1,4 @@
-import callApi from "../utils/callApi";
-<<<<<<< HEAD
-
-export default {
-	getUserInfo(data) {
-		return callApi({
-			method: "get",
-			url: "/api/getUserInfo",
-=======
+import callApi from '../utils/callApi';
 
 // export default {
 // 	getUserInfo(data) {
@@ -19,25 +11,11 @@ export default {
 // };
 
 export default {
-	getRequestInfo(data) {
-		return callApi({
-			method: "get",
-			url: "/api/getRequestInfo",
->>>>>>> 86df58e... [add] mock data
-			params: data,
-		});
-	},
+  getRequestInfo(data) {
+    return callApi({
+      method: 'get',
+      url: '/api/getRequestInfo',
+      params: data,
+    });
+  },
 };
-<<<<<<< HEAD
-
-// export default {
-// 	getRequestInfo(data) {
-// 		return callApi({
-// 			method: "get",
-// 			url: "/api/getRequestInfo",
-// 			params: data,
-// 		});
-// 	},
-// };
-=======
->>>>>>> 86df58e... [add] mock data

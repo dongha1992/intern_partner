@@ -1,0 +1,34 @@
+.footer_container {
+  width: 375px;
+  height: 80px;
+  padding: 2px 30px 0;
+  object-fit: contain;
+  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ffffff;
+  border-radius: 15px 15px 0 0;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  .footer_wrap {
+    width: 375px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .footer_button {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}
