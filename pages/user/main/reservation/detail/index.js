@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Header from '../../../../../components/Header';
+import { SignUpHeader } from '../../../../../components/Header';
 import Link from 'next/link';
 import styles from './ConfirmationDetail.scss';
 
 const ConfirmationDetail = () => {
   return (
     <div className={styles.container}>
-      <Header />
+      <SignUpHeader />
       <div className={styles.menuTab}>
         <Link href='/user/main/reservation/detail'>
           <a className={styles.active}>요청상세</a>

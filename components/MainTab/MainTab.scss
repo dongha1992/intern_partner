@@ -1,0 +1,31 @@
+.mainTab_wrap {
+  width: 100%;
+  height: 35px;
+  // border: 1px solid gray;
+  padding: 0 14px;
+  // margin: 0 -5px;
+
+  .tabNames_wrap {
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .tabName {
+      width: 69px;
+      height: 35px;
+      margin-right: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: lightgray;
+
+      &:focus {
+        color: black;
+        border-bottom: 2px solid #1877f2;
+      }
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+  }
+}
