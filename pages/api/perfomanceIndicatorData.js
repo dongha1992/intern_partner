@@ -1,5 +1,6 @@
 import _ from 'lodash';
 FORM_USER, NUMBER_OF_CONTRACTS, SUM_OF_CHARGE;
+
 const performanceIndicatorData = [
   { numberOfCompaniesUseForm: '930개 +' },
   { numberOfContracts: '940,000개 +' },

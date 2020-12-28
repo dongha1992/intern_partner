@@ -6,6 +6,8 @@ import SearchAddressStore from './SearchAddressStore';
 import LoginStore from './LoginStore';
 import MainFooterActiveStore from './MainFooterActiveStore';
 import ChatStore from './ChatStore';
+import MyInformationUpdateStore from './MyInformationUpdateStore';
+import NoticeStackStore from './NoticeStackStore';
 
 const isServer = typeof window === 'undefined';
 useStaticRendering(isServer);
@@ -20,6 +22,8 @@ class RootStore {
     this.SearchAddressStore = new SearchAddressStore();
     this.LoginStore = new LoginStore();
     this.MainFooterActiveStore = new MainFooterActiveStore();
+    this.MyInformationUpdateStore = new MyInformationUpdateStore();
+    this.NoticeStackStore = new NoticeStackStore();
   }
 }
 

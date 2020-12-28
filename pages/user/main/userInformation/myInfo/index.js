@@ -2,8 +2,14 @@ import React from 'react';
 import styles from '../UserInformation.scss';
 import { RequestDetailHeader } from '../../../../../components/Header';
 import TwoButton from '../../../../../components/RequestDetail/TwoButton';
+import UserInformationInput from '../../../../../components/RequestDetail/UserInformationInput';
 import DetailList from '../../../../../components/RequestDetail/DetailList';
 import { MY_INFORMATION_TITLE } from '../../../../../constants/main/MyInformationTitle';
+import { useObserver } from 'mobx-react';
+import useStore from '../../../../../stores';
+
+const { MyInformationUpdateStore } = useStore();
+
 import {
   USER_ID,
   PASSWORD,
@@ -27,43 +33,142 @@ import {
   COMPANY_NAME,
   COMPANY_ADDRESS,
   COMPANY_INTRO,
-  COMPANY_DOMESITIC_CAR_NUMBER,
+  COMPANY_DOMESTIC_CAR_NUMBER,
   COMPANY_IMPORT_CAR_NUMBER,
 } from '../../../../../constants/main/BusinessInfo';
+
 import {
   CANCEL,
   SAVE,
 } from '../../../../../constants/main/SaveAndCancelButton';
 
+import {
+  USER_ID_NAME,
+  PASSWORD_NAME,
+  PASSWORD_CHECK_NAME,
+  USER_NAME_NAME,
+  USER_NUMBER_NAME,
+  USER_POSITION_NAME,
+  USER_EMAIL_NAME,
+  COMPANY_NAME_NAME,
+  COMPANY_ADDRESS_NAME,
+  COMPANY_INTRO_NAME,
+  COMPANY_DOMESTIC_CAR_NUMBER_NAME,
+  COMPANY_IMPORT_CAR_NUMBER_NAME,
+} from '../../../../../constants/main/MyInformationNameForInput';
+
+const value = 'd';
+
+const handleInfoChange = (e) => {
+  MyInformationUpdateStore.setValue(e);
+};
+
 const MyInfo = () => {
-  return (
+  console.log(MyInformationUpdateStore);
+  return useObserver(() => (
     <div className={styles.container}>
       <RequestDetailHeader title={MY_INFORMATION_TITLE} />
       <div className={styles.wrap}>
         <div className={styles.subject}>{ACCOUNT}</div>
-        <DetailList requestList={USER_ID} response={''} />
-        <DetailList requestList={PASSWORD} response={''} />
-        <DetailList requestList={PASSWORD_CHECK} response={''} padding='30px' />
+        <DetailList requestList={USER_ID} value={value} />
+        <UserInformationInput
+          requestList={PASSWORD}
+          value={MyInformationUpdateStore.name}
+          onChange={(e) => {
+            handleInfoChange(e);
+          }}
+          name={PASSWORD_NAME}
+        />
+        <UserInformationInput
+          requestList={PASSWORD_CHECK}
+          value={MyInformationUpdateStore.name}
+          onChange={(e) => {
+            handleInfoChange(e);
+          }}
+          name={PASSWORD_CHECK_NAME}
+          padding='30px'
+        />
       </div>
       <div className={styles.dividerBottom} />
       <div className={styles.wrap}>
         <div className={styles.subject}>{BASIC_INFO}</div>
-        <DetailList requestList={USER_NAME} response={''} />
-        <DetailList requestList={USER_NUMBER} response={''} />
-        <DetailList requestList={USER_POSITION} response={''} />
-        <DetailList requestList={USER_EMAIL} response={''} padding='30px' />
+        <UserInformationInput
+          requestList={USER_NAME}
+          value={MyInformationUpdateStore.name}
+          onChange={(e) => {
+            handleInfoChange(e);
+          }}
+          name={USER_NAME_NAME}
+        />
+        <UserInformationInput
+          requestList={USER_NUMBER}
+          value={MyInformationUpdateStore.name}
+          onChange={(e) => {
+            handleInfoChange(e);
+          }}
+          name={USER_NUMBER_NAME}
+        />
+        <UserInformationInput
+          requestList={USER_POSITION}
+          value={MyInformationUpdateStore.name}
+          onChange={(e) => {
+            handleInfoChange(e);
+          }}
+          name={USER_POSITION_NAME}
+        />
+        <UserInformationInput
+          requestList={USER_EMAIL}
+          value={MyInformationUpdateStore.name}
+          onChange={(e) => {
+            handleInfoChange(e);
+          }}
+          padding='30px'
+          name={USER_EMAIL_NAME}
+        />
       </div>
       <div className={styles.dividerBottom} />
       <div className={styles.wrap}>
         <div className={styles.subject}>{BUSINESS_INFO}</div>
-        <DetailList requestList={COMPANY_NAME} response={''} />
-        <DetailList requestList={COMPANY_ADDRESS} response={''} />
-        <DetailList requestList={COMPANY_INTRO} response={''} />
-        <DetailList requestList={COMPANY_DOMESITIC_CAR_NUMBER} response={''} />
-        <DetailList
+        <UserInformationInput
+          requestList={COMPANY_NAME}
+          value={MyInformationUpdateStore.name}
+          onChange={(e) => {
+            handleInfoChange(e);
+          }}
+          name={COMPANY_NAME_NAME}
+        />
+        <UserInformationInput
+          requestList={COMPANY_ADDRESS}
+          value={MyInformationUpdateStore.name}
+          onChange={(e) => {
+            handleInfoChange(e);
+          }}
+          name={COMPANY_ADDRESS_NAME}
+        />
+        <UserInformationInput
+          requestList={COMPANY_INTRO}
+          value={MyInformationUpdateStore.name}
+          onChange={(e) => {
+            handleInfoChange(e);
+          }}
+          name={COMPANY_INTRO_NAME}
+        />
+        <UserInformationInput
+          requestList={COMPANY_DOMESTIC_CAR_NUMBER}
+          onChange={(e) => {
+            handleInfoChange(e);
+          }}
+          value={MyInformationUpdateStore.name}
+          name={COMPANY_DOMESTIC_CAR_NUMBER_NAME}
+        />
+        <UserInformationInput
           requestList={COMPANY_IMPORT_CAR_NUMBER}
-          response={''}
+          value={MyInformationUpdateStore.name}
+          onChange={(e) => {
+            handleInfoChange(e);
+          }}
           padding='30px'
+          name={COMPANY_IMPORT_CAR_NUMBER_NAME}
         />
       </div>
       <TwoButton
@@ -72,7 +177,7 @@ const MyInfo = () => {
         rightButtonValue={SAVE}
       />
     </div>
-  );
+  ));
 };
 
 export default MyInfo;

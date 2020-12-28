@@ -15,6 +15,6 @@ export const Footer_Data = [
     id: 3,
     image: '1346',
     clickImage: 'clicked-1350',
-    url: 'userInfomation',
+    url: 'userInformation',
   },
 ];

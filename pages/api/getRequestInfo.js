@@ -79,11 +79,6 @@ const requestInfo = [
   },
 ];
 
-// function findUser(name) {
-//   const result = _.find(requestInfo, { name });
-//   return result;
-// }
-
 export default async (req, res) => {
   res.statusCode = 200;
   res.json(requestInfo);

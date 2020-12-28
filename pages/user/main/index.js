@@ -8,13 +8,8 @@ import useStore from '../../../stores';
 import { inject, observer } from 'mobx-react';
 import { useObserver } from 'mobx-react';
 
-// @withRouter
-// @inject('MainFooterActive')
-// @observer
-
 const { MainFooterActiveStore } = useStore();
 const MyCall = () => {
-  // console.log(MainFooterActiveStore);
   return useObserver(() => (
     <div className={styles.main_container}>
       <MainHeader />

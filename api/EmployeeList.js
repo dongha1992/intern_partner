@@ -1,7 +1,7 @@
 import callApi from '../utils/callApi';
 
 export default {
-  getRequestInfo(data) {
+  getEmployeInfo(data) {
     return callApi({
       method: 'get',
       url: '/api/getRequestInfo',

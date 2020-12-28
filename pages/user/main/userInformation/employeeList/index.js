@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RequestDetailHeader } from '../../../../../components/Header';
 import EmployeeListItem from './EmployeeListItem';
 
@@ -8,22 +8,29 @@ import {
   EMPLOYEE_STATUS,
 } from '../../../../../constants/main/EmployeeList';
 import styles from '../UserInformation.scss';
+import axios from 'axios';
 
-const employeeLists = [
-  {
-    id: 1,
-    name: '김동하',
-  },
-  { id: 2, name: '김동하' },
-  { id: 3, name: '김동하' },
-  { id: 4, name: '김동하' },
-];
+const EmployeeList = ({ data }) => {
+  const [lists, setList] = useState(data);
 
-const lists = employeeLists.map((list) => {
-  return <EmployeeListItem name={list.name} id={list.id} />;
-});
+  const onDeleteHandeler = (id) => {
+    const filtered = lists.filter((list) => list.id !== id);
+    setList(filtered);
+  };
 
-const EmployeeList = () => {
+  const employeeLists = lists.map((list) => {
+    return (
+      <EmployeeListItem
+        name={list.name}
+        id={list.id}
+        onClick={() => {
+          onDeleteHandeler(list.id);
+        }}
+        key={list.id}
+      />
+    );
+  });
+
   return (
     <div className={styles.container}>
       <RequestDetailHeader title={EMPLOYEE_LIST} />
@@ -31,9 +38,19 @@ const EmployeeList = () => {
         <div>{EMPLOYEE_NAME}</div>
         <div className={styles.status}>{EMPLOYEE_STATUS}</div>
       </div>
-      <div className={styles.listWrap}>{lists}</div>
+      <div className={styles.listWrap}>{employeeLists}</div>
     </div>
   );
 };
+
+export async function getInitialProps() {
+  const res = await axios.get('http://localhost:5700/api/getEmployeeList');
+  const data = res.data;
+  return {
+    props: {
+      data,
+    },
+  };
+}
 
 export default EmployeeList;

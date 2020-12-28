@@ -4,6 +4,7 @@ import { MainHeader } from '../../../../components/Header';
 import { useRouter } from 'next/router';
 import { USER_INFORMATION_BUTTON } from '../../../../constants/main/UserInformationButton';
 import { MORE_PAGE_LIST } from '../../../../constants/main/MorePageList';
+import { MainFooter } from '../../../../components/Footer';
 import LogoutModal from './LogoutModal';
 
 const UserInformation = () => {
@@ -58,6 +59,7 @@ const UserInformation = () => {
       </div>
       <div className={styles.dividerBottom} />
       <div className={styles.listWrap}>{pageList}</div>
+      <MainFooter />
       <LogoutModal isModal={isModal} onModalHandler={onModalHandler} />
     </div>
   );
