@@ -4,6 +4,7 @@ import SignUpCompanyStore from './SignUpCompanyStore';
 import SearchCompanyStore from './SearchCompanyStore';
 import SearchAddressStore from './SearchAddressStore';
 import LoginStore from './LoginStore';
+import MainFooterActiveStore from './MainFooterActiveStore';
 import ChatStore from './ChatStore';
 
 const isServer = typeof window === 'undefined';
@@ -18,6 +19,7 @@ class RootStore {
     this.SearchCompanyStore = new SearchCompanyStore();
     this.SearchAddressStore = new SearchAddressStore();
     this.LoginStore = new LoginStore();
+    this.MainFooterActiveStore = new MainFooterActiveStore();
   }
 }
 

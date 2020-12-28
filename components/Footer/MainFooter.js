@@ -2,24 +2,25 @@ import React, { Component, useState } from 'react';
 import styles from './MainFooter.scss';
 import { Footer_Data } from '../../constants/main/footerButton';
 import { withRouter, useRouter } from 'next/router';
+import useStore from '../../stores';
+import { useObserver } from 'mobx-react';
 
+const { MainFooterActiveStore } = useStore();
 const MainFooter = ({}) => {
   const router = useRouter();
-  const [selected, setSeleted] = useState(1);
 
-  return (
+  return useObserver(() => (
     <div className={styles.footer_container}>
       <ul className={styles.footer_wrap}>
-        {/* 각 아이콘을 클릭하면 이미지 변경 & 경로 이동  */}
         {Footer_Data.map((icon) => {
-          const change = selected == icon.id;
+          const change = MainFooterActiveStore.selectedId == icon.id;
           return (
             <li
               className={styles.footer_button}
               key={icon.id}
               onClick={() => {
                 console.log(icon.id);
-                setSeleted(icon.id);
+                MainFooterActiveStore.setId(icon.id);
                 router.push(`/user/main/${icon.url}`);
               }}>
               {change ? (
@@ -40,7 +41,7 @@ const MainFooter = ({}) => {
         })}
       </ul>
     </div>
-  );
+  ));
 };
 
 export default MainFooter;
