@@ -6,6 +6,7 @@ import styles from './LoginPage.scss';
 import { USER_ID, USER_PASSWORD } from '../../../constants/login/LoginLabel';
 import { inject, observer } from 'mobx-react';
 import { SERVER_URI } from '../../../config';
+import axios from 'axios';
 
 @withRouter
 @inject('LoginStore')
@@ -28,23 +29,20 @@ class LoginPage extends Component {
 
     const { idValue, passwordValue } = this.props.LoginStore;
 
-    fetch(`${SERVER_URI}/user/login`, {
-      method: 'POST',
-      body: JSON.stringify({
+    axios
+      .post(`${SERVER_URI}/user/login`, {
         login_id: idValue,
         password: passwordValue,
-      }),
-    })
-      .then((res) => res.json())
+      })
       .then((result) => {
-        if (result.token) {
+        console.log(result);
+        if (result.data.token) {
           localStorage.setItem('token', result.token);
           alert('로그인에 성공하셨습니다.');
           this.props.router.push('/user/main');
         }
         if (result.error === 403) {
           alert(result.message);
-        } else if (result.error === 404) {
           alert(result.message);
         } else if (result.error === 405) {
           alert(result.message);

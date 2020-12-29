@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { SignUpInput } from '../../../../../components/Input';
 import SearchItem from './CompanySearchItem';
-import apiSearchItem from '../../../../../api/getSearchResult';
 import { inject, observer } from 'mobx-react';
 import axios from 'axios';
 import { SEARCH_COMPANY } from '../../../../../constants/employee/CompanySearchLabel';

@@ -18,6 +18,19 @@ const EmployeeList = ({ data }) => {
     setList(filtered);
   };
 
+  const onChangeStatusHandler = (id) => {
+    const targeted = lists.map((list) =>
+      list.id === id
+        ? {
+            ...list,
+            checked: !list.checked,
+          }
+        : list
+    );
+
+    setList(targeted);
+  };
+
   const employeeLists = lists.map((list) => {
     return (
       <EmployeeListItem
@@ -26,10 +39,15 @@ const EmployeeList = ({ data }) => {
         onClick={() => {
           onDeleteHandeler(list.id);
         }}
+        onChange={() => {
+          onChangeStatusHandler(list.id);
+        }}
         key={list.id}
+        status={list.checked}
       />
     );
   });
+  console.log(lists);
 
   return (
     <div className={styles.container}>
@@ -43,9 +61,10 @@ const EmployeeList = ({ data }) => {
   );
 };
 
-export async function getInitialProps() {
+export async function getServerSideProps() {
   const res = await axios.get('http://localhost:5700/api/getEmployeeList');
   const data = res.data;
+  console.log(data);
   return {
     props: {
       data,
