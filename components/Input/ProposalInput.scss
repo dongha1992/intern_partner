@@ -1,0 +1,26 @@
+.proposal_inputSide {
+  display: flex;
+  padding: 15px;
+  .suggestionCompany {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #bdbdbd;
+    input {
+      width: 145px;
+      height: 25px;
+      background-color: transparent;
+      font-family: NotoSansCJKkr;
+      font-size: 14px;
+      // color: #bdbdbd;
+      color: #282828;
+      &::placeholder {
+        color: #bdbdbd;
+      }
+    }
+    .input_button {
+      height: 8px;
+      display: flex;
+    }
+  }
+}

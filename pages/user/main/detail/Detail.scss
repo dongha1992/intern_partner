@@ -1,4 +1,12 @@
 .container {
   width: 375px;
   height: auto;
+  .proposal_subject {
+    margin-top: 20px;
+    padding: 15px;
+    color: #282828;
+    font-family: NotoSansCJKkr;
+    font-size: 15px;
+    font-weight: bold;
+  }
 }

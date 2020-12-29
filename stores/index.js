@@ -9,6 +9,7 @@ import ChatStore from './ChatStore';
 import MyInformationUpdateStore from './MyInformationUpdateStore';
 import NoticeStackStore from './NoticeStackStore';
 import MainTabActiveStore from './MainTabActiveStore';
+import ProposalStore from './ProposalStore';
 
 const isServer = typeof window === 'undefined';
 useStaticRendering(isServer);
@@ -26,6 +27,7 @@ class RootStore {
     this.MyInformationUpdateStore = new MyInformationUpdateStore();
     this.NoticeStackStore = new NoticeStackStore();
     this.MainTabActiveStore = new MainTabActiveStore();
+    this.ProposalStore = new ProposalStore();
   }
 }
 

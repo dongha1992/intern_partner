@@ -2,20 +2,31 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import RequestDetailHeader from '../../../../components/Header/RequestDetailHeader';
 import RequestInfoHeader from '../../../../components/Header/RequestInfoHeader';
+import ProposalInput from '../../../../components/Input/ProposalInput';
 import RequestInfo from '../../../../components/RequestDetail/RequestInfo';
 import styles from './Detail.scss';
 import { REQUEST_NUMBER_TEXT } from '../../../../constants/requestDetail/RequestInfo';
-import { PROPOSAL_INFO } from '../../../../constants/requestDetail/ProposalInfo';
+import {
+  PROPOSAL_INFO,
+  PROPOSAL_CAR1,
+  PROPOSAL_CAR2,
+  PLACEHOLDER_CAR_BRAND_E,
+  PLACEHOLDER_CAR_BRAND,
+} from '../../../../constants/requestDetail/ProposalInfo';
+import { PROPOSAL_CAR } from '../../../../constants/requestDetail/Proposal';
 import { PROPOSAL } from '../../../../constants/requestDetail/Proposal';
-
+import fetch from 'isomorphic-unfetch';
+import useStore from '../../../../stores';
+import { useObserver } from 'mobx-react';
 import axios from 'axios';
+
+const { ProposalStore } = useStore();
+const isProposalInput = true;
 
 const Detail = ({ list }) => {
   const isProposal = true;
   const router = useRouter();
-  // console.log(shows, "ddddddd");
 
-  // if (router.isFallback) {
   return (
     <div className={styles.container}>
       <RequestDetailHeader requestDetail={'요청상세'} />
@@ -28,37 +39,26 @@ const Detail = ({ list }) => {
         proposalInfo={PROPOSAL_INFO}
         style={{ display: 'none' }}
       />
+      <div className={styles.proposal_subject}>{PROPOSAL_CAR}</div>
+      <ProposalInput
+        placeholder={PLACEHOLDER_CAR_BRAND_E}
+        SelectedCarBrand={ProposalStore.carBrand}
+        SelectedCarName={ProposalStore.suggestionCarName}
+        value={ProposalStore.carBrand}
+        onClick={() => {
+          // this.props.router.push(`/user/main/detail/${id}/proposal`);
+          console.log('+_+');
+        }}
+        isProposalInput={true}
+      />
     </div>
   );
 };
-// };
-
-// backend data를 동적으로 불러왔을 때 사용
-
-// export async function getStaticPaths({ params }) {
-// 	const res = await fetch("http://localhost:5700/api/getRequestInfo");
-// 	const list = await res.json();
-// 	const paths = list.map((list) => ({
-// 		params: { id: list.id.toString() },
-// 	}));
-// 	return {
-// 		paths,
-// 		fallback: false,
-// 	};
-// }
-
-// export async function getStaticProps({params}) {
-// 	const res = await fetch(`http://localhost:5700/api/getRequestInfo${params.id}`);
-// 	const list = await res.json();
-// 	return {
-// 		props: { shows: list },
-// 	};
-// }
 
 export async function getServerSideProps() {
   const res = await axios('http://localhost:5700/api/getRequestInfo');
   const list = await res.data;
-  console.log(list, 'difjsdoifjwoj');
+
   return {
     props: { list },
   };
