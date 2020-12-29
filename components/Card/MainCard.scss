@@ -112,4 +112,11 @@
     font-size: 12px;
     color: #282828;
   }
+
+  &:first-child {
+    margin-top: 120px;
+  }
+  &:last-child {
+    margin-bottom: 90px;
+  }
 }

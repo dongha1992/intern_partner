@@ -3,14 +3,23 @@
   flex-direction: column;
   position: relative;
   width: 375px;
-  margin: 0 auto;
 
+  margin: 0 auto;
+  // margin-bottom: 20px;
+  .main_headerWrap {
+    position: fixed;
+    background-color: white;
+    top: 0;
+    // left: 0;
+  }
   .main_background {
-    height: 100vh;
+    height: 100%;
     background-color: #f1f4f6;
     padding-top: 8px;
+    // margin-bottom: 20px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     // align-items: center;
   }
 }
