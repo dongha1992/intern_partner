@@ -7,7 +7,7 @@ import {
   EMPLOYEE_NAME,
   EMPLOYEE_STATUS,
 } from '../../../../../constants/main/EmployeeList';
-import styles from '../UserInformation.scss';
+import styles from '../userInformation.scss';
 import axios from 'axios';
 
 const EmployeeList = ({ data }) => {
