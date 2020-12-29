@@ -1,32 +1,14 @@
-.errorMessage {
-  position: absolute;
-  width: 100%;
-  bottom: -23%;
-  left: 2%;
-  font-family: NotoSansCJKkr;
-  font-size: 12px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 2;
-  letter-spacing: normal;
-  text-align: left;
-  border-top: 1px solid #ff2929;
-  color: #ff2929;
-}
-.successMessage {
-  position: absolute;
-  width: 100%;
-  bottom: -23%;
-  left: 2%;
-  font-family: NotoSansCJKkr;
-  font-size: 12px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 2;
-  letter-spacing: normal;
-  text-align: left;
-  border-top: 1px solid #01b856;
-  color: #01b856;
+.container {
+  width: 375px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  .errorWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .errorMessage {
+      font-size: 30px;
+    }
+  }
 }

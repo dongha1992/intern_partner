@@ -1,7 +1,8 @@
 .mainTab_wrap {
   width: 100%;
   height: 35px;
-  padding: 0 5px;
+  padding: 5px 5px;
+  margin-bottom: 5px;
 
   .tabNames_wrap {
     height: 35px;
@@ -16,6 +17,7 @@
       justify-content: center;
       align-items: center;
       color: lightgray;
+      cursor: pointer;
 
       &:last-child {
         margin-right: 0px;
@@ -28,7 +30,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
+      cursor: pointer;
       color: black;
       border-bottom: 2px solid #1877f2;
 

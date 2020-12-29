@@ -9,17 +9,32 @@ import styles from './LandingPage.scss';
 import { useRouter } from 'next/router';
 import FadeIn from 'react-fade-in';
 import Fade from 'react-reveal/Fade';
-import { WITH_US_TEXT, IMS_ROLE, DATE } from '../constants/landingPage/SecondPage';
-import { INNOVATIVE, RENTAL_CAR_SYSTEM, PERFECT, BUSINESS_PARTNER, IMS } from '../constants/landingPage/FirstPage';
-import { HANDPHONE_TEXT, REALTIME_REQUEST_CONFIRMATION, 
-         FIRST_DESCRIPTION, SECOND_DESCRIPTION, THIRD_DESCRIPTION } from '../constants/landingPage/ThirdPage';
-import { INTELLIGENT, PROMOTION, } from '../constants/landingPage/FourthPage';
+import {
+  WITH_US_TEXT,
+  IMS_ROLE,
+  DATE,
+} from '../constants/landingPage/SecondPage';
+import {
+  INNOVATIVE,
+  RENTAL_CAR_SYSTEM,
+  PERFECT,
+  BUSINESS_PARTNER,
+  IMS,
+} from '../constants/landingPage/FirstPage';
+import {
+  HANDPHONE_TEXT,
+  REALTIME_REQUEST_CONFIRMATION,
+  FIRST_DESCRIPTION,
+  SECOND_DESCRIPTION,
+  THIRD_DESCRIPTION,
+} from '../constants/landingPage/ThirdPage';
+import { INTELLIGENT, PROMOTION } from '../constants/landingPage/FourthPage';
 
 export default function LandingPage() {
   const router = useRouter();
   const handleGoToLogin = () => {
-    router.push('/user/login')
-  }
+    router.push('/user/login');
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -28,7 +43,8 @@ export default function LandingPage() {
         <FadeIn>
           <Fade left>
             <div className={styles.innovative_rental_car_system}>
-              {INNOVATIVE}<br />
+              {INNOVATIVE}
+              <br />
               {RENTAL_CAR_SYSTEM}
             </div>
           </Fade>
@@ -40,9 +56,17 @@ export default function LandingPage() {
         </FadeIn>
         <FadeIn delay='450'>
           <div className={styles.perfect_business_partner_ims}>
-            <Fade left>{PERFECT}<br /></Fade>
-            <Fade right>{BUSINESS_PARTNER}<br /></Fade>
-            <Fade right><span className={styles.text_style_1}>{IMS}</span></Fade>
+            <Fade left>
+              {PERFECT}
+              <br />
+            </Fade>
+            <Fade right>
+              {BUSINESS_PARTNER}
+              <br />
+            </Fade>
+            <Fade right>
+              <span className={styles.text_style_1}>{IMS}</span>
+            </Fade>
           </div>
         </FadeIn>
         <FadeIn delay='650'>
@@ -55,29 +79,21 @@ export default function LandingPage() {
       </div>
       <div className={styles.second_page_wrap}>
         <Fade left>
-          <div className={styles.with_us_text}>
-            {WITH_US_TEXT}
-          </div>
+          <div className={styles.with_us_text}>{WITH_US_TEXT}</div>
         </Fade>
-        <Fade left>  
-          <div className={styles.ims_role}>
-            {IMS_ROLE}
-          </div>
+        <Fade left>
+          <div className={styles.ims_role}>{IMS_ROLE}</div>
         </Fade>
         <Fade left>
           <ShadowBox />
         </Fade>
         <Fade left>
-          <div className={styles.date_of_update}>
-            {DATE}
-          </div>
+          <div className={styles.date_of_update}>{DATE}</div>
         </Fade>
       </div>
       <div className={styles.third_page_wrap}>
         <Fade left>
-          <div className={styles.handphone_text_box}>
-            {HANDPHONE_TEXT}
-          </div>
+          <div className={styles.handphone_text_box}>{HANDPHONE_TEXT}</div>
         </Fade>
         <Fade left>
           <PhoneForm />
@@ -90,21 +106,29 @@ export default function LandingPage() {
             </div>
           </Fade>
           <div className={styles.description}>
-            <Fade left>{FIRST_DESCRIPTION} <br /></Fade>
-            <Fade left>{SECOND_DESCRIPTION} <br /></Fade>
+            <Fade left>
+              {FIRST_DESCRIPTION} <br />
+            </Fade>
+            <Fade left>
+              {SECOND_DESCRIPTION} <br />
+            </Fade>
             <Fade left>{THIRD_DESCRIPTION}</Fade>
           </div>
         </div>
       </div>
       <div className={styles.fourth_page_wrap}>
-        <Fade left><div className={styles.intelligent_mobility_system}>{INTELLIGENT}</div></Fade>
-        <Fade left><div className={styles.ims_form}>{PROMOTION}</div></Fade>
+        <Fade left>
+          <div className={styles.intelligent_mobility_system}>
+            {INTELLIGENT}
+          </div>
+        </Fade>
+        <Fade left>
+          <div className={styles.ims_form}>{PROMOTION}</div>
+        </Fade>
         <Fade left>
           <AppLogoBox />
         </Fade>
-        <Button 
-          onClick={handleGoToLogin}
-        />
+        <Button onClick={handleGoToLogin} />
       </div>
     </div>
   );

@@ -88,7 +88,7 @@ class SelectStatus extends Component {
         {this.state.isChecked ? (
           <img
             src='/checked-next-button.png'
-            srcset='/checked-next-button@2x.png 2x,
+            srcSet='/checked-next-button@2x.png 2x,
        /checked-next-button@3x.png 3x'
             onClick={this.goToSignUp}
             className={styles.next_button}
@@ -96,7 +96,7 @@ class SelectStatus extends Component {
         ) : (
           <img
             src='/next-button.png'
-            srcset='/next-button@2x.png 2x,
+            srcSet='/next-button@2x.png 2x,
        /next-button@3x.png 3x'
             className={styles.next_button}
           />

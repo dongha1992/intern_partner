@@ -29,6 +29,10 @@ class LoginPage extends Component {
 
     const { idValue, passwordValue } = this.props.LoginStore;
 
+    if (idValue === null || passwordValue === null) {
+      return;
+    }
+
     axios
       .post(`${SERVER_URI}/user/login`, {
         login_id: idValue,
@@ -37,7 +41,7 @@ class LoginPage extends Component {
       .then((result) => {
         console.log(result);
         if (result.data.token) {
-          localStorage.setItem('token', result.token);
+          localStorage.setItem('token', result.data.token);
           alert('로그인에 성공하셨습니다.');
           this.props.router.push('/user/main');
         }
@@ -106,7 +110,7 @@ class LoginPage extends Component {
               srcSet='img/1641@2x.png 2x,
             img/1641@3x.png 3x'
               className={styles.inputBottomLine}
-            />{' '}
+            />
           </div>
         </div>
 

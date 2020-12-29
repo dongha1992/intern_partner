@@ -1,14 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 
-class RegisterUser extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    return <Fragment></Fragment>;
-  }
-}
+const RegisterUser = () => {
+  return <div></div>;
+};
 
 export default RegisterUser;

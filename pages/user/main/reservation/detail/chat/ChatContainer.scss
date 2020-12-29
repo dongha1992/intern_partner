@@ -1,25 +1,97 @@
 .chatContainer {
   width: 100%;
-  height: 100%;
+  width: 375px;
   .chatList {
     padding: 10px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
-    .chatItem {
+    padding-bottom: 100px;
+    .chatItem_supplier {
       width: 100%;
+      height: 100%;
       display: flex;
-      div {
+      flex-direction: column;
+      padding-top: 20px;
+      text-align: end;
+      .nameContainer {
+        padding-top: 10px;
+        display: flex;
+        flex-direction: column;
+        .name {
+          padding-bottom: 20px;
+          object-fit: contain;
+          font-family: NotoSansCJKkr;
+          font-size: 13px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.69;
+          letter-spacing: normal;
+          color: #282828;
+        }
+      }
+
+      .messageContainer {
+        display: inline-block;
+        .message {
+          background-color: #1877f2;
+          border-radius: 10px;
+          padding: 10px;
+          color: white;
+        }
+        .date {
+          font-size: 11px;
+          color: gray;
+          padding-right: 10px;
+        }
+      }
+      span {
         padding-left: 10px;
       }
     }
-    .chatItem_dongha {
+
+    .chatItem_client {
       width: 100%;
       display: flex;
-      justify-content: flex-end;
-      div {
-        padding-left: 10px;
+      flex-direction: column;
+      .nameContainer {
+        padding-top: 10px;
+        display: flex;
+        flex-direction: column;
+        .name {
+          padding-bottom: 10px;
+          object-fit: contain;
+          font-family: NotoSansCJKkr;
+          font-size: 13px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.69;
+          letter-spacing: normal;
+          color: #282828;
+        }
+      }
+      .messageContainer {
+        display: flex;
+
+        .message {
+          padding: 10px 16px;
+          object-fit: contain;
+          background-color: #ecf4ff;
+          border-radius: 10px;
+          color: #282828;
+        }
+        .date {
+          align-self: center;
+          font-size: 11px;
+          color: gray;
+          padding-left: 10px;
+        }
+      }
+
+      span {
+        padding-right: 10px;
       }
     }
   }
@@ -52,5 +124,23 @@
       border: none;
       background-color: #1877f2;
     }
+  }
+}
+
+.menuTab {
+  width: 375px;
+  display: flex;
+  justify-content: space-around;
+  a {
+    text-decoration: none;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .active {
+    color: black;
+    border-bottom: 2px solid #1877f2;
   }
 }

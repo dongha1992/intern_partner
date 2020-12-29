@@ -1,16 +1,19 @@
 import react, { Component, useState, useEffect } from 'react';
-import styles from './ChatContainer.scss';
-import ChatList from './ChatList';
-import ChatInput from './ChatInput';
+import styles from '../chat/ChatContainer.scss';
+import ChatList from '../chat/ChatList';
+import ChatInput from '../chat/ChatInput';
+import Link from 'next/link';
 import { useObserver } from 'mobx-react';
+
+import RequestDetailHeader from '../../../../../../components/Header/RequestDetailHeader';
 import io from 'socket.io-client';
 
 const socket = io.connect('http://192.168.219.104:8000');
 
-const ChatContainer = () => {
+const ChatContainerClient = () => {
   const [room, setRoom] = useState(2);
   const [userId, setUserId] = useState(1);
-  const [user, setuser] = useState('동하');
+  const [user, setuser] = useState('민영');
   const [isJoin, setIsJoin] = useState(false);
   const [message, setMessage] = useState({
     request_id: room,
@@ -76,24 +79,35 @@ const ChatContainer = () => {
   };
 
   return useObserver(() => (
-    <div className={styles.chatContainer}>
-      <ChatList messageList={messageList} user={user} />
-      <ChatInput
-        value={message.text}
-        onChange={(e) => {
-          setMessage({
-            request_id: userId,
-            name: user,
-            text: e.target.value,
-          });
-        }}
-        onClick={(e) => {
-          e.preventDefault();
-          onClickHandler();
-        }}
-      />
-    </div>
+    <>
+      <RequestDetailHeader />
+      <div className={styles.menuTab}>
+        <Link href='/user/main/reservation/detail'>
+          <a>요청상세</a>
+        </Link>
+        <Link href='/user/main/reservation/detail/chat'>
+          <a className={styles.active}>채팅</a>
+        </Link>
+      </div>
+      <div className={styles.chatContainer}>
+        <ChatList messageList={messageList} user={user} />
+        <ChatInput
+          value={message.text}
+          onChange={(e) => {
+            setMessage({
+              request_id: userId,
+              name: user,
+              text: e.target.value,
+            });
+          }}
+          onClick={(e) => {
+            e.preventDefault();
+            onClickHandler();
+          }}
+        />
+      </div>
+    </>
   ));
 };
 
-export default ChatContainer;
+export default ChatContainerClient;

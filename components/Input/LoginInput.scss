@@ -8,11 +8,13 @@
     color: white;
     background-color: transparent;
     border-style: none;
-    // transition: all 0.5s;
+    outline: none;
+
     &:focus {
       box-shadow: none;
       outline: none;
     }
+
     &::placeholder {
       color: white;
     }

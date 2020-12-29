@@ -1,5 +1,4 @@
 .button_Container {
-
   padding: 11px 0px;
   border-radius: 8px;
   background-color: #bdbdbd;
@@ -18,11 +17,11 @@
     letter-spacing: normal;
     text-align: center;
     color: #ffffff;
+    cursor: pointer;
   }
 }
 
 .button_Container_active {
-
   padding: 11px 0px;
   border-radius: 8px;
   background-color: #1877f2;
@@ -41,5 +40,6 @@
     letter-spacing: normal;
     text-align: center;
     color: #ffffff;
+    cursor: pointer;
   }
 }

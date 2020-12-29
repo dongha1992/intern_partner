@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from '../userInformation/userInformation.scss';
+import styles from './notice.scss';
 
 const NoticeItem = ({}) => {
   return <div className={styles.notice}>ds</div>;

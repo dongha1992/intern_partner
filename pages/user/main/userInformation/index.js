@@ -41,6 +41,7 @@ const UserInformation = () => {
   return (
     <div className={styles.container}>
       <MainHeader />
+      <div className={styles.dividerTop} />
       <div className={styles.userInformationWrap}>
         <div className={styles.left}>
           <div className={styles.userCompany}>IMS_USA2020</div>

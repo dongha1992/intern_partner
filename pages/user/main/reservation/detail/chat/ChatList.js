@@ -2,13 +2,19 @@ import React from 'react';
 import ChatItem from './ChatItem';
 import styles from './ChatContainer.scss';
 
-const ChatList = ({ messageList }) => {
+const ChatList = ({ messageList, user }) => {
+  console.log(messageList);
   const chatLists =
     messageList &&
     messageList.map((chat) => {
       return (
         <>
-          <ChatItem name={chat.name} message={chat.message} />
+          <ChatItem
+            name={chat.name}
+            message={chat.text}
+            date={chat.created_at}
+            user={user}
+          />
         </>
       );
     });

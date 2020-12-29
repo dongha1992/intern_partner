@@ -9,20 +9,30 @@ import { withRouter, useRouter } from 'next/router';
 import { inject, observer } from 'mobx-react';
 import { useObserver } from 'mobx-react';
 import axios from 'axios';
+// import io from 'socket.io-client';
+
+// const socket = io.connect('http://18.188.0.125:8000/main');
 
 const { MainFooterActiveStore } = useStore();
+const message = '알람알람';
 
 const MyCall = ({ data }) => {
   const [lists, setList] = useState(data);
+
+  const toNotificationServer = () => {
+    console.log('test for notification');
+    // if (message) {
+    //   socket.emit('send_message', message, setMessage(''));
+    //   console.log(message, 'from client');
+    // }
+  };
 
   const CardLists = lists.map((list) => {
     return (
       <MainCard
         name={list.name}
         id={list.id}
-        onClick={() => {
-          console.log('');
-        }}
+        toNotificationServer={toNotificationServer}
         key={list.id}
         carType={list.car_type}
         carNumber={list.car_number}
@@ -46,6 +56,7 @@ const MyCall = ({ data }) => {
 export async function getServerSideProps() {
   const res = await axios.get('http://localhost:5700/api/getRequestInfo');
   const data = res.data;
+
   return {
     props: {
       data,

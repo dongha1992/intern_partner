@@ -1,21 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styles from './ErrorMessage.scss';
-import { inject, observer } from 'mobx-react';
 
-@inject('SignUpEmployeeStore')
-@observer
-class ErrorMessage extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  static async getInitialProps({ mobxStore }) {
-    return { mobxStore };
-  }
-
-  render() {
-    return <div className={styles.errorMessage}>error</div>;
-  }
-}
+const ErrorMessage = () => {
+  return (
+    <div className={styles.container}>
+      <div className={styles.errorWrap}>
+        <div className={styles.errorMessage}>페이지를 찾을 수 없습니다.</div>
+      </div>
+    </div>
+  );
+};
 
 export default ErrorMessage;

@@ -6,6 +6,7 @@
   bottom: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.6);
+
   .modalMain {
     position: relative;
     display: flex;
@@ -17,6 +18,7 @@
     justify-content: center;
     flex-direction: column;
     background-color: #edeeee;
+
     .modalContent {
       position: relative;
       width: 100%;
@@ -24,6 +26,7 @@
       box-sizing: border-box;
       margin: 0 auto;
     }
+
     .modalTitle {
       font-size: 15px;
       font-weight: 500;
@@ -33,6 +36,7 @@
       letter-spacing: normal;
       padding-bottom: 20px;
     }
+
     .modalButton {
       font-family: NotoSansCJKkr;
       font-size: 15px;
@@ -45,7 +49,12 @@
       background-color: transparent;
       border: none;
       color: #1877f2;
+      outline: none;
       cursor: pointer;
+      margin-right: 15px;
+      &:last-child {
+        margin-left: 15px;
+      }
     }
   }
 }
