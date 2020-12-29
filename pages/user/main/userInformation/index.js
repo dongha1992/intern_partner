@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './UserInformation.scss';
+import styles from './userInformation.scss';
 import { MainHeader } from '../../../../components/Header';
 import { useRouter } from 'next/router';
 import { USER_INFORMATION_BUTTON } from '../../../../constants/main/UserInformationButton';

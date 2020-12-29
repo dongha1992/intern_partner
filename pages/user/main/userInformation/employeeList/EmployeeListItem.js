@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../UserInformation.scss';
+import styles from '../userInformation.scss';
 import ToggleButton from './ToggleButton';
 
 const item = ({ name, id, onClick, onChange, status }) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../UserInformation.scss';
+import styles from '../userInformation.scss';
 import { RequestDetailHeader } from '../../../../../components/Header';
 import TwoButton from '../../../../../components/RequestDetail/TwoButton';
 import UserInformationInput from '../../../../../components/RequestDetail/UserInformationInput';
