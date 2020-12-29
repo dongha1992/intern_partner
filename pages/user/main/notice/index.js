@@ -8,7 +8,6 @@ import useStore from '../../../../stores';
 
 const Notice = () => {
   const { NoticeStackStore } = useStore();
-  console.log(NoticeStackStore);
 
   return (
     <div className={styles.container}>
@@ -16,7 +15,7 @@ const Notice = () => {
       <div className={styles.dividerBottom}></div>
       <div className={styles.noticeWrap}>
         <div className={styles.noticeList}>
-          <div className={styles.noticeItem}>{}</div>
+          <div className={styles.noticeItem}></div>
         </div>
       </div>
       <MainFooter />

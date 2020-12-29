@@ -8,6 +8,7 @@ import MainFooterActiveStore from './MainFooterActiveStore';
 import ChatStore from './ChatStore';
 import MyInformationUpdateStore from './MyInformationUpdateStore';
 import NoticeStackStore from './NoticeStackStore';
+import MainTabActiveStore from './MainTabActiveStore';
 
 const isServer = typeof window === 'undefined';
 useStaticRendering(isServer);
@@ -24,6 +25,7 @@ class RootStore {
     this.MainFooterActiveStore = new MainFooterActiveStore();
     this.MyInformationUpdateStore = new MyInformationUpdateStore();
     this.NoticeStackStore = new NoticeStackStore();
+    this.MainTabActiveStore = new MainTabActiveStore();
   }
 }
 

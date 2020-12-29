@@ -1,13 +1,12 @@
-import React, { Component, useState } from "react";
-import { MainHeader } from "../../../components/Header";
-import MainTab from "../../../components/MainTab";
-import { MainCard } from "../../../components/Card";
-import { MainFooter } from "../../../components/Footer";
-import styles from "./MainPage.scss";
-import useStore from "../../../stores";
-import { inject, observer } from "mobx-react";
-import { useObserver } from "mobx-react";
-import axios from "axios";
+import React, { useState } from 'react';
+import { MainHeader } from '../../../components/Header';
+import MainTab from '../../../components/MainTab';
+import { MainCard } from '../../../components/Card';
+import { MainFooter } from '../../../components/Footer';
+import styles from './MainPage.scss';
+import useStore from '../../../stores';
+import { useObserver } from 'mobx-react';
+import axios from 'axios';
 
 const { MainFooterActiveStore } = useStore();
 

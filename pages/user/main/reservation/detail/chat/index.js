@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import RequestDetailHeader from '../../../../../../components/Header/RequestDetailHeader';
-import ChatInput from '../../../../../../components/ChatInput';
-import ChatContainer from '../../../../../../components/Chat';
+import ChatInput from './ChatInput';
+import ChatContainer from './ChatContainer';
 import Link from 'next/link';
 import styles from './Chatting.scss';
 
@@ -19,7 +19,6 @@ const Chatting = () => {
       </div>
       <div className={styles.chattingRoom}>
         <ChatContainer />
-        <ChatInput />
       </div>
     </div>
   );

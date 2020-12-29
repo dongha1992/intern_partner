@@ -5,7 +5,7 @@ import { withRouter, useRouter } from 'next/router';
 import useStore from '../../stores';
 import { useObserver } from 'mobx-react';
 
-const { MainFooterActiveStore } = useStore();
+const { MainFooterActiveStore, MainTabActiveStore } = useStore();
 const MainFooter = ({}) => {
   const router = useRouter();
 
@@ -19,9 +19,9 @@ const MainFooter = ({}) => {
               className={styles.footer_button}
               key={icon.id}
               onClick={() => {
-                console.log(icon.id);
                 MainFooterActiveStore.setId(icon.id);
                 router.push(`/user/main/${icon.url}`);
+                icon.id == 1 && MainTabActiveStore.setId(1);
               }}>
               {change ? (
                 <img

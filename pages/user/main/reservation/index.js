@@ -1,21 +1,52 @@
-import React, { Fragment, useEffect, useState } from "react";
-import TestList from "./testlist";
-import Axios from "axios";
-function ReservationConfirmation() {
-	const [list, setList] = useState([]);
-	const API = "http://localhost:5700/api/getRequestInfo";
+import React, { useState } from 'react';
+import { MainHeader } from '../../../../components/Header';
+import MainTab from '../../../../components/MainTab';
+import { MainCard } from '../../../../components/Card';
+import { MainFooter } from '../../../../components/Footer';
+import useStore from '../../../../stores';
+import { useObserver } from 'mobx-react';
+import styles from '../MainPage.scss';
+import axios from 'axios';
 
-	useEffect(() => {
-		Axios.get(API).then((res) => {
-			setList(res.data);
-		});
-	}, []);
+const ReservationConfirmation = ({ data }) => {
+  const [lists, setList] = useState(data);
 
-	return (
-		<Fragment>
-			<TestList list={list} />
-		</Fragment>
-	);
+  const CardLists = lists.map((list) => {
+    return (
+      <MainCard
+        name={list.name}
+        id={list.id}
+        onClick={() => {
+          console.log('');
+        }}
+        key={list.id}
+        carType={list.car_type}
+        carNumber={list.car_number}
+        date={list.date}
+      />
+    );
+  });
+  return useObserver(() => (
+    <div className={styles.main_container}>
+      <div className={styles.main_headerWrap}>
+        <MainHeader />
+        <MainTab />
+      </div>
+      <div className={styles.main_background}>{CardLists}</div>
+      <MainFooter />
+    </div>
+  ));
+};
+
+export async function getServerSideProps() {
+  const res = await axios.get('http://localhost:5700/api/getRequestInfo');
+  const data = res.data;
+
+  return {
+    props: {
+      data,
+    },
+  };
 }
 
 export default ReservationConfirmation;
