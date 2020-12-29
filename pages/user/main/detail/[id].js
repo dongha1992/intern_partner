@@ -8,18 +8,18 @@ import { REQUEST_NUMBER_TEXT } from "../../../../constants/requestDetail/Request
 import { PROPOSAL_INFO } from "../../../../constants/requestDetail/ProposalInfo";
 import { PROPOSAL } from "../../../../constants/requestDetail/Proposal";
 import fetch from "isomorphic-unfetch";
+import axios from "axios";
 
-const Detail = (list) => {
+const Detail = ({ list }) => {
 	const isProposal = true;
-	const { shows } = list;
 	const router = useRouter();
-	console.log(shows, "ddddddd");
+	// console.log(shows, "ddddddd");
 
 	// if (router.isFallback) {
 	return (
 		<div className={styles.container}>
 			<RequestDetailHeader requestDetail={"요청상세"} />
-			<RequestInfo list={shows} />
+			<RequestInfo list={list} />
 			<div style={{ paddingTop: "15px" }} />
 			<RequestInfoHeader
 				proposal={PROPOSAL}
@@ -55,13 +55,13 @@ const Detail = (list) => {
 // 	};
 // }
 
-Detail.getInitialProps = async function () {
-	const res = await fetch("http://localhost:5700/api/getRequestInfo");
-	const list = await res.json();
+export async function getServerSideProps() {
+	const res = await axios("http://localhost:5700/api/getRequestInfo");
+	const list = await res.data;
 	console.log(list, "difjsdoifjwoj");
 	return {
-		shows: list,
+		props: { list },
 	};
-};
+}
 
 export default Detail;
