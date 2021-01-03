@@ -9,7 +9,9 @@ const MainCard = ({ name, id, onClick, carType, carNumber, date }) => {
 			className={styles.call_container}
 			id={id}
 			onClick={() => {
-				router.push(`/user/main/detail/${id}`);
+				// router.push(`/user/main/detail/${id}`);
+				// console.log("MainCard.js");
+				onClick();
 			}}
 		>
 			<div className={styles.suggestion_container}>
