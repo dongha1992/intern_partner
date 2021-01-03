@@ -1,0 +1,22 @@
+.button_wrap {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+  object-fit: contain;
+  font-size: 16px;
+  font-stretch: normal;
+  text-align: center;
+  font-style: normal;
+  letter-spacing: normal;
+
+  .button {
+    text-align: center;
+    height: 46px;
+    padding: 11px 140.5px 11px 142.5px;
+    border: solid 1px #1877f2;
+    border-radius: 8px;
+    font-weight: 300;
+    background-color: #1877f2;
+    color: #ffffff;
+  }
+}

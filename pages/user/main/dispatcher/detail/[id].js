@@ -3,14 +3,12 @@ import RequestDetailHeader from "../../../../../components/Header/RequestDetailH
 import RequestInfo from "../../../../../components/RequestDetail/RequestInfo";
 import ProposalInfo from "../../../../../components/RequestDetail/ProposalInfo";
 import Link from "next/link";
-import styles from "./ReturnDetail.scss";
-import {
-	DISPATCH_CANCEL,
-	DISPATCH_COMPLETE,
-} from "../../../../../constants/requestDetail/ProposalInfo";
+import styles from "./DispatcherDetail.scss";
+import { RETURN_COMPLETE } from "../../../../../constants/requestDetail/ProposalInfo";
+import axios from "axios";
 
-// const isReservation = true;
-const ReturnDetail = () => {
+const DispatcherDetail = ({ list }) => {
+	const isButton = true;
 	return (
 		<div className={styles.container}>
 			<RequestDetailHeader />
@@ -22,16 +20,26 @@ const ReturnDetail = () => {
 					<a>채팅</a>
 				</Link>
 			</div>
-			<RequestInfo />
+			<RequestInfo list={list} />
 			<ProposalInfo
-				// isReservation={isReservation}
-				isReturn={true}
-				leftButtonValue={DISPATCH_CANCEL}
-				rightButtonValue={DISPATCH_COMPLETE}
+				// isReturn={true}
+				isButton={isButton}
+				buttonValue={RETURN_COMPLETE}
+				list={list}
+				goToReturn={true}
+				isDispatcher={true}
 			/>
-			<div style={{ marginTop: "80px" }} />
 		</div>
 	);
 };
 
-export default ReturnDetail;
+export async function getServerSideProps() {
+	const res = await axios("http://localhost:5700/api/getRequestInfo");
+	const list = await res.data;
+	console.log(list, "difjsdoifjwoj");
+	return {
+		props: { list },
+	};
+}
+
+export default DispatcherDetail;

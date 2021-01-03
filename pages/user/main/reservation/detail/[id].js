@@ -7,10 +7,10 @@ import {
 	DISPATCH_CANCEL,
 	DISPATCH_COMPLETE,
 } from "../../../../../constants/requestDetail/ProposalInfo";
+import axios from "axios";
 
 const isReservation = true;
-
-const ConfirmationDetail = () => {
+const ConfirmationDetail = ({ list }) => {
 	return (
 		<div className={styles.container}>
 			<RequestDetailHeader />
@@ -22,15 +22,25 @@ const ConfirmationDetail = () => {
 					<a>채팅</a>
 				</Link>
 			</div>
-			<RequestInfo />
+			<RequestInfo list={list} />
 			<ProposalInfo
 				isReservation={isReservation}
 				leftButtonValue={DISPATCH_CANCEL}
 				rightButtonValue={DISPATCH_COMPLETE}
+				list={list}
 			/>
 		</div>
 	);
 };
+
+export async function getServerSideProps() {
+	const res = await axios("http://localhost:5700/api/getRequestInfo");
+	const list = await res.data;
+	console.log(list, "difjsdoifjwoj");
+	return {
+		props: { list },
+	};
+}
 
 export default ConfirmationDetail;
 

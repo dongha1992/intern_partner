@@ -3,9 +3,6 @@ import { useRouter } from "next/router";
 import RequestInfoHeader from "../Header/RequestInfoHeader";
 import DetailList from "./DetailList";
 import styles from "./RequestInfo.scss";
-import axios from "axios";
-import { baseUrl } from "../../config";
-import apiUser from "../../api/User";
 import {
 	REQUEST_INFO,
 	REQUEST_NUMBER_TEXT,
@@ -22,16 +19,10 @@ const API = "http://localhost:5700/api/getRequestInfo";
 export default function RequestInfo({ list }) {
 	const router = useRouter();
 	const { id } = router?.query;
-
-	// useEffect(() => {
-	// 	axios.get(API).then((res) => {
-	// 		setList(res.data);
-	// 	});
-	// }, []);
-
 	const info = list?.find((el) => {
 		return el.id == id;
 	});
+
 	return (
 		<Fragment>
 			<RequestInfoHeader

@@ -2,10 +2,6 @@ import React, { Fragment, useEffect, useState } from "react";
 import RequestInfoHeader from "../Header/RequestInfoHeader";
 import DetailList from "./DetailList";
 import TwoButton from "./TwoButton";
-import styles from "./RequestInfo.scss";
-import apiUser from "../../api/User";
-import axios from "axios";
-import { baseUrl } from "../../config";
 import { useRouter } from "next/router";
 import {
 	PROPOSAL_INFO,
@@ -14,19 +10,24 @@ import {
 	PROPOSAL_REQUESTS,
 	NONE,
 } from "../../constants/requestDetail/ProposalInfo";
-
+import SuggestionAndReturnButton from "../RequestDetail/SuggestionAndReturnButton";
 export default function ProposalInfo({
 	leftButtonValue,
 	rightButtonValue,
+	buttonValue,
 	isSuggestion,
 	isReservation,
+	isDispatcher,
 	isReturn,
+	isButton,
+	list,
 }) {
-	const requestNumber = "12345";
 	const router = useRouter();
-	const [info, setInfo] = useState("");
-	const [id, setId] = useState();
-
+	const { id } = router?.query;
+	const info = list?.find((el) => {
+		return el.id == id;
+	});
+	console.log(router.push);
 	// submit = async () => {
 	// 	const data = { name: this.state.name };
 	// 	const response = await apiUser.getUserInfo(data);
@@ -43,29 +44,40 @@ export default function ProposalInfo({
 
 	const goToEdit = () => {
 		console.log("gotoedit");
-		router.push("/user/main/detail");
+		router.push(`/user/main/detail/${id}`);
 	};
 	const goToDispatching = () => {
 		console.log("gotodispatching");
-		router.push("/user/main/dispatcher");
+		router.push(`/user/main/dispatcher`);
+	};
+
+	const goToReturn = () => {
+		router.push("/user/main/return");
 	};
 
 	return (
 		<Fragment>
 			<RequestInfoHeader
-				requestNumber={requestNumber}
 				proposalInfo={PROPOSAL_INFO}
 				style={{ display: "none" }}
 			/>
 			<DetailList
 				requestList={PROPOSAL_CAR1}
-				responseBrand={"현대"}
-				response={"아반떼"}
+				responseBrand={info?.car_brand}
+				response={info?.car_type}
 			/>
 			<DetailList requestList={PROPOSAL_CAR2} response={NONE} />
 			<DetailList requestList={PROPOSAL_REQUESTS} response={NONE} />
 			{isReturn ? (
 				""
+			) : isButton ? (
+				<SuggestionAndReturnButton
+					style={{ marginTop: "60px" }}
+					buttonValue={buttonValue}
+					goToSuggestion={goToSuggestion}
+					goToReturn={goToReturn}
+					isDispatcher={isDispatcher}
+				/>
 			) : (
 				<TwoButton
 					style={{ marginTop: "60px", paddingBottom: "30px" }}

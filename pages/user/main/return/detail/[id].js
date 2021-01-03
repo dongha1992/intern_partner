@@ -3,14 +3,14 @@ import RequestDetailHeader from "../../../../../components/Header/RequestDetailH
 import RequestInfo from "../../../../../components/RequestDetail/RequestInfo";
 import ProposalInfo from "../../../../../components/RequestDetail/ProposalInfo";
 import Link from "next/link";
-import styles from "./DispatcherDetail.scss";
+import styles from "./ReturnDetail.scss";
 import {
 	DISPATCH_CANCEL,
 	DISPATCH_COMPLETE,
 } from "../../../../../constants/requestDetail/ProposalInfo";
+import axios from "axios";
 
-// const isReservation = true;
-const DispatcherDetail = () => {
+const ReturnDetail = ({ list }) => {
 	return (
 		<div className={styles.container}>
 			<RequestDetailHeader />
@@ -22,15 +22,25 @@ const DispatcherDetail = () => {
 					<a>채팅</a>
 				</Link>
 			</div>
-			<RequestInfo />
+			<RequestInfo list={list} />
 			<ProposalInfo
-				// isReservation={isReservation}
 				isReturn={true}
 				leftButtonValue={DISPATCH_CANCEL}
 				rightButtonValue={DISPATCH_COMPLETE}
+				list={list}
 			/>
+			<div style={{ marginTop: "80px" }} />
 		</div>
 	);
 };
 
-export default DispatcherDetail;
+export async function getServerSideProps() {
+	const res = await axios("http://localhost:5700/api/getRequestInfo");
+	const list = await res.data;
+	console.log(list, "difjsdoifjwoj");
+	return {
+		props: { list },
+	};
+}
+
+export default ReturnDetail;
