@@ -2,11 +2,18 @@
   width: 375px;
   height: auto;
   .proposal_subject {
+    width: 375px;
     margin-top: 20px;
     padding: 15px;
     color: #282828;
     font-family: NotoSansCJKkr;
     font-size: 15px;
     font-weight: bold;
+  }
+  .proposal_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
   }
 }

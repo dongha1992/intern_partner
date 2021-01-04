@@ -15,6 +15,7 @@ const ProposalInput = ({
   buttonValue,
   onClick,
   name,
+  image,
   isProposalInput,
   choiceResult,
   SelectedCarBrand,
@@ -54,6 +55,7 @@ const ProposalInput = ({
           onClick={() => {
             isProposalInput && onClick();
           }}
+          image={image}
         />
         {isButton && buttonValue ? (
           <div className={styles.button_wrap} onClick={onClick}>
@@ -64,11 +66,15 @@ const ProposalInput = ({
         ) : (
           ''
         )}
-        <img
-          src='/194.png'
-          srcSet='/194@2x.png 2x, /194@3x.png 3x'
-          className={styles.input_button}
-        />
+        {image ? (
+          <img
+            src='/194.png'
+            srcSet='/194@2x.png 2x, /194@3x.png 3x'
+            className={styles.input_button}
+          />
+        ) : (
+          ''
+        )}
       </span>
     </div>
   );

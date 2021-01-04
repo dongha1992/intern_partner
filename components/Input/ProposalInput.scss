@@ -5,9 +5,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid #bdbdbd;
+    border-bottom: 1px solid;
+    border-color: rgba($color: #bdbdbd, $alpha: 0.2);
     input {
-      width: 145px;
+      width: 130px;
       height: 25px;
       background-color: transparent;
       font-family: NotoSansCJKkr;
@@ -15,7 +16,7 @@
       // color: #bdbdbd;
       color: #282828;
       &::placeholder {
-        color: #bdbdbd;
+        color: rgba($color: #bdbdbd, $alpha: 0.5);
       }
     }
     .input_button {

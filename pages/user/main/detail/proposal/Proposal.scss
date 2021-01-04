@@ -44,7 +44,6 @@
   .proposal_footer {
     height: 56px;
     width: 375px;
-
     position: fixed;
     bottom: 0;
     display: flex;
@@ -56,4 +55,22 @@
     font-weight: 500;
     color: #ffffff;
   }
+  .active_proposal_footer {
+    height: 56px;
+    width: 375px;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1877f2;
+    font-family: NotoSansKR;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+  }
 }
+
+// &.activeCheckBtn {
+//   background-color: #1877f2;
+// }
