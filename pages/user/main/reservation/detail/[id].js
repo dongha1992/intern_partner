@@ -8,14 +8,17 @@ import {
 	DISPATCH_COMPLETE,
 } from "../../../../../constants/requestDetail/ProposalInfo";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const isReservation = true;
 const ConfirmationDetail = ({ list }) => {
+	const router = useRouter();
+	console.log(">>>", router.query.id);
 	return (
 		<div className={styles.container}>
 			<RequestDetailHeader />
 			<div className={styles.menuTab}>
-				<Link href="/user/main/reservation/detail">
+				<Link href="/user/main/reservation/detail${}">
 					<a className={styles.active}>요청상세</a>
 				</Link>
 				<Link href="/user/main/reservation/detail/chat">

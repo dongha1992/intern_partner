@@ -1,0 +1,39 @@
+.additional_requests {
+  margin: 40px 0 10px 15px;
+  object-fit: contain;
+  font-family: NotoSansCJKkr;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  text-align: left;
+  color: #282828;
+}
+.proposal_text_container{
+  position: relative;
+  margin-left: 15px;
+  object-fit: contain;
+  font-family: NotoSansCJKkr;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+  text-align: left;
+  color: #bebdbd;
+  .proposal_text_box {
+    width: 344px;
+    height: 152px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f6f6f6;
+  }
+  .byte {
+    position: absolute;
+    top:119px;
+    right: 28px;
+  }
+}

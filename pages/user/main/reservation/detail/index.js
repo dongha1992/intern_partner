@@ -10,7 +10,7 @@ import {
 } from "../../../../../constants/requestDetail/ProposalInfo";
 
 const isReservation = true;
-const ConfirmationDetail = () => {
+const ConfirmationDetail = ({ list }) => {
 	return (
 		<div className={styles.container}>
 			<RequestDetailHeader />

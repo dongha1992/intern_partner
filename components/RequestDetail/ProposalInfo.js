@@ -74,7 +74,7 @@ export default function ProposalInfo({
 				<SuggestionAndReturnButton
 					style={{ marginTop: "60px" }}
 					buttonValue={buttonValue}
-					goToSuggestion={goToSuggestion}
+					// goToSuggestion={goToSuggestion}
 					goToReturn={goToReturn}
 					isDispatcher={isDispatcher}
 				/>

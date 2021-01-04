@@ -4,6 +4,7 @@ import RequestDetailHeader from "../../../../components/Header/RequestDetailHead
 import RequestInfoHeader from "../../../../components/Header/RequestInfoHeader";
 import RequestInfo from "../../../../components/RequestDetail/RequestInfo";
 import Agreement from "../../../../components/Agreement";
+import ProposalText from "../../../../components/RequestDetail/ProposalText";
 import SuggestionAndReturnButton from "../../../../components/RequestDetail/SuggestionAndReturnButton";
 import styles from "./Detail.scss";
 import { REQUEST_NUMBER_TEXT } from "../../../../constants/requestDetail/RequestInfo";
@@ -36,6 +37,7 @@ const Detail = ({ list }) => {
 				proposalInfo={PROPOSAL_INFO}
 				style={{ display: "none" }}
 			/>
+			<ProposalText />
 			<Agreement />
 			<SuggestionAndReturnButton
 				style={{ marginTop: "60px" }}

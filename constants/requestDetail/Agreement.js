@@ -3,16 +3,16 @@ export const agreementList = [
 	{
 		id: 1,
 		text: "[필수]이용 약관에 동의합니다.",
-		button: "firstButton",
+		checked: false,
 	},
 	{
 		id: 2,
 		text: "[필수]개인정보 취급방침에 동의합니다.",
-		button: "secondButton",
+		checked: false,
 	},
 	{
 		id: 3,
 		text: "[필수]위치기반 서비스 이용약관에 동의합니다.",
-		button: "thirdButton",
+		checked: false,
 	},
 ];

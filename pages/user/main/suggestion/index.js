@@ -14,7 +14,6 @@ const { MainFooterActiveStore } = useStore();
 const Suggestion = ({ data }) => {
 	const [lists, setList] = useState(data);
 	const router = useRouter();
-	const { id } = router.query;
 
 	const CardLists = lists.map((list) => {
 		return (
