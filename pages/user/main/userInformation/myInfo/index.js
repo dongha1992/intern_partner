@@ -57,8 +57,6 @@ import {
   COMPANY_IMPORT_CAR_NUMBER_NAME,
 } from '../../../../../constants/main/MyInformationNameForInput';
 
-const value = 'd';
-
 const handleInfoChange = (e) => {
   MyInformationUpdateStore.setValue(e);
 };

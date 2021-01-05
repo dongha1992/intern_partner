@@ -1,59 +1,50 @@
-import React, { Fragment, useEffect, useState } from "react";
-import RequestInfoHeader from "../Header/RequestInfoHeader";
-import DetailList from "./DetailList";
-import TwoButton from "./TwoButton";
-import { useRouter } from "next/router";
+import React, { Fragment, useEffect, useState } from 'react';
+import RequestInfoHeader from '../Header/RequestInfoHeader';
+import DetailList from './DetailList';
+import TwoButton from './TwoButton';
+import { useRouter } from 'next/router';
 import {
-	PROPOSAL_INFO,
-	PROPOSAL_CAR1,
-	PROPOSAL_CAR2,
-	PROPOSAL_REQUESTS,
-	NONE,
-} from "../../constants/requestDetail/ProposalInfo";
-import SuggestionAndReturnButton from "../RequestDetail/SuggestionAndReturnButton";
+  PROPOSAL_INFO,
+  PROPOSAL_CAR1,
+  PROPOSAL_CAR2,
+  PROPOSAL_REQUESTS,
+  NONE,
+} from '../../constants/requestDetail/ProposalInfo';
+import SuggestionAndReturnButton from '../RequestDetail/SuggestionAndReturnButton';
 export default function ProposalInfo({
-	leftButtonValue,
-	rightButtonValue,
-	buttonValue,
-	isSuggestion,
-	isReservation,
-	isDispatcher,
-	isReturn,
-	isButton,
-	list,
+  leftButtonValue,
+  rightButtonValue,
+  buttonValue,
+  isSuggestion,
+  isReservation,
+  isDispatcher,
+  isReturn,
+  isButton,
+  list,
 }) {
-	const router = useRouter();
-	const { id } = router?.query;
-	const info = list?.find((el) => {
-		return el.id == id;
-	});
-	console.log(router.push);
-	// submit = async () => {
-	// 	const data = { name: this.state.name };
-	// 	const response = await apiUser.getUserInfo(data);
-	// 	const responseData = response.data;
-	// 	this.setState({ info: responseData.userInfo });
-	// };
-	const API = "http://localhost:5700/api/getRequestInfo";
-	const goToCancel = () => {
-		router.push("/user/main");
-		// axios.get(API).then((res) => {
-		// 	console.log(res.data);
-		// });
-	};
+  const router = useRouter();
+  const { id } = router?.query;
+  const info = list?.find((el) => {
+    return el.id == id;
+  });
 
-	const goToEdit = () => {
-		console.log("gotoedit");
-		router.push(`/user/main/detail/${id}`);
-	};
-	const goToDispatching = () => {
-		console.log("gotodispatching");
-		router.push(`/user/main/dispatcher`);
-	};
+  // submit = async () => {
+  // 	const data = { name: this.state.name };
+  // 	const response = await apiUser.getUserInfo(data);
+  // 	const responseData = response.data;
+  // 	this.setState({ info: responseData.userInfo });
+  // };
+  const API = 'http://localhost:5700/api/getRequestInfo';
+  const goToCancel = () => {
+    router.push('/user/main');
+  };
 
-	const goToReturn = () => {
-		router.push("/user/main/return");
-	};
+  const goToEdit = () => {
+    router.push(`/user/main/detail/${id}`);
+  };
+  const goToDispatching = () => {
+    router.push(`/user/main/dispatcher`);
+  };
 
 	return (
 		<Fragment>

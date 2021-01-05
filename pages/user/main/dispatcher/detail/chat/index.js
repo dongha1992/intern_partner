@@ -13,7 +13,7 @@ const Chatting = () => {
       <RequestDetailHeader />
       <div className={styles.menuTab}>
         <a onClick={() => router.back()}>요청상세</a>
-        <Link href='/user/main/reservation/detail/chat'>
+        <Link href='/user/main/dispatcher/detail/chat'>
           <a className={styles.active}>채팅</a>
         </Link>
       </div>

@@ -1,6 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
 // import ErrorMessage from '../../components/Error';
-
 import styles from './SignUpInput.scss';
 
 export default function SignUpInput({
