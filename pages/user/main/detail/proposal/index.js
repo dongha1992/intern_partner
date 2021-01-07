@@ -4,6 +4,7 @@ import useStore from '../../../../../stores';
 import { useRouter } from 'next/router';
 import { useObserver } from 'mobx-react';
 import { SERVER_URI } from '../../../../../config';
+import { withRouter } from 'next/router';
 
 import {
   PROPOSAL_HEADER,
@@ -13,9 +14,10 @@ import axios from 'axios';
 import CompanyItem from './CompanyItem';
 import CarItem from './CarItem';
 
-const Proposal = ({}) => {
+function Proposal(props) {
   const router = useRouter();
-  const { ProposalStore } = useStore();
+  // const { ProposalStore } = useStore();
+  const [initialData, setInitialData] = useState([]);
   const [selectedCompany, setselectedCompany] = useState([]);
   const [selectedCar, setselectedCar] = useState([]);
   const [isActive, setIsActive] = useState(false); //의미없음
@@ -24,13 +26,12 @@ const Proposal = ({}) => {
     // 수정필요
     ProposalStore.selectedCarBrand !== '' &&
     ProposalStore.selectedCarName !== '';
-  // isActive == true;
 
   const getData = () => {
     axios.get(`${SERVER_URI}/car`).then((res) => {
       const data = res.data.data;
       console.log(data);
-      setselectedCompany(data);
+      setInitialData(data);
     });
   };
 
@@ -43,39 +44,39 @@ const Proposal = ({}) => {
   };
 
   useEffect(() => {
-    if (selectedCompany.length === 0) {
+    if (initialData.length === 0) {
       getData();
     }
-  }, [selectedCompany]);
+  }, [initialData]);
 
-  const CompanyList = selectedCompany.map((list) => {
-    const active = ProposalStore.selectedCarBrand == list.brand;
+  const CompanyList = initialData.map((list) => {
+    // const active = ProposalStore.selectedCarBrand == list.brand;
+
+    console.log(list);
     return (
       <CompanyItem
         name={list.brand}
         id={list.id}
         onClick={() => {
+          console.log(list.brand);
           getSelectedCar(list.brand);
-          ProposalStore.setSelectedCarBrand(list.brand);
+          setselectedCompany(list.brand);
         }}
         key={list.id}
-        active={active && active}
+        active={active}
       />
     );
   });
 
   const CarList = selectedCar.map((list) => {
-    const active = ProposalStore.selectedCarName == list.model;
+    // const active = ProposalStore.selectedCarName == list.model;
     return (
       <CarItem
         name={list.model}
         id={list.id}
         onClick={() => {
           console.log(list);
-          ProposalStore.setSelectedCarName(list.model);
-          // 위 코드 이후 렌더가 되지않는 이유 분석하기
-          setIsActive(!isActive);
-          console.log(isActive);
+          setselectedCompany(list.model);
         }}
         key={list.id}
         active={active}
@@ -113,6 +114,6 @@ const Proposal = ({}) => {
       </div>
     </div>
   ));
-};
+}
 
-export default Proposal;
+export default withRouter(Proposal);

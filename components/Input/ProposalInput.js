@@ -24,6 +24,7 @@ const ProposalInput = ({
   formValidation,
   onKeyPress,
   isSubmit,
+  onCompanyHandler,
 }) => {
   const [choiceProps, setChoiceProps] = useState('');
   useEffect(() => {
@@ -37,23 +38,24 @@ const ProposalInput = ({
     <div className={styles.proposal_inputSide}>
       <span
         className={styles.suggestionCompany}
-        onClick={() => {
-          isProposalInput && onClick();
-        }}>
+        // onClick={() => {
+        //   isProposalInput && onClick();
+        // }}
+      >
         <input
           placeholder={placeholder}
           id={id ? id : null}
           type={type ? type : 'text'}
           name={name}
-          onChange={(e) => {
-            choiceProps ? changeChoiceProps(e.target.value) : onChange(e);
-          }}
-          disabled
+          // onChange={(e) => {
+          //   choiceProps ? changeChoiceProps(e.target.value) : onChange(e);
+          // }}
+          // disabled
           onKeyPress={onKeyPress}
-          value={choiceProps ? userSelectedCompany : value}
+          value={value ? value : null}
           formValidation={formValidation}
-          onClick={() => {
-            isProposalInput && onClick();
+          onClick={(e) => {
+            isProposalInput && onClick(e);
           }}
           image={image}
         />

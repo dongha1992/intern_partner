@@ -3,6 +3,8 @@ import { observable, action } from 'mobx';
 class ProposalStore {
   @observable selectedCarBrand = '';
   @observable selectedCarName = '';
+  @observable selectedCarBrand2 = '';
+  @observable selectedCarName2 = '';
 
   constructor() {}
 
@@ -12,11 +14,9 @@ class ProposalStore {
   // @action setSelectedCarName = (e) => {
   //   this[e.target.name] = e.target.value;
   // };
-  @action setSelectedCarBrand = (brand) => {
-    this.selectedCarBrand = brand;
-  };
-  @action setSelectedCarName = (model) => {
-    this.selectedCarName = model;
+  @action setValue = (data) => {
+    this[data.key] = data.value;
+    // this.selectedCarBrand = brand;
   };
 }
 
