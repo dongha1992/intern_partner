@@ -11,8 +11,11 @@ const ChatItem = ({ message, name, date, user }) => {
           <div className={styles.name}>{name}</div>
         </div>
         <div className={styles.messageContainer}>
-          <span className={styles.date}>{date.split(' ')[1]}</span>
-          <span className={styles.message}>{message}</span>
+          <div></div>
+          <div>
+            <span className={styles.date}>{date.split(' ')[1]}</span>
+            <span className={styles.message}>{message}</span>
+          </div>
         </div>
       </div>
     );

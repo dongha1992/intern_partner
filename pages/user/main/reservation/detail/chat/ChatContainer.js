@@ -4,8 +4,9 @@ import ChatList from './ChatList';
 import ChatInput from './ChatInput';
 import { useObserver } from 'mobx-react';
 import io from 'socket.io-client';
+import { CHAT_SERVER } from '../../../../../../config';
 
-const socket = io.connect('http://192.168.219.104:8000');
+const socket = io.connect(`${CHAT_SERVER}`);
 
 const ChatContainer = () => {
   const [room, setRoom] = useState(2);
@@ -31,7 +32,6 @@ const ChatContainer = () => {
     }
     socket.on('connect', function () {
       console.log('socket connected');
-
       socket.emit('join', joinUser, (error) => {
         console.log(joinUser, 'join');
         setIsJoin(true);

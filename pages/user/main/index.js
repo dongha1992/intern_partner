@@ -19,21 +19,6 @@ const message = '알람알람';
 const MyCall = ({ data }) => {
   const [lists, setList] = useState(data);
   const router = useRouter();
-  const CardLists = lists.map((list) => {
-    return (
-      <MainCard
-        name={list.name}
-        id={list.id}
-        onClick={() => {
-          router.push(`/user/main/detail/${list.id}`);
-        }}
-        key={list.id}
-        carType={list.car_type}
-        carNumber={list.car_number}
-        date={list.date}
-      />
-    );
-  });
 
   const toNotificationServer = () => {
     console.log('test for notification');
@@ -43,19 +28,19 @@ const MyCall = ({ data }) => {
     // }
   };
 
-  // const CardLists = lists.map((list) => {
-  // 	return (
-  // 		<MainCard
-  // 			name={list.name}
-  // 			id={list.id}
-  // 			toNotificationServer={toNotificationServer}
-  // 			key={list.id}
-  // 			carType={list.car_type}
-  // 			carNumber={list.car_number}
-  // 			date={list.date}
-  // 		/>
-  // 	);
-  // });
+  const CardLists = lists.map((list) => {
+    return (
+      <MainCard
+        name={list.name}
+        id={list.id}
+        toNotificationServer={toNotificationServer}
+        key={list.id}
+        carType={list.car_type}
+        carNumber={list.car_number}
+        date={list.date}
+      />
+    );
+  });
 
   return useObserver(() => (
     <div className={styles.main_container}>

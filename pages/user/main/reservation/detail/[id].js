@@ -14,7 +14,7 @@ const isReservation = true;
 const ConfirmationDetail = ({ list }) => {
   const router = useRouter();
   const { id } = router.query;
-  console.log(id, 'Ddd');
+
   return (
     <div className={styles.container}>
       <RequestDetailHeader />

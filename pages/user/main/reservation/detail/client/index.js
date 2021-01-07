@@ -4,11 +4,11 @@ import ChatList from '../chat/ChatList';
 import ChatInput from '../chat/ChatInput';
 import Link from 'next/link';
 import { useObserver } from 'mobx-react';
-
+import { CHAT_SERVER } from '../../../../../../config';
 import RequestDetailHeader from '../../../../../../components/Header/RequestDetailHeader';
 import io from 'socket.io-client';
 
-const socket = io.connect('http://192.168.219.104:8000');
+const socket = io.connect(`${CHAT_SERVER}`);
 
 const ChatContainerClient = () => {
   const [room, setRoom] = useState(2);

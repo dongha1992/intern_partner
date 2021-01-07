@@ -47,7 +47,6 @@ const EmployeeList = ({ data }) => {
       />
     );
   });
-  console.log(lists);
 
   return (
     <div className={styles.container}>
@@ -61,6 +60,8 @@ const EmployeeList = ({ data }) => {
   );
 };
 
+export default EmployeeList;
+
 export async function getServerSideProps() {
   const res = await axios.get('http://localhost:5700/api/getEmployeeList');
   const data = res.data;
@@ -71,5 +72,3 @@ export async function getServerSideProps() {
     },
   };
 }
-
-export default EmployeeList;

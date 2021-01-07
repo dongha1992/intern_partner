@@ -61,6 +61,7 @@ const handleInfoChange = (e) => {
   MyInformationUpdateStore.setValue(e);
 };
 
+const value = 'D';
 const MyInfo = () => {
   console.log(MyInformationUpdateStore);
   return useObserver(() => (

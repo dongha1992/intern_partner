@@ -35,6 +35,7 @@ export default function ProposalInfo({
   // 	this.setState({ info: responseData.userInfo });
   // };
   const API = 'http://localhost:5700/api/getRequestInfo';
+
   const goToCancel = () => {
     router.push('/user/main');
   };
@@ -46,41 +47,45 @@ export default function ProposalInfo({
     router.push(`/user/main/dispatcher`);
   };
 
-	return (
-		<Fragment>
-			<RequestInfoHeader
-				proposalInfo={PROPOSAL_INFO}
-				style={{ display: "none" }}
-			/>
-			<DetailList
-				requestList={PROPOSAL_CAR1}
-				responseBrand={info?.car_brand}
-				response={info?.car_type}
-			/>
-			<DetailList requestList={PROPOSAL_CAR2} response={NONE} />
-			<DetailList requestList={PROPOSAL_REQUESTS} response={NONE} />
-			{isReturn ? (
-				""
-			) : isButton ? (
-				<SuggestionAndReturnButton
-					style={{ marginTop: "60px" }}
-					buttonValue={buttonValue}
-					// goToSuggestion={goToSuggestion}
-					goToReturn={goToReturn}
-					isDispatcher={isDispatcher}
-				/>
-			) : (
-				<TwoButton
-					style={{ marginTop: "60px", paddingBottom: "30px" }}
-					leftButtonValue={leftButtonValue}
-					rightButtonValue={rightButtonValue}
-					goToCancel={goToCancel}
-					goToEdit={goToEdit}
-					goToDispatching={goToDispatching}
-					isSuggestion={isSuggestion}
-					isReservation={isReservation}
-				/>
-			)}
-		</Fragment>
-	);
+  const goToReturn = () => {
+    router.push(`/user/main/return`);
+  };
+
+  return (
+    <Fragment>
+      <RequestInfoHeader
+        proposalInfo={PROPOSAL_INFO}
+        style={{ display: 'none' }}
+      />
+      <DetailList
+        requestList={PROPOSAL_CAR1}
+        responseBrand={info?.car_brand}
+        response={info?.car_type}
+      />
+      <DetailList requestList={PROPOSAL_CAR2} response={NONE} />
+      <DetailList requestList={PROPOSAL_REQUESTS} response={NONE} />
+      {isReturn ? (
+        ''
+      ) : isButton ? (
+        <SuggestionAndReturnButton
+          style={{ marginTop: '60px' }}
+          buttonValue={buttonValue}
+          // goToSuggestion={goToSuggestion}
+          goToReturn={goToReturn}
+          isDispatcher={isDispatcher}
+        />
+      ) : (
+        <TwoButton
+          style={{ marginTop: '60px', paddingBottom: '30px' }}
+          leftButtonValue={leftButtonValue}
+          rightButtonValue={rightButtonValue}
+          goToCancel={goToCancel}
+          goToEdit={goToEdit}
+          goToDispatching={goToDispatching}
+          isSuggestion={isSuggestion}
+          isReservation={isReservation}
+        />
+      )}
+    </Fragment>
+  );
 }
