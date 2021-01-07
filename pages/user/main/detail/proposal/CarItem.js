@@ -18,7 +18,8 @@ const CarItem = ({ name, id, onClick, selectedCar1, selectedCar2, cnt }) => {
 			name={name}
 			onClick={onClick}
 			className={
-				(cnt < 3 && selectedCar1 === name) || (cnt > 2 && selectedCar2 === name)
+				(cnt < 3 && selectedCar1.name === name) ||
+				(cnt > 2 && selectedCar2.name === name)
 					? styles.selected_carItem_container
 					: styles.carItem_container
 			}

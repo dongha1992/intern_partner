@@ -26,6 +26,7 @@ import { PROPOSAL_CAR } from "../../../../constants/requestDetail/Proposal";
 import { PROPOSAL } from "../../../../constants/requestDetail/Proposal";
 
 import fetch from "isomorphic-unfetch";
+
 import useStore from "../../../../stores";
 import { useObserver } from "mobx-react";
 import axios from "axios";
@@ -38,23 +39,22 @@ const Detail = ({ list }) => {
 	// const [selectedCompany, setselectedCompany] = useState([]);
 	const [selectedCompany1, setselectedCompany1] = useState([]);
 	const [selectedCompany2, setselectedCompany2] = useState([]);
-	const [selectedCar1, setselectedCar1] = useState("");
-	const [selectedCar2, setselectedCar2] = useState("");
+	const [selectedCar1, setselectedCar1] = useState({ id: null, name: null });
+	const [selectedCar2, setselectedCar2] = useState({ id: null, name: null });
 	const [getCar, setCar] = useState([]);
 	const [modal, openModal] = useState(false);
 	const [detailMain, hideDetailMain] = useState(true);
 	const [restrict, setrestrict] = useState(false);
 	const [restrict2, setrestrict2] = useState(false);
+	console.log(">>>>>", list);
 
 	// const [carActive, setCarActive] = useState(false);
 	// const [brandActive, setBrandActive] = useState(false);
 
 	const [cnt, setcnt] = useState(0);
 
-	const goToSuggestion = () => {
-		router.push("/user/main/suggestion");
-	};
-
+	const { ProposalStore } = useStore();
+	console.log(ProposalStore.id);
 	// const isValid = selectedCompany1 !== '' && selectedCar1 !== '';
 	// const isValid = brandActive == true && carActive == true;
 
@@ -65,7 +65,7 @@ const Detail = ({ list }) => {
 	const getData = () => {
 		axios.get(`${SERVER_URI}/car`).then((res) => {
 			const data = res.data.data;
-			console.log(data);
+			// console.log(data);
 			setInitialData(data);
 		});
 	};
@@ -133,9 +133,15 @@ const Detail = ({ list }) => {
 				name={list.model}
 				id={list.id}
 				onClick={(e) => {
-					console.log(list);
-					setselectedCar1(restrict ? list.model : selectedCar1);
-					setselectedCar2(restrict2 ? list.model : selectedCar2);
+					console.log(list, "list");
+					setselectedCar1({
+						id: restrict ? list.id : selectedCar1.id,
+						name: restrict ? list.model : selectedCar1.name,
+					});
+					setselectedCar2({
+						id: restrict ? list.id : selectedCar1.id,
+						name: restrict2 ? list.model : selectedCar2.name,
+					});
 					// setCarActive(!carActive);
 				}}
 				key={list.id}
@@ -145,7 +151,6 @@ const Detail = ({ list }) => {
 			/>
 		);
 	});
-	console.log(restrict, restrict2);
 
 	// Modal
 	function Modal() {
@@ -185,7 +190,30 @@ const Detail = ({ list }) => {
 		);
 	}
 
-	return (
+	const goToSuggestion = () => {
+		const token = localStorage.getItem("token");
+		const data = {
+			first_car_id: selectedCar1.id,
+			second_car_id: selectedCar2.id,
+			request_id: ProposalStore.id,
+			additional_info: "",
+		};
+		axios
+			.post(`${SERVER_URI}/suggestion`, data, {
+				headers: { Authorization: token },
+			})
+			.then((res) => {
+				console.log(res);
+				if (res.status === 200) {
+					router.push("/user/main/suggestion");
+				}
+			})
+			.catch((err) => console.log(err));
+	};
+
+	console.log(selectedCar1.id, "first");
+
+	return useObserver(() => (
 		<>
 			<div
 				className={styles.container}
@@ -217,7 +245,7 @@ const Detail = ({ list }) => {
 					/>
 					<ProposalInput
 						placeholder={PROPOSAL_CAR1}
-						value={selectedCar1}
+						value={selectedCar1.name}
 						isProposalInput={true}
 						id="1"
 					/>
@@ -235,7 +263,7 @@ const Detail = ({ list }) => {
 					/>
 					<ProposalInput
 						placeholder={PROPOSAL_CAR2}
-						value={selectedCar2}
+						value={selectedCar2.name}
 						isProposalInput={true}
 						id="3"
 					/>
@@ -250,12 +278,12 @@ const Detail = ({ list }) => {
 			</div>
 			{modal === true ? <Modal /> : null}
 		</>
-	);
+	));
 };
 
 export async function getServerSideProps() {
-	const res = await axios("http://localhost:5700/api/getRequestInfo");
-	const list = await res.data;
+	const res = await axios.get(`${SERVER_URI}/request/1`);
+	const list = await res.data.request;
 
 	return {
 		props: { list },

@@ -16,35 +16,41 @@ import {
 } from "../../constants/requestDetail/RequestInfo";
 const API = "http://localhost:5700/api/getRequestInfo";
 
-export default function RequestInfo({ list }) {
+export default function RequestInfo({ list, isSuggestion }) {
+	console.log("request", list);
+
 	const router = useRouter();
-	const { id } = router?.query;
-	const info = list?.find((el) => {
-		return el.id == id;
-	});
+	const { id } = router.query;
+
+	// const info = list.find((el) => {
+	// 	return el.id == id;
+	// });
 
 	return (
 		<Fragment>
 			<RequestInfoHeader
-				requestNumber={info?.id}
+				requestNumber={list.id}
 				requestInfo={REQUEST_INFO}
 				requestNumberText={REQUEST_NUMBER_TEXT}
 			/>
 			<DetailList
 				requestList={USER_CAR_TYPE}
-				responseBrand={info?.car_brand}
-				response={info?.car_type}
+				responseBrand={list.car.brand}
+				response={list.car.model}
 			/>
-			<DetailList requestList={USER_CAR_NUMBER} response={info?.car_number} />
+			<DetailList requestList={USER_CAR_NUMBER} response={list.car_number} />
 			<DetailList
 				requestList={USER_PHONE_NUMBER}
-				response={info?.phone_number}
+				response={list.phone_number}
 			/>
-			<DetailList requestList={USER_LOCATION} response={info?.location} />
-			<DetailList requestList={REQUEST_DATE} response={info?.date} />
+			<DetailList
+				requestList={USER_LOCATION}
+				response={list.city + " " + list.state}
+			/>
+			<DetailList requestList={REQUEST_DATE} response={list.created_at} />
 			<DetailList
 				requestList={ADDITIONAL_REQUESTS}
-				response={info?.description}
+				response={list.additional_info ? list.additional_info : "-"}
 			/>
 			<div style={{ marginBottom: "35px" }} />
 			<div className={styles.rectangle} />

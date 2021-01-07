@@ -24,9 +24,10 @@ export default function ProposalInfo({
 }) {
 	const router = useRouter();
 	const { id } = router?.query;
-	const info = list?.find((el) => {
-		return el.id == id;
-	});
+
+	// const info = list?.find((el) => {
+	// 	return el.id == id;
+	// });
 
 	// submit = async () => {
 	// 	const data = { name: this.state.name };
@@ -50,7 +51,7 @@ export default function ProposalInfo({
 	const goToReturn = () => {
 		router.push(`/user/main/return`);
 	};
-
+	console.log(list, "proposal");
 	return (
 		<Fragment>
 			<RequestInfoHeader
@@ -59,11 +60,17 @@ export default function ProposalInfo({
 			/>
 			<DetailList
 				requestList={PROPOSAL_CAR1}
-				responseBrand={info?.car_brand}
-				response={info?.car_type}
+				responseBrand={list.first_car.brand}
+				response={list.first_car.model}
 			/>
-			<DetailList requestList={PROPOSAL_CAR2} response={NONE} />
-			<DetailList requestList={PROPOSAL_REQUESTS} response={NONE} />
+			<DetailList
+				requestList={PROPOSAL_CAR2}
+				response={list.second_car.model ? list.second_car.model : ""}
+			/>
+			<DetailList
+				requestList={PROPOSAL_REQUESTS}
+				response={list.additional_info ? list.additional_info : ""}
+			/>
 			{isReturn ? (
 				""
 			) : isButton ? (

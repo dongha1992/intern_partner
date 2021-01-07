@@ -1,23 +1,18 @@
-import { observable, action } from 'mobx';
+import { observable, action } from "mobx";
 
 class ProposalStore {
-  @observable selectedCarBrand = '';
-  @observable selectedCarName = '';
-  @observable selectedCarBrand2 = '';
-  @observable selectedCarName2 = '';
+	@observable id = "";
 
-  constructor() {}
+	constructor() {}
 
-  // @action setSelectedCarBrand = (e) => {
-  //   this[e.target.name] = e.target.value;
-  // };
-  // @action setSelectedCarName = (e) => {
-  //   this[e.target.name] = e.target.value;
-  // };
-  @action setValue = (data) => {
-    this[data.key] = data.value;
-    // this.selectedCarBrand = brand;
-  };
+	@action setValue = (id) => {
+		this.id = id;
+		this.suggestionId = id;
+	};
+
+	@action setSuggestionValue = (id) => {
+		this.suggestionId = id;
+	};
 }
 
 export default ProposalStore;

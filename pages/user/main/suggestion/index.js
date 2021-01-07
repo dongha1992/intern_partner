@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { MainHeader } from "../../../../components/Header";
 import MainTab from "../../../../components/MainTab";
@@ -8,26 +8,42 @@ import useStore from "../../../../stores";
 import { useObserver } from "mobx-react";
 import styles from "../MainPage.scss";
 import axios from "axios";
+import { SERVER_URI } from "../../../../config";
+import { observable } from "mobx";
 
-const { MainFooterActiveStore } = useStore();
+const { MainFooterActiveStore, ProposalStore } = useStore();
 
-const Suggestion = ({ data }) => {
-	const [lists, setList] = useState(data);
+const Suggestion = () => {
+	const [lists, setList] = useState([]);
 	const router = useRouter();
+	// console.log(lists);
+	useEffect(() => {
+		const token = localStorage.getItem("token");
+		axios
+			.get(`${SERVER_URI}/suggestion?status=0`, {
+				headers: { Authorization: token },
+			})
+			.then((res) => {
+				setList(res.data.data);
+			});
+	}, []);
+	console.log(lists);
 
 	const CardLists = lists.map((list) => {
+		console.log(list);
 		return (
 			<MainCard
 				name={list.name}
 				id={list.id}
+				suggestions_count={list.suggestions_count}
 				onClick={() => {
 					// console.log(id);
-					router.push(`/user/main/suggestion/detail/${list.id}`);
+					router.push(`/user/main/suggestion/detail/${list.suggestion_id}`);
 				}}
 				key={list.id}
-				carType={list.car_type}
+				carType={list.cars_model}
 				carNumber={list.car_number}
-				date={list.date}
+				date={list.created_at}
 			/>
 		);
 	});
@@ -43,15 +59,15 @@ const Suggestion = ({ data }) => {
 	));
 };
 
-export async function getServerSideProps() {
-	const res = await axios.get("http://localhost:5700/api/getRequestInfo");
-	const data = res.data;
+// export async function getServerSideProps() {
+// 	const res = await axios.get(`${SERVER_URI}/suggestions`);
+// 	const data = res.data;
 
-	return {
-		props: {
-			data,
-		},
-	};
-}
+// 	return {
+// 		props: {
+// 			data,
+// 		},
+// 	};
+// }
 
 export default Suggestion;

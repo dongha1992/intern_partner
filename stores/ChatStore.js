@@ -1,22 +1,13 @@
-import { observable, action } from 'mobx';
+import { observable, action } from "mobx";
 
-const ChatStore = observable({
-  userInput: '',
-  chatList: [],
-  socketId: null,
+class ChatStore {
+	@observable name = null;
 
-  getSocketId(id) {
-    this.socketId = id;
-  },
+	constructor() {}
 
-  changeUserInput(value) {
-    this.userInput = value;
-  },
-
-  setChat(text) {
-    const addChatItem = { text };
-    this.chatList = { ...this.chatList, addChatItem };
-  },
-});
+	@action setValue = (name) => {
+		this.name = name;
+	};
+}
 
 export default ChatStore;
