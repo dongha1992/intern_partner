@@ -20,7 +20,7 @@ const SuggestionDetail = () => {
 	const [request, setrequest] = useState([]);
 	const [proposal, setproposal] = useState([]);
 
-	console.log(id);
+	console.log(router);
 	useEffect(() => {
 		axios.get(`${SERVER_URI}/suggestion/${id}`).then((res) => {
 			setproposal({ ...res.data.suggestion });
@@ -28,18 +28,21 @@ const SuggestionDetail = () => {
 		});
 	}, []);
 
-	console.log(request, "Dd");
+	// console.log(request, "request");
+	// console.log(proposal, "proposal");
 
 	return (
 		<div className={styles.container}>
 			<RequestDetailHeader requestDetail={"요청상세"} />
-			<RequestInfo list={request && request} isSuggestion={isSuggestion} />
-			<ProposalInfo
-				isSuggestion={isSuggestion}
-				leftButtonValue={SUGGESTION_CANCEL}
-				rightButtonValue={SUGGESTION_EDIT}
-				list={proposal && proposal}
-			/>
+			{<RequestInfo list={request && request} isSuggestion={isSuggestion} />}
+			{
+				<ProposalInfo
+					isSuggestion={isSuggestion}
+					leftButtonValue={SUGGESTION_CANCEL}
+					rightButtonValue={SUGGESTION_EDIT}
+					list={proposal && proposal}
+				/>
+			}
 		</div>
 	);
 };

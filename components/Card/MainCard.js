@@ -12,6 +12,7 @@ const MainCard = ({
 	carType,
 	carNumber,
 	date,
+	suggestion_id,
 }) => {
 	const router = useRouter();
 	const { ProposalStore } = useStore();
@@ -23,10 +24,17 @@ const MainCard = ({
 				onClick(id);
 			}}
 		>
-			<div className={styles.suggestion_container}>
-				<div className={styles.suggestion}>제안</div>
-				<div className={styles.count}>{suggestions_count}</div>
-			</div>
+			{suggestion_id ? (
+				""
+			) : (
+				<div className={styles.suggestion_container}>
+					<div className={styles.suggestion}>제안</div>
+					<div className={styles.count}>
+						{}
+						{suggestions_count}
+					</div>
+				</div>
+			)}
 			<div>
 				<div className={styles.company_suggestion}>공업사 요청</div>
 				<div className={styles.main_card_row}>

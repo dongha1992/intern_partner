@@ -17,7 +17,7 @@ import {
 const API = "http://localhost:5700/api/getRequestInfo";
 
 export default function RequestInfo({ list, isSuggestion }) {
-	console.log("request", list);
+	console.log("request", list ? list : "");
 
 	const router = useRouter();
 	const { id } = router.query;
@@ -35,22 +35,22 @@ export default function RequestInfo({ list, isSuggestion }) {
 			/>
 			<DetailList
 				requestList={USER_CAR_TYPE}
-				responseBrand={list.car.brand}
-				response={list.car.model}
+				responseBrand={list.car?.brand}
+				response={list.car?.model}
 			/>
-			<DetailList requestList={USER_CAR_NUMBER} response={list.car_number} />
+			<DetailList requestList={USER_CAR_NUMBER} response={list?.car_number} />
 			<DetailList
 				requestList={USER_PHONE_NUMBER}
-				response={list.phone_number}
+				response={list?.phone_number}
 			/>
 			<DetailList
 				requestList={USER_LOCATION}
-				response={list.city + " " + list.state}
+				response={list?.city + " " + list?.state}
 			/>
-			<DetailList requestList={REQUEST_DATE} response={list.created_at} />
+			<DetailList requestList={REQUEST_DATE} response={list?.created_at} />
 			<DetailList
 				requestList={ADDITIONAL_REQUESTS}
-				response={list.additional_info ? list.additional_info : "-"}
+				response={list?.additional_info ? list?.additional_info : "-"}
 			/>
 			<div style={{ marginBottom: "35px" }} />
 			<div className={styles.rectangle} />

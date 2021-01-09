@@ -46,7 +46,7 @@ const Detail = ({ list }) => {
 	const [detailMain, hideDetailMain] = useState(true);
 	const [restrict, setrestrict] = useState(false);
 	const [restrict2, setrestrict2] = useState(false);
-	console.log(">>>>>", list);
+	// console.log(">>>>>", list);
 
 	// const [carActive, setCarActive] = useState(false);
 	// const [brandActive, setBrandActive] = useState(false);
@@ -205,7 +205,7 @@ const Detail = ({ list }) => {
 			.then((res) => {
 				console.log(res);
 				if (res.status === 200) {
-					router.push("/user/main/suggestion");
+					router.push("/user/main");
 				}
 			})
 			.catch((err) => console.log(err));

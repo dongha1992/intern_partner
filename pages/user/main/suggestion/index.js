@@ -38,7 +38,7 @@ const Suggestion = () => {
 				suggestions_count={list.suggestions_count}
 				onClick={() => {
 					// console.log(id);
-					router.push(`/user/main/suggestion/detail/${list.suggestion_id}`);
+					router.push(`/user/main/suggestion/detail/${list.id}`);
 				}}
 				key={list.id}
 				carType={list.cars_model}

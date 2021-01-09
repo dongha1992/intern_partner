@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import RequestDetailHeader from "../../../../../components/Header/RequestDetailHeader";
 import RequestInfo from "../../../../../components/RequestDetail/RequestInfo";
 import ProposalInfo from "../../../../../components/RequestDetail/ProposalInfo";
@@ -8,12 +9,23 @@ import {
 	DISPATCH_CANCEL,
 	DISPATCH_COMPLETE,
 } from "../../../../../constants/requestDetail/ProposalInfo";
+import { SERVER_URI } from "../../../../../config";
 import axios from "axios";
 
 const isReservation = true;
 const ConfirmationDetail = ({ list }) => {
 	const router = useRouter();
 	const { id } = router.query;
+	const [request, setRequest] = useState([]);
+	const [proposal, setProposal] = useState([]);
+
+	useEffect(() => {
+		axios.get(`${SERVER_URI}/suggestion/${id}`).then((res) => {
+			console.log(res);
+			setProposal({ ...res.data.suggestion });
+			setRequest({ ...res.data.suggestion.request });
+		});
+	}, []);
 
 	return (
 		<div className={styles.container}>
@@ -31,25 +43,25 @@ const ConfirmationDetail = ({ list }) => {
 					<a>채팅</a>
 				</Link>
 			</div>
-			<RequestInfo list={list} />
+			<RequestInfo list={request && request} />
 			<ProposalInfo
 				isReservation={isReservation}
 				leftButtonValue={DISPATCH_CANCEL}
 				rightButtonValue={DISPATCH_COMPLETE}
-				list={list}
+				list={proposal && proposal}
 			/>
 		</div>
 	);
 };
 
-export async function getServerSideProps() {
-	const res = await axios("http://localhost:5700/api/getRequestInfo");
-	const list = await res.data;
-	console.log(list, "difjsdoifjwoj");
-	return {
-		props: { list },
-	};
-}
+// export async function getServerSideProps() {
+// 	const res = await axios("http://localhost:5700/api/getRequestInfo");
+// 	const list = await res.data;
+// 	console.log(list, "difjsdoifjwoj");
+// 	return {
+// 		props: { list },
+// 	};
+// }
 
 export default ConfirmationDetail;
 

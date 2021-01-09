@@ -60,16 +60,16 @@ export default function ProposalInfo({
 			/>
 			<DetailList
 				requestList={PROPOSAL_CAR1}
-				responseBrand={list.first_car.brand}
-				response={list.first_car.model}
+				responseBrand={list.first_car?.brand}
+				response={list.first_car?.model}
 			/>
 			<DetailList
 				requestList={PROPOSAL_CAR2}
-				response={list.second_car.model ? list.second_car.model : ""}
+				response={list.second_car?.model ? list.second_car?.model : ""}
 			/>
 			<DetailList
 				requestList={PROPOSAL_REQUESTS}
-				response={list.additional_info ? list.additional_info : ""}
+				response={list?.additional_info ? list?.additional_info : ""}
 			/>
 			{isReturn ? (
 				""
