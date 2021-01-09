@@ -5,14 +5,41 @@ import ProposalInfo from '../../../../../components/RequestDetail/ProposalInfo';
 import Link from 'next/link';
 import styles from './DispatcherDetail.scss';
 import { useRouter } from 'next/router';
+import useStore from '../../../../../stores';
 import { RETURN_COMPLETE } from '../../../../../constants/requestDetail/ProposalInfo';
+import { SERVER_URI } from '../../../../../config';
+import cookieCutter from 'cookie-cutter';
 import axios from 'axios';
+import { useObserver } from 'mobx-react';
 
-const DispatcherDetail = ({ list }) => {
+const DispatcherDetail = ({ proposal, request }) => {
   const isButton = true;
   const router = useRouter();
   const { id } = router.query;
-  return (
+  const { MainTabActiveStore } = useStore();
+
+  const goToReturn = () => {
+    //반납 완료도 request id를 사용해야 한다.
+    const id = request.id;
+    const token = cookieCutter.get('token');
+    const data = {
+      status: 3,
+    };
+    axios
+      .patch(`${SERVER_URI}/request/${id}`, data, {
+        headers: { Authorization: token },
+      })
+      .then((res) => {
+        console.log(res, 'res');
+        if (res.status === 200) {
+          router.push(`/user/main/return`);
+          MainTabActiveStore.setId(5);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+  return useObserver(() => (
     <div className={styles.container}>
       <RequestDetailHeader />
       <div className={styles.menuTab}>
@@ -27,25 +54,27 @@ const DispatcherDetail = ({ list }) => {
           <a>채팅</a>
         </Link>
       </div>
-      <RequestInfo list={list} />
+      <RequestInfo list={request && request} />
       <ProposalInfo
-        // isReturn={true}
         isButton={isButton}
         buttonValue={RETURN_COMPLETE}
-        list={list}
-        goToReturn={true}
         isDispatcher={true}
+        goToReturn={goToReturn}
+        list={proposal && proposal}
       />
     </div>
-  );
+  ));
 };
 
-export async function getServerSideProps() {
-  const res = await axios('http://localhost:5700/api/getRequestInfo');
+export async function getServerSideProps(context) {
+  const { id } = context.query;
+  const res = await axios.get(`${SERVER_URI}/suggestion/${id}`);
   const list = await res.data;
-  console.log(list, 'difjsdoifjwoj');
+  const proposal = { ...list.suggestion };
+  const request = { ...list.suggestion.request };
+
   return {
-    props: { list },
+    props: { proposal, request },
   };
 }
 

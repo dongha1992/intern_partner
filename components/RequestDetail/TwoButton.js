@@ -19,7 +19,7 @@ export default function TwoButton({
         value={leftButtonValue}
         className={styles.left_button}
         onClick={() => {
-          router.back();
+          goToCancel();
         }}
       />
       <input

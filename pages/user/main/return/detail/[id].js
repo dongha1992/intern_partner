@@ -10,8 +10,9 @@ import {
   DISPATCH_COMPLETE,
 } from '../../../../../constants/requestDetail/ProposalInfo';
 import axios from 'axios';
+import { SERVER_URI } from '../../../../../config';
 
-const ReturnDetail = ({ list }) => {
+const ReturnDetail = ({ proposal, request }) => {
   const router = useRouter();
   const { id } = router.query;
   return (
@@ -29,24 +30,27 @@ const ReturnDetail = ({ list }) => {
           <a>채팅</a>
         </Link>
       </div>
-      <RequestInfo list={list} />
+      <RequestInfo list={request} />
       <ProposalInfo
         isReturn={true}
         leftButtonValue={DISPATCH_CANCEL}
         rightButtonValue={DISPATCH_COMPLETE}
-        list={list}
+        list={proposal}
       />
       <div style={{ marginTop: '80px' }} />
     </div>
   );
 };
 
-export async function getServerSideProps() {
-  const res = await axios('http://localhost:5700/api/getRequestInfo');
+export async function getServerSideProps(context) {
+  const { id } = context.query;
+  const res = await axios.get(`${SERVER_URI}/suggestion/${id}`);
   const list = await res.data;
-  console.log(list, 'difjsdoifjwoj');
+  const proposal = { ...list.suggestion };
+  const request = { ...list.suggestion.request };
+
   return {
-    props: { list },
+    props: { proposal, request },
   };
 }
 

@@ -1,18 +1,20 @@
-import { observable, action } from "mobx";
+import { observable, action } from 'mobx';
 
 class ProposalStore {
-	@observable id = "";
+  @observable id = '';
+  @observable sugesstionId = '';
 
-	constructor() {}
+  constructor(root) {
+    this.root = root;
+  }
 
-	@action setValue = (id) => {
-		this.id = id;
-		this.suggestionId = id;
-	};
+  @action setValue = (id) => {
+    this.id = id;
+  };
 
-	@action setSuggestionValue = (id) => {
-		this.suggestionId = id;
-	};
+  @action setSuggestionValue = (id) => {
+    this.suggestionId = id;
+  };
 }
 
 export default ProposalStore;
