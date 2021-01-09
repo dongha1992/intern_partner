@@ -37,7 +37,6 @@ const Detail = ({ list }) => {
   const router = useRouter();
 
   const [initialData, setInitialData] = useState([]);
-  // const [selectedCompany, setselectedCompany] = useState([]);
   const [selectedCompany1, setselectedCompany1] = useState('');
   const [selectedCompany2, setselectedCompany2] = useState('');
   const [selectedCar1, setselectedCar1] = useState({ id: null, name: null });
@@ -47,17 +46,14 @@ const Detail = ({ list }) => {
   const [detailMain, hideDetailMain] = useState(true);
   const [restrict, setrestrict] = useState(false);
   const [restrict2, setrestrict2] = useState(false);
-  // console.log(">>>>>", list);
-
-  // const [carActive, setCarActive] = useState(false);
-  // const [brandActive, setBrandActive] = useState(false);
+  const [requestText, changeRequestText] = useState('');
 
   const [cnt, setcnt] = useState(0);
 
-  const { ProposalStore, MainTabActiveStore } = useStore();
+  const { MainTabActiveStore, ProposalStore } = useStore();
 
-  // const isValid = selectedCompany1 !== '' && selectedCar1 !== '';
-  // const isValid = brandActive == true && carActive == true;
+  const { first_car } = ProposalStore.initalProposal;
+  const { second_car } = ProposalStore.initalProposal;
 
   const isValid = cnt < 3 && selectedCar1 ? true : false;
   const isValid2 = cnt > 3 && selectedCar2 ? true : false;
@@ -66,7 +62,6 @@ const Detail = ({ list }) => {
   const getData = () => {
     axios.get(`${SERVER_URL}/car`).then((res) => {
       const data = res.data.data;
-      // console.log(data);
       setInitialData(data);
     });
   };
@@ -74,7 +69,6 @@ const Detail = ({ list }) => {
   const getSelectedCar = (brand) => {
     axios.get(`${SERVER_URL}/car?brand=${brand}`).then((res) => {
       const { data } = res.data;
-      console.log(data);
       setCar(data);
     });
   };
@@ -97,18 +91,17 @@ const Detail = ({ list }) => {
     setcnt(cnt + 1);
   };
 
-  console.log(cnt, 'cnt');
+  const removeCheckedValue = () => {
+    ProposalStore.setInitalProposal('');
+  };
 
   const CompanyList = initialData.map((list, idx) => {
-    // const active =
-    //   selectedCompany1 == list.brand || selectedCompany2 == list.brand;
-
     return (
       <CompanyItem
         name={list.brand}
         id={list.id}
         onClick={(e) => {
-          console.log(list.brand);
+          // console.log(list.brand);
           getSelectedCar(list.brand);
           onCompanyHandler(e);
           setselectedCompany1(restrict ? list.brand : selectedCompany1);
@@ -116,7 +109,7 @@ const Detail = ({ list }) => {
           if (cnt == 3) {
             setrestrict(false);
           }
-          // setBrandActive(!brandActive);
+          removeCheckedValue();
         }}
         key={list.id}
         selectedCompany1={selectedCompany1}
@@ -127,8 +120,6 @@ const Detail = ({ list }) => {
   });
 
   const CarList = getCar.map((list) => {
-    // const active = selectedCar1 == list.model || selectedCar2 == list.model;
-
     return (
       <CarItem
         name={list.model}
@@ -139,11 +130,11 @@ const Detail = ({ list }) => {
             id: restrict ? list.id : selectedCar1.id,
             name: restrict ? list.model : selectedCar1.name,
           });
+
           setselectedCar2({
-            id: restrict ? list.id : selectedCar1.id,
+            id: restrict2 ? list.id : selectedCar1.id,
             name: restrict2 ? list.model : selectedCar2.name,
           });
-          // setCarActive(!carActive);
         }}
         key={list.id}
         selectedCar1={selectedCar1}
@@ -180,7 +171,6 @@ const Detail = ({ list }) => {
               : styles.proposal_footer
           }
           onClick={() => {
-            // router.back();
             openModal(!modal);
             hideDetailMain(!detailMain);
           }}>
@@ -189,37 +179,45 @@ const Detail = ({ list }) => {
       </div>
     );
   }
-
-  const goToSuggestion = () => {
+  console.log(selectedCar1.id, selectedCar2.id);
+  const goToSuggestion = (onchange) => {
     const { id } = router.query;
     const token = cookieCutter.get('token');
     const data = {
       first_car_id: selectedCar1.id,
       second_car_id: selectedCar2.id,
       request_id: id,
-      additional_info: '',
+      additional_info: requestText,
     };
-    axios
-      .post(`${SERVER_URL}/suggestion`, data, {
-        headers: { Authorization: token },
-      })
-      .then((res) => {
-        console.log(res);
-        if (res.status === 200) {
-          router.push('/user/main/suggestion');
-          MainTabActiveStore.setId(2);
-        }
-      })
-      .catch((err) => console.log(err));
-  };
 
-  console.log(
-    selectedCar1,
-    selectedCar2,
-    selectedCompany1,
-    selectedCompany2,
-    'selected'
-  );
+    // 업데이트 후의 버튼인지 구분해주는 조건문
+    if (ProposalStore.isEdit) {
+      axios
+        .patch(`${SERVER_URI}/suggestion/${ProposalStore.suggestionId}`, data, {
+          headers: { Authorization: token },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            router.push('/user/main/suggestion');
+            MainTabActiveStore.setId(2);
+            ProposalStore.setIsEdit(false);
+          }
+        })
+        .catch((err) => console.log(err));
+    } else {
+      axios
+        .post(`${SERVER_URI}/suggestion`, data, {
+          headers: { Authorization: token },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            router.push('/user/main/suggestion');
+            MainTabActiveStore.setId(2);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  };
 
   return useObserver(() => (
     <>
@@ -240,11 +238,12 @@ const Detail = ({ list }) => {
         <div className={styles.proposal_container}>
           <ProposalInput
             placeholder={PLACEHOLDER_CAR_BRAND_E}
-            value={selectedCompany1}
+            value={first_car?.brand ? first_car?.brand : selectedCompany1}
             onClick={(e) => {
               openModal(true);
               hideDetailMain(false);
               onCompanyHandler(e);
+              removeCheckedValue(e);
             }}
             isProposalInput={true}
             image={true}
@@ -252,17 +251,18 @@ const Detail = ({ list }) => {
           />
           <ProposalInput
             placeholder={PROPOSAL_CAR1}
-            value={selectedCar1.name}
+            value={first_car?.model ? first_car?.model : selectedCar1.name}
             isProposalInput={true}
             id='1'
           />
           <ProposalInput
             placeholder={PLACEHOLDER_CAR_BRAND}
-            value={selectedCompany2}
+            value={second_car?.brand ? second_car?.brand : selectedCompany2}
             onClick={(e) => {
               openModal(true);
               hideDetailMain(false);
               onCompanyHandler(e);
+              removeCheckedValue(e);
             }}
             isProposalInput={true}
             image={true}
@@ -270,12 +270,16 @@ const Detail = ({ list }) => {
           />
           <ProposalInput
             placeholder={PROPOSAL_CAR2}
-            value={selectedCar2.name}
+            value={second_car?.model ? second_car?.model : selectedCar2.name}
             isProposalInput={true}
             id='3'
           />
         </div>
-        <ProposalText />
+        <ProposalText
+          handleChange={(e) => {
+            changeRequestText(e.target.value);
+          }}
+        />
         <Agreement />
         <SuggestionAndReturnButton
           style={{ marginTop: '60px' }}

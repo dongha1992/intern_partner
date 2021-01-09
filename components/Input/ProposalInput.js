@@ -36,7 +36,7 @@ const ProposalInput = ({
   };
   return (
     <div className={styles.proposal_inputSide}>
-      <span
+      <div
         className={styles.suggestionCompany}
         // onClick={() => {
         //   isProposalInput && onClick();
@@ -77,7 +77,7 @@ const ProposalInput = ({
         ) : (
           ''
         )}
-      </span>
+      </div>
     </div>
   );
 };

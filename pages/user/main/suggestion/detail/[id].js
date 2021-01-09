@@ -14,16 +14,40 @@ import { useObserver } from 'mobx-react';
 import { SERVER_URL } from '../../../../../config';
 
 const isSuggestion = true;
-const { ProposalStore } = useStore();
+const { MainTabActiveStore, ProposalStore } = useStore();
 
 const SuggestionDetail = ({ proposal, request }) => {
   const router = useRouter();
   const { id } = router.query;
 
   const goToCancel = () => {
-    console.log('D');
+    // 페이지가 메인으로 돌아가고
+    router.push(`/user/main/`);
+
+    // 제안중 내 클릭했던 카드가 사라지고
+    axios
+      .delete(`${SERVER_URI}/suggestion/${id}`)
+      .then((res) => {
+        if (res.status === 200) {
+          router.push(`/user/main/`);
+        }
+      })
+      .catch((err) => console.log(err));
+
+    // tab 활성화도 메인으로 돌아간다.
+    MainTabActiveStore.setId(1);
+
+    // console.log(id);
   };
 
+  const goToEdit = () => {
+    router.push(`/user/main/detail/${request.id}`);
+    ProposalStore.setSuggestionId(proposal.id);
+    ProposalStore.setIsEdit(true);
+    ProposalStore.setInitalProposal(proposal);
+  };
+
+  console.log(proposal);
   return useObserver(() => (
     <div className={styles.container}>
       <RequestDetailHeader requestDetail={'요청상세'} />
@@ -35,6 +59,7 @@ const SuggestionDetail = ({ proposal, request }) => {
           rightButtonValue={SUGGESTION_EDIT}
           list={proposal && proposal}
           goToCancel={goToCancel}
+          goToEdit={goToEdit}
         />
       }
     </div>

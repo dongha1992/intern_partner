@@ -24,18 +24,13 @@ export default function ProposalInfo({
   goToDispatching,
   goToReturn,
   goToCancel,
+  goToEdit,
 }) {
   const router = useRouter();
   const { id } = router?.query;
-
+  console.log(list.second_car.brand, list.second_car.model);
   const API = 'http://localhost:5700/api/getRequestInfo';
-
-  const goToEdit = () => {
-    router.push(`/user/main/detail/${id}`);
-  };
-
-  console.log(list, 'proposal');
-
+  // console.log(list);
   return (
     <Fragment>
       <RequestInfoHeader
@@ -49,7 +44,9 @@ export default function ProposalInfo({
       />
       <DetailList
         requestList={PROPOSAL_CAR2}
+        responseBrand={list.second_car?.brand}
         response={list.second_car?.model ? list.second_car?.model : ''}
+        // response={list.second_car?.brand ? list.second_car?.model : ''}
       />
       <DetailList
         requestList={PROPOSAL_REQUESTS}
@@ -64,6 +61,7 @@ export default function ProposalInfo({
           // goToSuggestion={goToSuggestion}
           goToReturn={goToReturn}
           isDispatcher={isDispatcher}
+          goToEdit={goToEdit}
         />
       ) : (
         <TwoButton

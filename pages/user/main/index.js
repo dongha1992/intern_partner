@@ -23,15 +23,13 @@ const MyCall = ({ data }) => {
   const [lists, setList] = useState(data);
   const router = useRouter();
 
+  console.log(data);
   const toNotificationServer = () => {
-    console.log('test for notification');
-    // if (message) {
-    //   socket.emit('send_message', message, setMessage(''));
-    //   console.log(message, 'from client');
-    // }
+    // console.log('test for notification');
   };
 
   const goToDetail = (id) => {
+    // ProposalStore.setValue(id);
     router?.push(`/user/main/detail/${id}`);
   };
 
@@ -39,6 +37,7 @@ const MyCall = ({ data }) => {
     console.log(list);
     return (
       <MainCard
+        // request id
         onClick={() => goToDetail(list.id)}
         name={list.name}
         id={list.id}

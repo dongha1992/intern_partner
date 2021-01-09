@@ -10,6 +10,7 @@ import styles from '../MainPage.scss';
 import axios from 'axios';
 import { SERVER_URL } from '../../../../config';
 import { parseCookies } from '../../../../lib/parseCookies';
+import cookie from 'js-cookie';
 
 const { ProposalStore } = useStore();
 
@@ -20,7 +21,7 @@ const Suggestion = ({ data }) => {
   };
 
   const CardLists = data.map((list) => {
-    console.log(list, 'list');
+    // console.log(list, 'list');
     return (
       <MainCard
         name={list.name}

@@ -4,6 +4,7 @@
   flex-direction: column;
   position: relative;
   width: 375px;
+  background-color: #f1f4f6;
   // margin-bottom: 20px;
   .main_headerWrap {
     position: fixed;
@@ -12,7 +13,7 @@
     // left: 0;
   }
   .main_background {
-    height: 100%;
+    // height: 100%;
     background-color: #f1f4f6;
     padding-top: 8px;
     // margin-bottom: 20px;
