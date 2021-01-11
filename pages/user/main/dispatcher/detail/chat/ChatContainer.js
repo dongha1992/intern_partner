@@ -3,9 +3,10 @@ import styles from './ChatContainer.scss';
 import ChatList from './ChatList';
 import ChatInput from './ChatInput';
 import { useObserver } from 'mobx-react';
+import { SERVER_URI } from '../../../../../../config';
 import io from 'socket.io-client';
 
-const socket = io.connect('http://192.168.219.104:8000');
+const socket = io.connect(`${SERVER_URI}`);
 
 const ChatContainer = () => {
   const [room, setRoom] = useState(2);

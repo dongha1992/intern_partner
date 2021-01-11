@@ -1,15 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { MainHeader } from '../../../../components/Header';
 import MainTab from '../../../../components/MainTab';
 import { MainCard } from '../../../../components/Card';
 import { MainFooter } from '../../../../components/Footer';
-import useStore from '../../../../stores';
 import { useRouter } from 'next/router';
 import { useObserver } from 'mobx-react';
 import styles from '../MainPage.scss';
-import axios from 'axios';
-import { SERVER_URI } from '../../../../config';
 import { parseCookies } from '../../../../lib/parseCookies';
+import callApi from '../../../../utils/callApi';
+
+export async function getServerSideProps({ req }) {
+  const cookies = parseCookies(req);
+  const res = await callApi.get('/suggestion?status=3', {
+    headers: { Authorization: cookies.token },
+  });
+  const data = res.data.data;
+
+  return {
+    props: {
+      data,
+    },
+  };
+}
 
 const Return = ({ data }) => {
   const router = useRouter();
@@ -46,19 +58,5 @@ const Return = ({ data }) => {
     </div>
   ));
 };
-
-export async function getServerSideProps({ req }) {
-  const cookies = parseCookies(req);
-  const res = await axios.get(`${SERVER_URI}/suggestion?status=3`, {
-    headers: { Authorization: cookies.token },
-  });
-  const data = res.data.data;
-
-  return {
-    props: {
-      data,
-    },
-  };
-}
 
 export default Return;

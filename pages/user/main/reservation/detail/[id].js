@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import RequestDetailHeader from '../../../../../components/Header/RequestDetailHeader';
 import RequestInfo from '../../../../../components/RequestDetail/RequestInfo';
 import ProposalInfo from '../../../../../components/RequestDetail/ProposalInfo';
@@ -19,6 +19,7 @@ const isReservation = true;
 const ConfirmationDetail = ({ proposal, request }) => {
   const router = useRouter();
   const { MainTabActiveStore } = useStore();
+  const { id } = router.query;
 
   const goToDispatching = () => {
     //배차 완료는 request id를 사용해야 한다.
