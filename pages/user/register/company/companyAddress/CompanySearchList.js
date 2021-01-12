@@ -10,7 +10,7 @@ import {
   ZIP_CODE,
 } from '../../../../../constants/company/CompanyAddressLabel';
 import { SEARCH_COMPANY_PADDING_TOP } from '../../../../../constants/employee/CompanySearchPadding';
-import { SERVER_URI } from '../../../../../config';
+import { SERVER_URL } from '../../../../../config';
 import styles from './companySearch.scss';
 
 const isImage = true;
@@ -40,7 +40,7 @@ class CompanySearchList extends Component {
 
   componentDidMount() {
     axios
-      .get(`${SERVER_URI}/company`)
+      .get(`${SERVER_URL}/company`)
       .then((response) => {
         this.setState({
           result: response.data.data,

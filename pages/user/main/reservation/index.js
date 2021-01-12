@@ -9,12 +9,12 @@ import styles from '../MainPage.scss';
 import { parseCookies } from '../../../../lib/parseCookies';
 import callApi from '../../../../utils/callApi';
 import Error from '../../../../pages/_error';
-import { SERVER_URI } from '../../../../config';
+import { SERVER_URL } from '../../../../config';
 import axios from 'axios';
 
 export async function getServerSideProps({ req, res }) {
   const cookies = parseCookies(req);
-  const result = await axios.get(`${SERVER_URI}/suggestion?status=1`, {
+  const result = await axios.get(`${SERVER_URL}/suggestion?status=1`, {
     headers: { Authorization: cookies.token },
   });
   const data = result.data.data;

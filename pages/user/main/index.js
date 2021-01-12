@@ -9,7 +9,7 @@ import { withRouter, useRouter } from 'next/router';
 import { inject, observer } from 'mobx-react';
 import { useObserver } from 'mobx-react';
 import axios from 'axios';
-import { SERVER_URI } from '../../../config';
+import { SERVER_URL } from '../../../config';
 import { parseCookies } from '../../../lib/parseCookies';
 
 // import io from 'socket.io-client';
@@ -66,7 +66,7 @@ const MyCall = ({ data }) => {
 
 export async function getServerSideProps({ req }) {
   const cookies = parseCookies(req);
-  const res = await axios.get(`${SERVER_URI}/request`, {
+  const res = await axios.get(`${SERVER_URL}/request`, {
     headers: { Authorization: cookies.token },
   });
   const data = await res.data.requests;

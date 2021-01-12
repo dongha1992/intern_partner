@@ -8,7 +8,7 @@ import useStore from '../../../../stores';
 import { useObserver } from 'mobx-react';
 import styles from '../MainPage.scss';
 import axios from 'axios';
-import { SERVER_URI } from '../../../../config';
+import { SERVER_URL } from '../../../../config';
 import { parseCookies } from '../../../../lib/parseCookies';
 
 const { ProposalStore } = useStore();
@@ -50,7 +50,7 @@ const Suggestion = ({ data }) => {
 
 export async function getServerSideProps({ req }) {
   const cookies = parseCookies(req);
-  const res = await axios.get(`${SERVER_URI}/suggestion`, {
+  const res = await axios.get(`${SERVER_URL}/suggestion`, {
     headers: { Authorization: cookies.token },
   });
   const data = await res.data.data;

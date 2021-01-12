@@ -7,7 +7,7 @@ import styles from './DispatcherDetail.scss';
 import { useRouter } from 'next/router';
 import useStore from '../../../../../stores';
 import { RETURN_COMPLETE } from '../../../../../constants/requestDetail/ProposalInfo';
-import { SERVER_URI } from '../../../../../config';
+import { SERVER_URL } from '../../../../../config';
 import cookieCutter from 'cookie-cutter';
 import axios from 'axios';
 import { useObserver } from 'mobx-react';
@@ -26,7 +26,7 @@ const DispatcherDetail = ({ proposal, request }) => {
       status: 3,
     };
     axios
-      .patch(`${SERVER_URI}/request/${id}`, data, {
+      .patch(`${SERVER_URL}/request/${id}`, data, {
         headers: { Authorization: token },
       })
       .then((res) => {
@@ -68,7 +68,7 @@ const DispatcherDetail = ({ proposal, request }) => {
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
-  const res = await axios.get(`${SERVER_URI}/suggestion/${id}`);
+  const res = await axios.get(`${SERVER_URL}/suggestion/${id}`);
   const list = await res.data;
   const proposal = { ...list.suggestion };
   const request = { ...list.suggestion.request };

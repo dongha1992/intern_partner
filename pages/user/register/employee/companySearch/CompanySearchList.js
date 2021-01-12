@@ -5,7 +5,7 @@ import { inject, observer } from 'mobx-react';
 import axios from 'axios';
 import { SEARCH_COMPANY } from '../../../../../constants/employee/CompanySearchLabel';
 import { SEARCH_COMPANY_PADDING_TOP } from '../../../../../constants/employee/CompanySearchPadding';
-import { SERVER_URI } from '../../../../../config';
+import { SERVER_URL } from '../../../../../config';
 
 import styles from './CompanySearch.scss';
 
@@ -36,7 +36,7 @@ class CompanySearchList extends Component {
 
   componentDidMount() {
     axios
-      .get(`${SERVER_URI}/company`)
+      .get(`${SERVER_URL}/company`)
       .then((response) => {
         this.setState({
           result: response.data.data,

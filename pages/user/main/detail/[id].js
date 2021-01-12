@@ -30,15 +30,16 @@ import fetch from 'isomorphic-unfetch';
 import useStore from '../../../../stores';
 import { useObserver } from 'mobx-react';
 import axios from 'axios';
-import { SERVER_URI } from '../../../../config';
+import { SERVER_URL } from '../../../../config';
 
 const Detail = ({ list }) => {
   const isProposal = true;
   const router = useRouter();
+
   const [initialData, setInitialData] = useState([]);
   // const [selectedCompany, setselectedCompany] = useState([]);
-  const [selectedCompany1, setselectedCompany1] = useState([]);
-  const [selectedCompany2, setselectedCompany2] = useState([]);
+  const [selectedCompany1, setselectedCompany1] = useState('');
+  const [selectedCompany2, setselectedCompany2] = useState('');
   const [selectedCar1, setselectedCar1] = useState({ id: null, name: null });
   const [selectedCar2, setselectedCar2] = useState({ id: null, name: null });
   const [getCar, setCar] = useState([]);
@@ -63,7 +64,7 @@ const Detail = ({ list }) => {
   console.log(isValid);
 
   const getData = () => {
-    axios.get(`${SERVER_URI}/car`).then((res) => {
+    axios.get(`${SERVER_URL}/car`).then((res) => {
       const data = res.data.data;
       // console.log(data);
       setInitialData(data);
@@ -71,7 +72,7 @@ const Detail = ({ list }) => {
   };
 
   const getSelectedCar = (brand) => {
-    axios.get(`${SERVER_URI}/car?brand=${brand}`).then((res) => {
+    axios.get(`${SERVER_URL}/car?brand=${brand}`).then((res) => {
       const { data } = res.data;
       console.log(data);
       setCar(data);
@@ -199,7 +200,7 @@ const Detail = ({ list }) => {
       additional_info: '',
     };
     axios
-      .post(`${SERVER_URI}/suggestion`, data, {
+      .post(`${SERVER_URL}/suggestion`, data, {
         headers: { Authorization: token },
       })
       .then((res) => {
@@ -211,6 +212,14 @@ const Detail = ({ list }) => {
       })
       .catch((err) => console.log(err));
   };
+
+  console.log(
+    selectedCar1,
+    selectedCar2,
+    selectedCompany1,
+    selectedCompany2,
+    'selected'
+  );
 
   return useObserver(() => (
     <>
@@ -281,7 +290,7 @@ const Detail = ({ list }) => {
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
-  const res = await axios.get(`${SERVER_URI}/request/${id}`);
+  const res = await axios.get(`${SERVER_URL}/request/${id}`);
   const list = await res.data.request;
 
   return {

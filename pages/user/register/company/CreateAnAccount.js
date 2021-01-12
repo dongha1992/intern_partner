@@ -21,7 +21,7 @@ import {
 } from '../../../../constants/company/FormNameForEvent';
 import { USER_ID_BUTTON } from '../../../../constants/employee/ButtonValue';
 import { TYPE_PASSWORD } from '../../../../constants/employee/InputType';
-import { SERVER_URI } from '../../../../config';
+import { SERVER_URL } from '../../../../config';
 import axios from 'axios';
 
 const isButton = true;
@@ -80,8 +80,12 @@ class CreateAnAccount extends Component {
       },
 
       companyUserPassword: () => {
-        let checkPasswordNumber = form.companyUserPassword.value.search(/[0-9]/g);
-        let checkPasswordLetter = form.companyUserPassword.value.search(/[a-z]/gi);
+        let checkPasswordNumber = form.companyUserPassword.value.search(
+          /[0-9]/g
+        );
+        let checkPasswordLetter = form.companyUserPassword.value.search(
+          /[a-z]/gi
+        );
         let checkPasswordLength = form.companyUserPassword.value.length;
 
         if (checkPasswordNumber > 0 || checkPasswordLetter > 0) {
@@ -111,7 +115,9 @@ class CreateAnAccount extends Component {
       },
 
       companyUserPasswordCheck: () => {
-        if (form.companyUserPasswordCheck.value !== form.companyUserPassword.value) {
+        if (
+          form.companyUserPasswordCheck.value !== form.companyUserPassword.value
+        ) {
           this.setState({
             passwordCheckValid: {
               valid: form.companyUserPasswordCheck.status.error.valid,
@@ -138,9 +144,10 @@ class CreateAnAccount extends Component {
   }
 
   checkIdDuplicate() {
-    const companyUserId = this.props.SignUpCompanyStore.form.companyUserId.value;
+    const companyUserId = this.props.SignUpCompanyStore.form.companyUserId
+      .value;
     axios
-      .get(`${SERVER_URI}/user/check/id/${companyUserId}`)
+      .get(`${SERVER_URL}/user/check/id/${companyUserId}`)
       .then((response) => {
         if (response.status === 200) {
           this.setState({

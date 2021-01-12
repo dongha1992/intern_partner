@@ -5,7 +5,7 @@ import { withRouter, useRouter } from 'next/router';
 import styles from './LoginPage.scss';
 import { USER_ID, USER_PASSWORD } from '../../../constants/login/LoginLabel';
 import { inject, observer } from 'mobx-react';
-import { SERVER_URI } from '../../../config';
+import { SERVER_URL } from '../../../config';
 import cookie from 'js-cookie';
 import axios from 'axios';
 
@@ -36,7 +36,7 @@ class LoginPage extends Component {
     }
 
     axios
-      .post(`${SERVER_URI}/user/login`, {
+      .post(`${SERVER_URL}/user/login`, {
         login_id: idValue,
         password: passwordValue,
       })

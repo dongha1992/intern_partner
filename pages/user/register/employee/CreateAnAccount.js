@@ -21,7 +21,7 @@ import {
 } from '../../../../constants/employee/FormNameForEvent';
 import { USER_ID_BUTTON } from '../../../../constants/employee/ButtonValue';
 import { TYPE_PASSWORD } from '../../../../constants/employee/InputType';
-import { SERVER_URI } from '../../../../config';
+import { SERVER_URL } from '../../../../config';
 import axios from 'axios';
 
 const isButton = true;
@@ -146,7 +146,7 @@ class CreateAnAccount extends Component {
   checkIdDuplicate() {
     const userId = this.props.SignUpEmployeeStore.form.userId.value;
     axios
-      .get(`${SERVER_URI}/user/check/id/${userId}`)
+      .get(`${SERVER_URL}/user/check/id/${userId}`)
       .then((response) => {
         if (response.status === 200) {
           this.setState({

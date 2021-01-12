@@ -10,7 +10,7 @@ import {
   DISPATCH_COMPLETE,
 } from '../../../../../constants/requestDetail/ProposalInfo';
 import axios from 'axios';
-import { SERVER_URI } from '../../../../../config';
+import { SERVER_URL } from '../../../../../config';
 
 const ReturnDetail = ({ proposal, request }) => {
   const router = useRouter();
@@ -44,7 +44,7 @@ const ReturnDetail = ({ proposal, request }) => {
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
-  const res = await axios.get(`${SERVER_URI}/suggestion/${id}`);
+  const res = await axios.get(`${SERVER_URL}/suggestion/${id}`);
   const list = await res.data;
   const proposal = { ...list.suggestion };
   const request = { ...list.suggestion.request };

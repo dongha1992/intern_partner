@@ -5,9 +5,9 @@ import ChatInput from './ChatInput';
 import { useObserver } from 'mobx-react';
 import useStore from '../../../../../../stores';
 import io from 'socket.io-client';
-import { SERVER_URI } from '../../../../../../config';
+import { SERVER_URL } from '../../../../../../config';
 
-const socket = io.connect(`${SERVER_URI}`);
+const socket = io.connect(`${SERVER_URL}`);
 
 const ChatContainer = () => {
   const { ChatStore } = useStore();
@@ -28,12 +28,17 @@ const ChatContainer = () => {
 
   const [messageList, setMessageList] = useState([]);
 
+  const test = {
+    1: 'dongha',
+  };
+
   useEffect(() => {
     if (isJoin) {
       return;
     }
     socket.on('connect', function () {
       console.log('socket connected');
+
       socket.emit('join', joinUser, (error) => {
         console.log(joinUser, 'join');
         setIsJoin(true);

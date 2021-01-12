@@ -11,7 +11,7 @@ import {
 import axios from 'axios';
 import useStore from '../../../../../stores';
 import { useObserver } from 'mobx-react';
-import { SERVER_URI } from '../../../../../config';
+import { SERVER_URL } from '../../../../../config';
 
 const isSuggestion = true;
 const { ProposalStore } = useStore();
@@ -44,7 +44,7 @@ const SuggestionDetail = ({ proposal, request }) => {
 export async function getServerSideProps(context) {
   const { id } = context.query;
   console.log(id);
-  const res = await axios.get(`${SERVER_URI}/suggestion/${id}`);
+  const res = await axios.get(`${SERVER_URL}/suggestion/${id}`);
   const list = await res.data;
   const proposal = { ...list.suggestion };
   const request = { ...list.suggestion.request };
