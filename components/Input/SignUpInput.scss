@@ -1,3 +1,5 @@
+@import '../../styles/globals.scss';
+
 .input_btn_container {
   position: relative;
   width: 100%;
@@ -69,7 +71,7 @@
       letter-spacing: normal;
       text-align: left;
       border-top: 1px solid #ff2929;
-      color: #ff2929;
+      color: $error;
     }
     .successMessage {
       position: absolute;
@@ -86,7 +88,7 @@
       letter-spacing: normal;
       text-align: left;
       border-top: 1px solid #01b856;
-      color: #01b856;
+      color: $success;
     }
 
     .button_wrap {

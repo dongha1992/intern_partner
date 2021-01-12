@@ -32,6 +32,16 @@ import { useObserver } from 'mobx-react';
 import axios from 'axios';
 import { SERVER_URL } from '../../../../config';
 
+export async function getServerSideProps(context) {
+  const { id } = context.query;
+  const res = await axios.get(`${SERVER_URL}/request/${id}`);
+  const list = await res.data.request;
+
+  return {
+    props: { list },
+  };
+}
+
 const Detail = ({ list }) => {
   const isProposal = true;
   const router = useRouter();
@@ -57,7 +67,6 @@ const Detail = ({ list }) => {
 
   const isValid = cnt < 3 && selectedCar1 ? true : false;
   const isValid2 = cnt > 3 && selectedCar2 ? true : false;
-  console.log(isValid);
 
   const getData = () => {
     axios.get(`${SERVER_URL}/car`).then((res) => {
@@ -95,13 +104,51 @@ const Detail = ({ list }) => {
     ProposalStore.setInitalProposal('');
   };
 
+  const goToSuggestion = (onchange) => {
+    const { id } = router.query;
+    const token = cookieCutter.get('token');
+    const data = {
+      first_car_id: selectedCar1.id,
+      second_car_id: selectedCar2.id,
+      request_id: id,
+      additional_info: requestText,
+    };
+
+    // 업데이트 후의 버튼인지 구분해주는 조건
+    if (ProposalStore.isEdit) {
+      axios
+        .patch(`${SERVER_URL}/suggestion/${ProposalStore.suggestionId}`, data, {
+          headers: { Authorization: token },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            router.push('/user/main/suggestion');
+            MainTabActiveStore.setId(2);
+            ProposalStore.setIsEdit(false);
+          }
+        })
+        .catch((err) => console.log(err));
+    } else {
+      axios
+        .post(`${SERVER_URL}/suggestion`, data, {
+          headers: { Authorization: token },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            router.push('/user/main/suggestion');
+            MainTabActiveStore.setId(2);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
   const CompanyList = initialData.map((list, idx) => {
     return (
       <CompanyItem
         name={list.brand}
         id={list.id}
         onClick={(e) => {
-          // console.log(list.brand);
           getSelectedCar(list.brand);
           onCompanyHandler(e);
           setselectedCompany1(restrict ? list.brand : selectedCompany1);
@@ -179,45 +226,6 @@ const Detail = ({ list }) => {
       </div>
     );
   }
-  console.log(selectedCar1.id, selectedCar2.id);
-  const goToSuggestion = (onchange) => {
-    const { id } = router.query;
-    const token = cookieCutter.get('token');
-    const data = {
-      first_car_id: selectedCar1.id,
-      second_car_id: selectedCar2.id,
-      request_id: id,
-      additional_info: requestText,
-    };
-
-    // 업데이트 후의 버튼인지 구분해주는 조건문
-    if (ProposalStore.isEdit) {
-      axios
-        .patch(`${SERVER_URL}/suggestion/${ProposalStore.suggestionId}`, data, {
-          headers: { Authorization: token },
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            router.push('/user/main/suggestion');
-            MainTabActiveStore.setId(2);
-            ProposalStore.setIsEdit(false);
-          }
-        })
-        .catch((err) => console.log(err));
-    } else {
-      axios
-        .post(`${SERVER_URL}/suggestion`, data, {
-          headers: { Authorization: token },
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            router.push('/user/main/suggestion');
-            MainTabActiveStore.setId(2);
-          }
-        })
-        .catch((err) => console.log(err));
-    }
-  };
 
   return useObserver(() => (
     <>
@@ -291,15 +299,5 @@ const Detail = ({ list }) => {
     </>
   ));
 };
-
-export async function getServerSideProps(context) {
-  const { id } = context.query;
-  const res = await axios.get(`${SERVER_URL}/request/${id}`);
-  const list = await res.data.request;
-
-  return {
-    props: { list },
-  };
-}
 
 export default Detail;

@@ -1,3 +1,5 @@
+@import '../../../../styles/globals.scss';
+
 .selectStatus_container {
   width: 375px;
   padding: 0;
@@ -14,13 +16,9 @@
   .selectStatus_btn_group {
     .company_button {
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flexCenter();
       span {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flexCenter();
         position: absolute;
         width: 78px;
         height: 27px;
@@ -49,14 +47,10 @@
   }
   .employee_button {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexCenter();
 
     span {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flexCenter();
       position: absolute;
       width: 78px;
       height: 27px;

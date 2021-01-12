@@ -43,7 +43,6 @@ const DispatcherDetail = ({ proposal, request }) => {
         headers: { Authorization: token },
       })
       .then((res) => {
-        console.log(res, 'res');
         if (res.status === 200) {
           router.push(`/user/main/return`);
           MainTabActiveStore.setId(5);

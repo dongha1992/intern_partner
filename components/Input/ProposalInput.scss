@@ -1,10 +1,9 @@
+@import '../../styles/globals.scss';
 .proposal_inputSide {
   display: flex;
   padding: 15px;
   .suggestionCompany {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexCenter();
     border-bottom: 1px solid;
     border-color: rgba($color: #bdbdbd, $alpha: 0.2);
     input {

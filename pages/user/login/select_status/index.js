@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import Link from 'next/link';
-import { withRouter, useRouter } from 'next/router';
+import { withRouter } from 'next/router';
 import styles from './SelectStatus.scss';
 import { SelectStatus_Data } from '../../../../constants/login/SelectStatus';
-import Axios from 'axios';
 
 @withRouter
 class SelectStatus extends Component {
@@ -38,18 +36,24 @@ class SelectStatus extends Component {
         <div className={styles.selectStatus_btn_group}>
           {SelectStatus_Data.map((btn, idx) => {
             return (
-              <div className={styles.company_button}>
-                <span>{btn.name}</span>
+              <div
+                className={styles.company_button}
+                onClick={(e) => {
+                  this.handleCheckButton(e);
+                }}>
+                <span data-id={idx}>{btn.name}</span>
                 {this.state.isChecked == idx ? (
                   <img
                     src='/checked_1349.png'
                     srcSet='/checked_1349.png 2x, /checked_1349.png 3x'
+                    data-id={idx}
                     className={styles.check_img}
                   />
                 ) : (
                   <img
                     src='/1349.png'
                     srcSet='/1349.png 2x, /1349.png 3x'
+                    data-id={idx}
                     className={styles.check_img}
                   />
                 )}
@@ -58,9 +62,6 @@ class SelectStatus extends Component {
                     id={idx}
                     key={idx}
                     data-id={idx}
-                    onClick={(e) => {
-                      this.handleCheckButton(e);
-                    }}
                     name='checkBefore'
                     src='/checked_rectangle.png'
                     srcSet='/checked_rectangle@2x.png 2x, /checked_rectangle@3x.png 3x'
@@ -71,9 +72,6 @@ class SelectStatus extends Component {
                     id={idx}
                     key={idx}
                     data-id={idx}
-                    onClick={(e) => {
-                      this.handleCheckButton(e);
-                    }}
                     name='checkAfter'
                     src='/rectangle1.png'
                     srcSet='/rectangle1@2x.png 2x, /rectangle1@3x.png 3x'

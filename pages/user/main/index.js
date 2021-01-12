@@ -12,9 +12,17 @@ import axios from 'axios';
 import { SERVER_URL } from '../../../config';
 import { parseCookies } from '../../../lib/parseCookies';
 
-// import io from 'socket.io-client';
+export async function getServerSideProps({ req }) {
+  const cookies = parseCookies(req);
+  const res = await axios.get(`${SERVER_URL}/request`, {
+    headers: { Authorization: cookies.token },
+  });
+  const data = await res.data.requests;
 
-// const socket = io.connect('http://18.188.0.125:8000/main');
+  return {
+    props: { data },
+  };
+}
 
 const { MainFooterActiveStore, ProposalStore } = useStore();
 const message = '알람알람';
@@ -23,18 +31,13 @@ const MyCall = ({ data }) => {
   const [lists, setList] = useState(data);
   const router = useRouter();
 
-  console.log(data);
-  const toNotificationServer = () => {
-    // console.log('test for notification');
-  };
+  const toNotificationServer = () => {};
 
   const goToDetail = (id) => {
-    // ProposalStore.setValue(id);
     router?.push(`/user/main/detail/${id}`);
   };
 
   const CardLists = lists.map((list) => {
-    console.log(list);
     return (
       <MainCard
         // request id
@@ -62,17 +65,5 @@ const MyCall = ({ data }) => {
     </div>
   ));
 };
-
-export async function getServerSideProps({ req }) {
-  const cookies = parseCookies(req);
-  const res = await axios.get(`${SERVER_URL}/request`, {
-    headers: { Authorization: cookies.token },
-  });
-  const data = await res.data.requests;
-
-  return {
-    props: { data },
-  };
-}
 
 export default MyCall;

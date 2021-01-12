@@ -1,20 +1,14 @@
-import React, { useState } from 'react';
-// import styles from './CompanyItem.scss';
+import React from 'react';
 import styles from '../Detail.scss';
-import { withRouter, useRouter } from 'next/router';
 
 const CompanyItem = ({
   name,
   id,
   onClick,
-  active,
   selectedCompany1,
   selectedCompany2,
   cnt,
 }) => {
-  const router = useRouter();
-  console.log(active);
-  // console.log(active, 'company');
   return (
     <div
       id={id}
@@ -30,16 +24,5 @@ const CompanyItem = ({
     </div>
   );
 };
-// 이거를 getServerSideProps
-// export async function getServerSideProps() {
-//   const res = await axios.get('http://localhost:5700/api/getCarList');
-//   const data = res.data;
-//   console.log(res, data);
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// }
 
 export default CompanyItem;

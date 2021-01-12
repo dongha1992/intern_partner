@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { LoginInput } from '../../../components/Input';
-import Link from 'next/link';
-import { withRouter, useRouter } from 'next/router';
+import { withRouter } from 'next/router';
 import styles from './LoginPage.scss';
 import { USER_ID, USER_PASSWORD } from '../../../constants/login/LoginLabel';
 import { inject, observer } from 'mobx-react';
@@ -23,11 +22,7 @@ class LoginPage extends Component {
   }
 
   checkValidation = (e) => {
-    // 1. event default
     e.preventDefault();
-
-    // 2. 구조분해 할당
-    // const { id, password } = this.state;
 
     const { idValue, passwordValue } = this.props.LoginStore;
 
@@ -48,7 +43,6 @@ class LoginPage extends Component {
           this.props.router.push('/user/main');
         }
         if (result.error === 403) {
-          alert(result.message);
           alert(result.message);
         } else if (result.error === 405) {
           alert(result.message);

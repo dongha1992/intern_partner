@@ -1,12 +1,11 @@
+@import '../../styles/globals.scss';
 .container {
   width: 375px;
   height: auto;
   margin: 0;
   padding: 0;
   .errorWrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexCenter();
     .errorMessage {
       font-size: 30px;
     }

@@ -1,16 +1,11 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import styles from './ProposalInput.scss';
 
-// const { ProposalStore } = useStore();
 const ProposalInput = ({
   id,
-  carbrand,
-  suggestionCarName,
   placeholder,
   type,
-  onChange,
   value,
-  padding,
   isButton,
   buttonValue,
   onClick,
@@ -18,13 +13,8 @@ const ProposalInput = ({
   image,
   isProposalInput,
   choiceResult,
-  SelectedCarBrand,
-  SelectedCarName,
-  userInputValidation,
   formValidation,
   onKeyPress,
-  isSubmit,
-  onCompanyHandler,
 }) => {
   const [choiceProps, setChoiceProps] = useState('');
   useEffect(() => {

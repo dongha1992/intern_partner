@@ -1,3 +1,5 @@
+@import '../../../styles/globals.scss';
+
 .login_container {
   padding: 0;
   margin: 0;
@@ -30,9 +32,8 @@
     }
     .logo_IMS {
       width: 79.2px;
-      // width: 500px;
       height: 30px;
-      // padding: 170px 270.8px 467px 25px;
+
       margin: 0px 98.8px 46px 10px;
       object-fit: contain;
     }
@@ -71,24 +72,20 @@
     position: absolute;
     bottom: 83px;
     left: 25px;
-    // margin: 0 15px;
     .loginButton_wrap {
       position: relative;
       .login_Button {
         width: 325px;
         height: 48px;
-        // margin: 98px 10px 14px;
-        // padding: 11px 141px 13px 140px;
         object-fit: contain;
         border-radius: 8px;
-        background-color: #1877f2;
+        background-color: $main;
       }
       .login_Button_text {
         width: 44px;
         height: 24px;
         object-fit: contain;
         font-family: NotoSansCJKkr;
-        // font-size: 16px;
         font-weight: 300;
         font-stretch: normal;
         font-style: normal;
@@ -109,18 +106,15 @@
         width: 325px;
         height: 48px;
         margin-top: 10px;
-        // margin: 98px 10px 14px;
-        // padding: 11px 141px 13px 140px;
+
         object-fit: contain;
         border-radius: 8px;
         background-color: rgba(248, 251, 255, 0.06);
       }
       .signup_Button_text {
-        // width: 44px;
         height: 24px;
         object-fit: contain;
         font-family: NotoSansCJKkr;
-        // font-size: 16px;
         font-weight: 300;
         font-stretch: normal;
         font-style: normal;

@@ -1,3 +1,5 @@
+@import '../../../../styles/globals.scss';
+
 .modalWrap_active {
   position: fixed;
   display: block;
@@ -8,14 +10,13 @@
   background: rgba(0, 0, 0, 0.6);
   .modalMain {
     position: relative;
-    display: flex;
+    @include flex-column();
     width: 270px;
     height: 164px;
     top: 50%;
     margin: 0 auto;
     border-radius: 8px;
     justify-content: center;
-    flex-direction: column;
     background-color: #edeeee;
     .modalContent {
       position: relative;
@@ -44,7 +45,7 @@
       padding: 10px;
       background-color: transparent;
       border: none;
-      color: #1877f2;
+      color: $main;
       cursor: pointer;
     }
   }
@@ -60,14 +61,13 @@
   background: rgba(0, 0, 0, 0.6);
   .modalMain {
     position: relative;
-    display: flex;
+    @include flex-column();
     width: 270px;
     height: 164px;
     top: 50%;
     margin: 0 auto;
     border-radius: 8px;
     justify-content: center;
-    flex-direction: column;
     background-color: #edeeee;
     .modalContent {
       position: relative;
@@ -96,7 +96,7 @@
       padding: 10px;
       background-color: transparent;
       border: none;
-      color: #1877f2;
+      color: $main;
       cursor: pointer;
     }
   }

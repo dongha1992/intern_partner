@@ -1,6 +1,5 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Proposal.scss';
-import useStore from '../../../../../stores';
 import { useRouter } from 'next/router';
 import { useObserver } from 'mobx-react';
 import { SERVER_URL } from '../../../../../config';
@@ -16,21 +15,17 @@ import CarItem from './CarItem';
 
 function Proposal(props) {
   const router = useRouter();
-  // const { ProposalStore } = useStore();
   const [initialData, setInitialData] = useState([]);
   const [selectedCompany, setselectedCompany] = useState([]);
   const [selectedCar, setselectedCar] = useState([]);
-  const [isActive, setIsActive] = useState(false); //의미없음
 
   const isValid =
-    // 수정필요
     ProposalStore.selectedCarBrand !== '' &&
     ProposalStore.selectedCarName !== '';
 
   const getData = () => {
     axios.get(`${SERVER_URL}/car`).then((res) => {
       const data = res.data.data;
-      console.log(data);
       setInitialData(data);
     });
   };
@@ -48,36 +43,28 @@ function Proposal(props) {
   }, [initialData]);
 
   const CompanyList = initialData.map((list) => {
-    // const active = ProposalStore.selectedCarBrand == list.brand;
-
-    console.log(list);
     return (
       <CompanyItem
         name={list.brand}
         id={list.id}
         onClick={() => {
-          console.log(list.brand);
           getSelectedCar(list.brand);
           setselectedCompany(list.brand);
         }}
         key={list.id}
-        active={active}
       />
     );
   });
 
   const CarList = selectedCar.map((list) => {
-    // const active = ProposalStore.selectedCarName == list.model;
     return (
       <CarItem
         name={list.model}
         id={list.id}
         onClick={() => {
-          console.log(list);
           setselectedCompany(list.model);
         }}
         key={list.id}
-        active={active}
       />
     );
   });
