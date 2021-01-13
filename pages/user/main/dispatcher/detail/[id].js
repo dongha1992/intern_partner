@@ -15,7 +15,7 @@ import callApi from '../../../../../utils/callApi';
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
-  const res = await axios.callApi(`${SERVER_URL}/suggestion/${id}`);
+  const res = await callApi.get(`${SERVER_URL}/suggestion/${id}`);
   const list = await res.data;
   const proposal = { ...list.suggestion };
   const request = { ...list.suggestion.request };

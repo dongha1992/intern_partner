@@ -17,7 +17,6 @@ export async function getServerSideProps({ req }) {
     headers: { Authorization: cookies.token },
   });
   const data = result.data.data;
-
   return {
     props: {
       data,
