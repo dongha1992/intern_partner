@@ -9,7 +9,8 @@ import {
   PROPOSAL_HEADER,
   PROPOSAL_FOOTER,
 } from '../../../../../constants/requestDetail/ProposalInfo';
-import axios from 'axios';
+import callApi from '../../../../../utils/callApi';
+// import axios from 'axios';
 import CompanyItem from './CompanyItem';
 import CarItem from './CarItem';
 
@@ -24,7 +25,7 @@ function Proposal(props) {
     ProposalStore.selectedCarName !== '';
 
   const getData = () => {
-    axios.get(`${SERVER_URL}/car`).then((res) => {
+    callApi.get(`${SERVER_URL}/car`).then((res) => {
       const data = res.data.data;
       setInitialData(data);
     });
@@ -74,7 +75,7 @@ function Proposal(props) {
       <div className={styles.proposal_header}>
         <img
           src='/nav-ico-back.png'
-          srcSet='/nav-ico-back@2x.png 2x, /nav-ico-back@3x.png 3x'
+          srcSet='/nav-ico-back@2x.png, /nav-ico-back@3x.png '
           onClick={() => {
             router.back();
           }}

@@ -8,13 +8,14 @@ import useStore from '../../../stores';
 import { withRouter, useRouter } from 'next/router';
 import { inject, observer } from 'mobx-react';
 import { useObserver } from 'mobx-react';
-import axios from 'axios';
+// import axios from 'axios';
+import callApi from '../../../utils/callApi';
 import { SERVER_URL } from '../../../config';
 import { parseCookies } from '../../../lib/parseCookies';
 
 export async function getServerSideProps({ req }) {
   const cookies = parseCookies(req);
-  const res = await axios.get(`${SERVER_URL}/request`, {
+  const res = await callApi.get(`${SERVER_URL}/request`, {
     headers: { Authorization: cookies.token },
   });
   const data = await res.data.requests;

@@ -15,7 +15,7 @@ const MainHeader = ({ title, id }) => {
         <div className={styles.header_arrow_wrap}>
           <img
             src='/logo-blue.png'
-            srcSet='/logo-blue@2x.png 2x, /logo-blue@3x.png 3x'
+            srcSet='/logo-blue@2x.png, /logo-blue@3x.png'
             className={styles.header_left_arrow}
             onClick={() => {
               MainFooterActiveStore.setId(1);

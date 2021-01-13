@@ -104,7 +104,7 @@ export default function SignUpInput({
           <div className={styles.image_wrap}>
             <img
               src='/1366.png'
-              srcSet='/1366@2x.png 2x, /1366@3x.png 3x'
+              srcSet='/1366@2x.png, /1366@3x.png'
               className={styles.input_button}
             />
           </div>

@@ -29,8 +29,8 @@ class SelectStatus extends Component {
       <div className={styles.selectStatus_container}>
         <img
           src='/select-your-status.png'
-          srcSet='/select-your-status@2x.png 2x,
-        /select-your-status@3x.png 3x'
+          srcSet='/select-your-status@2x.png,
+        /select-your-status@3x.png'
           className={styles.select_your_status}
         />
         <div className={styles.selectStatus_btn_group}>
@@ -45,7 +45,7 @@ class SelectStatus extends Component {
                 {this.state.isChecked == idx ? (
                   <img
                     src='/checked_1349.png'
-                    srcSet='/checked_1349.png 2x, /checked_1349.png 3x'
+                    srcSet='/checked_1349.png, /checked_1349.png'
                     data-id={idx}
                     className={styles.check_img}
                   />
@@ -64,7 +64,7 @@ class SelectStatus extends Component {
                     data-id={idx}
                     name='checkBefore'
                     src='/checked_rectangle.png'
-                    srcSet='/checked_rectangle@2x.png 2x, /checked_rectangle@3x.png 3x'
+                    srcSet='/checked_rectangle@2x.png, /checked_rectangle@3x.png'
                     className={styles.rectangle1}
                   />
                 ) : (
@@ -74,7 +74,7 @@ class SelectStatus extends Component {
                     data-id={idx}
                     name='checkAfter'
                     src='/rectangle1.png'
-                    srcSet='/rectangle1@2x.png 2x, /rectangle1@3x.png 3x'
+                    srcSet='/rectangle1@2x.png, /rectangle1@3x.png'
                     className={styles.rectangle1}
                   />
                 )}
@@ -86,16 +86,16 @@ class SelectStatus extends Component {
         {this.state.isChecked ? (
           <img
             src='/checked-next-button.png'
-            srcSet='/checked-next-button@2x.png 2x,
-       /checked-next-button@3x.png 3x'
+            srcSet='/checked-next-button@2x.png,
+       /checked-next-button@3x.png'
             onClick={this.goToSignUp}
             className={styles.next_button}
           />
         ) : (
           <img
             src='/next-button.png'
-            srcSet='/next-button@2x.png 2x,
-       /next-button@3x.png 3x'
+            srcSet='/next-button@2x.png,
+       /next-button@3x.png'
             className={styles.next_button}
           />
         )}

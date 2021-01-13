@@ -9,7 +9,7 @@ const SignUpHeader = ({ title }) => {
         <div className={styles.header_arrow_wrap}>
           <img
             src='/781.png'
-            srcSet='/781@2x.png 2x, /781@3x.png 3x'
+            srcSet='/781@2x.png, /781@3x.png'
             className={styles.header_left_arrow}
           />
         </div>

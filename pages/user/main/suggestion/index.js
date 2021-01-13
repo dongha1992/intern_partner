@@ -7,7 +7,8 @@ import { MainFooter } from '../../../../components/Footer';
 import useStore from '../../../../stores';
 import { useObserver } from 'mobx-react';
 import styles from '../MainPage.scss';
-import axios from 'axios';
+// import axios from 'axios';
+import callApi from '../../../../utils/callApi';
 import { SERVER_URL } from '../../../../config';
 import { parseCookies } from '../../../../lib/parseCookies';
 import cookie from 'js-cookie';
@@ -21,7 +22,6 @@ const Suggestion = ({ data }) => {
   };
 
   const CardLists = data.map((list) => {
-    // console.log(list, 'list');
     return (
       <MainCard
         name={list.name}
@@ -51,7 +51,7 @@ const Suggestion = ({ data }) => {
 
 export async function getServerSideProps({ req }) {
   const cookies = parseCookies(req);
-  const res = await axios.get(`${SERVER_URL}/suggestion`, {
+  const res = await callApi.get(`${SERVER_URL}/suggestion`, {
     headers: { Authorization: cookies.token },
   });
   const data = await res.data.data;

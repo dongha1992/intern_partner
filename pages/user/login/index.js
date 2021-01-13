@@ -60,15 +60,15 @@ class LoginPage extends Component {
         <div className={styles.text_wrap}>
           <img
             src='/welcome.png'
-            srcSet='/welcome-to@2x.png 2x,
-        /welcome-to@3x.png 3x'
+            srcSet='/welcome-to@2x.png,
+        /welcome-to@3x.png'
             className={styles.welcome_to}
           />
 
           <img
             src='/1338.png'
-            srcSet='/1338@2x.png 2x,
-            /1338@3x.png 3x'
+            srcSet='/1338@2x.png ,
+            /1338@3x.png'
             className={styles.logo_IMS}
           />
         </div>
@@ -86,8 +86,8 @@ class LoginPage extends Component {
             />
             <img
               src='img/1641.png'
-              srcSet='img/1641@2x.png 2x,
-            img/1641@3x.png 3x'
+              srcSet='img/1641@2x.png,
+            img/1641@3x.png'
               className={styles.inputBottomLine}
             />
           </div>
@@ -104,8 +104,8 @@ class LoginPage extends Component {
             />
             <img
               src='img/1641.png'
-              srcSet='img/1641@2x.png 2x,
-            img/1641@3x.png 3x'
+              srcSet='img/1641@2x.png,
+            img/1641@3x.png'
               className={styles.inputBottomLine}
             />
           </div>
@@ -117,14 +117,14 @@ class LoginPage extends Component {
             onClick={this.checkValidation}>
             <img
               src='/rectangle.png'
-              srcSet='/rectangle@2x.png 2x,
-            /rectangle@3x.png 3x'
+              srcSet='/rectangle@2x.png,
+            /rectangle@3x.png'
               className={styles.login_Button}
             />
             <img
               src='/log-in.png'
-              srcSet='/log-in@2x.png 2x,
-            /log-in@3x.png 3x'
+              srcSet='/log-in@2x.png,
+            /log-in@3x.png'
               className={styles.login_Button_text}
             />
           </div>
@@ -132,14 +132,14 @@ class LoginPage extends Component {
           <div className={styles.signupButton_wrap}>
             <img
               src='/rectangle.png'
-              srcSet='/rectangle@2x.png 2x,
-            /rectangle@3x.png 3x'
+              srcSet='/rectangle@2x.png,
+            /rectangle@3x.png'
               className={styles.signup_Button}
             />
             <img
               src='/creat-an-account.png'
-              srcSet='/creat-an-account@2x.png 2x,
-            /creat-an-account@3x.png 3x'
+              srcSet='/creat-an-account@2x.png ,
+            /creat-an-account@3x.png'
               className={styles.signup_Button_text}
               onClick={() => {
                 this.props.router.push('/user/login/select_status');

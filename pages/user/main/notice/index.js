@@ -29,7 +29,7 @@ const Notice = () => {
           <div className={styles.noticeItem}>
             <img
               src='/1373.png'
-              srcSet='/1373@2x.png 2x, /1373@3x.png 3x'
+              srcSet='/1373@2x.png 2x, /1373@3x.png 3x '
               className={styles.header_left_arrow}
               onClick={() => {
                 MainFooterActiveStore.setId(1);

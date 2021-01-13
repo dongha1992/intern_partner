@@ -24,17 +24,15 @@ import {
 } from '../../../../constants/requestDetail/ProposalInfo';
 import { PROPOSAL_CAR } from '../../../../constants/requestDetail/Proposal';
 import { PROPOSAL } from '../../../../constants/requestDetail/Proposal';
-
-import fetch from 'isomorphic-unfetch';
-
 import useStore from '../../../../stores';
 import { useObserver } from 'mobx-react';
-import axios from 'axios';
+// import axios from 'axios';
+import callApi from '../../../../utils/callApi';
 import { SERVER_URL } from '../../../../config';
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
-  const res = await axios.get(`${SERVER_URL}/request/${id}`);
+  const res = await callApi.get(`${SERVER_URL}/request/${id}`);
   const list = await res.data.request;
 
   return {
@@ -69,14 +67,14 @@ const Detail = ({ list }) => {
   const isValid2 = cnt > 3 && selectedCar2 ? true : false;
 
   const getData = () => {
-    axios.get(`${SERVER_URL}/car`).then((res) => {
+    callApi.get(`${SERVER_URL}/car`).then((res) => {
       const data = res.data.data;
       setInitialData(data);
     });
   };
 
   const getSelectedCar = (brand) => {
-    axios.get(`${SERVER_URL}/car?brand=${brand}`).then((res) => {
+    callApi.get(`${SERVER_URL}/car?brand=${brand}`).then((res) => {
       const { data } = res.data;
       setCar(data);
     });
@@ -116,7 +114,7 @@ const Detail = ({ list }) => {
 
     // 업데이트 후의 버튼인지 구분해주는 조건
     if (ProposalStore.isEdit) {
-      axios
+      callApi
         .patch(`${SERVER_URL}/suggestion/${ProposalStore.suggestionId}`, data, {
           headers: { Authorization: token },
         })
@@ -129,7 +127,7 @@ const Detail = ({ list }) => {
         })
         .catch((err) => console.log(err));
     } else {
-      axios
+      callApi
         .post(`${SERVER_URL}/suggestion`, data, {
           headers: { Authorization: token },
         })

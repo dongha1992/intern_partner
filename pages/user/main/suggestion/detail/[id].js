@@ -8,7 +8,8 @@ import {
   SUGGESTION_CANCEL,
   SUGGESTION_EDIT,
 } from '../../../../../constants/requestDetail/ProposalInfo';
-import axios from 'axios';
+// import axios from 'axios';
+import callApi from '../../../../../utils/callApi';
 import useStore from '../../../../../stores';
 import { useObserver } from 'mobx-react';
 import { SERVER_URL } from '../../../../../config';
@@ -25,7 +26,7 @@ const SuggestionDetail = ({ proposal, request }) => {
     router.push(`/user/main/`);
 
     // 제안중 내 클릭했던 카드가 사라지고
-    axios
+    callApi
       .delete(`${SERVER_URL}/suggestion/${id}`)
       .then((res) => {
         if (res.status === 200) {
@@ -68,7 +69,7 @@ const SuggestionDetail = ({ proposal, request }) => {
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
-  const res = await axios.get(`${SERVER_URL}/suggestion/${id}`);
+  const res = await callApi.get(`${SERVER_URL}/suggestion/${id}`);
   const list = await res.data;
   const proposal = { ...list.suggestion };
   const request = { ...list.suggestion.request };

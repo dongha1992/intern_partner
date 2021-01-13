@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
 import '../styles/globals.scss';
-// import '../styles/reset.scss';
 import App from 'next/app';
 import { Provider } from 'mobx-react';
 import Router, { withRouter } from 'next/router';

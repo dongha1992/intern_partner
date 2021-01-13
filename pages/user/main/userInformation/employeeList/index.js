@@ -8,7 +8,8 @@ import {
   EMPLOYEE_STATUS,
 } from '../../../../../constants/main/EmployeeList';
 import styles from '../userInformation.scss';
-import axios from 'axios';
+import callApi from '../../../../../utils/callApi';
+// import axios from 'axios';
 
 const EmployeeList = ({ data }) => {
   const [lists, setList] = useState(data);
@@ -63,7 +64,7 @@ const EmployeeList = ({ data }) => {
 export default EmployeeList;
 
 export async function getServerSideProps() {
-  const res = await axios.get('http://localhost:5700/api/getEmployeeList');
+  const res = await callApi.get('http://localhost:5700/api/getEmployeeList');
   const data = res.data;
 
   return {
