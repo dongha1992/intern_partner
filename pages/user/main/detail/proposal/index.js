@@ -3,11 +3,7 @@ import styles from './Proposal.scss';
 import useStore from '../../../../../stores';
 import { useRouter } from 'next/router';
 import { useObserver } from 'mobx-react';
-<<<<<<< HEAD
 import { SERVER_URL } from '../../../../../config';
-=======
-import { SERVER_URI } from '../../../../../config';
->>>>>>> 5bf3491... wip
 import { withRouter } from 'next/router';
 
 import {
@@ -108,7 +104,6 @@ function Proposal(props) {
           isValid ? styles.active_proposal_footer : styles.proposal_footer
         }
         onClick={() => {
-       
           router.back();
         }}>
         {PROPOSAL_FOOTER}

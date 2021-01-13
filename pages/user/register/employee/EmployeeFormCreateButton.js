@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import Link from 'next/link';
 import styles from './EmployeeFormCreateButton.scss';
 
 import { CREATE_BUTTON } from '../../../../constants/employee/CreateButton';

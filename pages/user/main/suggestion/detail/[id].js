@@ -26,7 +26,7 @@ const SuggestionDetail = ({ proposal, request }) => {
 
     // 제안중 내 클릭했던 카드가 사라지고
     axios
-      .delete(`${SERVER_URI}/suggestion/${id}`)
+      .delete(`${SERVER_URL}/suggestion/${id}`)
       .then((res) => {
         if (res.status === 200) {
           router.push(`/user/main/`);
@@ -68,7 +68,6 @@ const SuggestionDetail = ({ proposal, request }) => {
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
-  console.log(id);
   const res = await axios.get(`${SERVER_URL}/suggestion/${id}`);
   const list = await res.data;
   const proposal = { ...list.suggestion };

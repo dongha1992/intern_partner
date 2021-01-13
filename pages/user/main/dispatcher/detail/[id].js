@@ -11,6 +11,19 @@ import { SERVER_URL } from '../../../../../config';
 import cookieCutter from 'cookie-cutter';
 import axios from 'axios';
 import { useObserver } from 'mobx-react';
+import callApi from '../../../../../utils/callApi';
+
+export async function getServerSideProps(context) {
+  const { id } = context.query;
+  const res = await axios.callApi(`${SERVER_URL}/suggestion/${id}`);
+  const list = await res.data;
+  const proposal = { ...list.suggestion };
+  const request = { ...list.suggestion.request };
+
+  return {
+    props: { proposal, request },
+  };
+}
 
 const DispatcherDetail = ({ proposal, request }) => {
   const isButton = true;
@@ -65,17 +78,5 @@ const DispatcherDetail = ({ proposal, request }) => {
     </div>
   ));
 };
-
-export async function getServerSideProps(context) {
-  const { id } = context.query;
-  const res = await axios.get(`${SERVER_URL}/suggestion/${id}`);
-  const list = await res.data;
-  const proposal = { ...list.suggestion };
-  const request = { ...list.suggestion.request };
-
-  return {
-    props: { proposal, request },
-  };
-}
 
 export default DispatcherDetail;

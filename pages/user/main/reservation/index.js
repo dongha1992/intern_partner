@@ -8,20 +8,15 @@ import { useRouter } from 'next/router';
 import styles from '../MainPage.scss';
 import { parseCookies } from '../../../../lib/parseCookies';
 import callApi from '../../../../utils/callApi';
-import Error from '../../../../pages/_error';
 import { SERVER_URL } from '../../../../config';
 import axios from 'axios';
 
-export async function getServerSideProps({ req, res }) {
+export async function getServerSideProps({ req }) {
   const cookies = parseCookies(req);
-  const result = await axios.get(`${SERVER_URL}/suggestion?status=1`, {
+  const result = await callApi.get(`${SERVER_URL}/suggestion?status=1`, {
     headers: { Authorization: cookies.token },
   });
   const data = result.data.data;
-
-  // const errorCode = result.ok ? false : result.statusCode;
-  // const errorCode = result.statusCode > 200 ? result.statusCode : false;
-  // const statusCode = res ? res.statusCode : err ? err.statusCode : 401;
 
   return {
     props: {
@@ -36,6 +31,7 @@ const ReservationConfirmation = ({ data }) => {
   const goToDetail = (id) => {
     router.push(`/user/main/reservation/detail/${id}`);
   };
+
   const CardLists = data.map((list) => {
     return (
       <MainCard

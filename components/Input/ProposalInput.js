@@ -36,21 +36,12 @@ const ProposalInput = ({
   };
   return (
     <div className={styles.proposal_inputSide}>
-      <div
-        className={styles.suggestionCompany}
-        // onClick={() => {
-        //   isProposalInput && onClick();
-        // }}
-      >
+      <div className={styles.suggestionCompany}>
         <input
           placeholder={placeholder}
           id={id ? id : null}
           type={type ? type : 'text'}
           name={name}
-          // onChange={(e) => {
-          //   choiceProps ? changeChoiceProps(e.target.value) : onChange(e);
-          // }}
-          // disabled
           onKeyPress={onKeyPress}
           value={value ? value : null}
           formValidation={formValidation}

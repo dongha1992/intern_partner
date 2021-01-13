@@ -43,7 +43,6 @@ import {
 } from '../../../../../constants/main/SaveAndCancelButton';
 
 import {
-  USER_ID_NAME,
   PASSWORD_NAME,
   PASSWORD_CHECK_NAME,
   USER_NAME_NAME,
@@ -62,8 +61,8 @@ const handleInfoChange = (e) => {
 };
 
 const value = 'D';
+
 const MyInfo = () => {
-  console.log(MyInformationUpdateStore);
   return useObserver(() => (
     <div className={styles.container}>
       <RequestDetailHeader title={MY_INFORMATION_TITLE} />

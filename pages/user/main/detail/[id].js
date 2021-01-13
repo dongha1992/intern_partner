@@ -193,7 +193,7 @@ const Detail = ({ list }) => {
     // 업데이트 후의 버튼인지 구분해주는 조건문
     if (ProposalStore.isEdit) {
       axios
-        .patch(`${SERVER_URI}/suggestion/${ProposalStore.suggestionId}`, data, {
+        .patch(`${SERVER_URL}/suggestion/${ProposalStore.suggestionId}`, data, {
           headers: { Authorization: token },
         })
         .then((res) => {
@@ -206,7 +206,7 @@ const Detail = ({ list }) => {
         .catch((err) => console.log(err));
     } else {
       axios
-        .post(`${SERVER_URI}/suggestion`, data, {
+        .post(`${SERVER_URL}/suggestion`, data, {
           headers: { Authorization: token },
         })
         .then((res) => {

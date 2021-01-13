@@ -58,6 +58,7 @@ class CreateAnAccount extends Component {
   handlerMapper(name) {
     const { form } = this.props.SignUpEmployeeStore;
     const { isIdDuplicate } = this.state;
+
     const mapper = {
       userId: () => {
         if (isIdDuplicate) {
@@ -90,7 +91,7 @@ class CreateAnAccount extends Component {
           checkPasswordLetter > 0 ||
           checkPasswordSpecial > 0
         ) {
-          if (checkPasswordLength < 9) {
+          if (checkPasswordLength < 8) {
             this.setState({
               passwordValid: {
                 valid: form.userPassword.status.error.valid,
@@ -167,6 +168,7 @@ class CreateAnAccount extends Component {
 
   getInputLength(e) {
     const inputValue = this.props.SignUpEmployeeStore.form[e].value.length;
+
     if (inputValue > 0) {
       this.setState({
         isTyping: e,
@@ -182,7 +184,7 @@ class CreateAnAccount extends Component {
   render() {
     const { SignUpEmployeeStore } = this.props;
     const { idValid, passwordValid, passwordCheckValid, isTyping } = this.state;
-    console.log(this.state.isIdDuplicate);
+
     return (
       <div className={styles.createAnAccount_form_container}>
         <h2 className={styles.title}>{CREATE_ACCOUNT}</h2>

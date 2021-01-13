@@ -24,6 +24,7 @@ class RegisterEmployeePage extends Component {
   static async getInitialProps({ mobxStore }) {
     return { mobxStore };
   }
+
   goToServer() {
     const {
       userEmail,
@@ -34,6 +35,7 @@ class RegisterEmployeePage extends Component {
       userPasswordCheck,
       userId,
     } = this.props.SignUpEmployeeStore.form;
+
     const { SignUpEmployeeStore, SearchCompanyStore } = this.props;
     const { companyId } = this.props.SearchCompanyStore;
 

@@ -65,7 +65,7 @@ export default EmployeeList;
 export async function getServerSideProps() {
   const res = await axios.get('http://localhost:5700/api/getEmployeeList');
   const data = res.data;
-  console.log(data);
+
   return {
     props: {
       data,

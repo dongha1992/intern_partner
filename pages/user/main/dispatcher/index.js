@@ -46,6 +46,7 @@ const Dispatcher = ({ data }) => {
       />
     );
   });
+
   return useObserver(() => (
     <div className={styles.main_container}>
       <div className={styles.main_headerWrap}>

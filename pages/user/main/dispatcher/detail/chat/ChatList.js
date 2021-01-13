@@ -3,7 +3,6 @@ import ChatItem from './ChatItem';
 import styles from './ChatContainer.scss';
 
 const ChatList = ({ messageList, user }) => {
-  console.log(messageList);
   const chatLists =
     messageList &&
     messageList.map((chat) => {

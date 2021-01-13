@@ -19,9 +19,11 @@ class CompanySearch extends Component {
   static async getInitialProps({ mobxStore }) {
     return { mobxStore };
   }
+
   goToForm = () => {
     this.props.router.push('/user/register/employee');
   };
+
   render() {
     const { SearchCompanyStore } = this.props;
 

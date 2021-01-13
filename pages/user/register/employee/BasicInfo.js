@@ -50,6 +50,7 @@ class BasicInfo extends Component {
 
   handlerMapper(name) {
     const { form } = this.props.SignUpEmployeeStore;
+
     const mapper = {
       userEmail: () => {
         let checkEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
@@ -72,6 +73,7 @@ class BasicInfo extends Component {
     };
     mapper[name]();
   }
+
   getInputLength(e) {
     const inputValue = this.props.SignUpEmployeeStore.form[e].value.length;
     if (inputValue > 0) {
@@ -85,6 +87,7 @@ class BasicInfo extends Component {
       });
     }
   }
+
   static async getInitialProps({ mobxStore }) {
     return { mobxStore };
   }
@@ -112,7 +115,6 @@ class BasicInfo extends Component {
             label={USER_NUMBER}
             isButton={isButton}
             padding={USER_ID_PADDING_TOP}
-            // buttonValue={USER_NUMBER_BUTTON}
             padding={USER_NUMBER_PADDING}
             onChange={SignUpEmployeeStore.setValue}
             name={USER_NUMBER_NAME}

@@ -2,8 +2,6 @@ import React from 'react';
 import styles from './ChatContainer.scss';
 
 const ChatItem = ({ message, name, date, user }) => {
-  console.log(name, user);
-
   if (name === user) {
     return (
       <div className={styles.chatItem_supplier}>

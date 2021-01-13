@@ -25,7 +25,7 @@ export async function getServerSideProps({ req }) {
 
 const Return = ({ data }) => {
   const router = useRouter();
-  console.log(data);
+
   const CardLists = data.map((list) => {
     return (
       <MainCard
@@ -47,6 +47,7 @@ const Return = ({ data }) => {
       />
     );
   });
+
   return useObserver(() => (
     <div className={styles.main_container}>
       <div className={styles.main_headerWrap}>

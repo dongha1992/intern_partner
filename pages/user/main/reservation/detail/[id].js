@@ -14,8 +14,23 @@ import useStore from '../../../../../stores';
 import { useObserver } from 'mobx-react';
 import axios from 'axios';
 import cookieCutter from 'cookie-cutter';
+import callApi from '../../../../../utils/callApi';
 
 const isReservation = true;
+
+export async function getServerSideProps(context) {
+  const { id } = context.query;
+
+  const res = await callApi.get(`${SERVER_URL}/suggestion/${id}`);
+  const list = await res.data;
+  const proposal = { ...list.suggestion };
+  const request = { ...list.suggestion.request };
+
+  return {
+    props: { proposal, request },
+  };
+}
+
 const ConfirmationDetail = ({ proposal, request }) => {
   const router = useRouter();
   const { MainTabActiveStore } = useStore();
@@ -88,18 +103,5 @@ const ConfirmationDetail = ({ proposal, request }) => {
     </div>
   ));
 };
-
-export async function getServerSideProps(context) {
-  const { id } = context.query;
-
-  const res = await axios.get(`${SERVER_URL}/suggestion/${id}`);
-  const list = await res.data;
-  const proposal = { ...list.suggestion };
-  const request = { ...list.suggestion.request };
-
-  return {
-    props: { proposal, request },
-  };
-}
 
 export default ConfirmationDetail;
