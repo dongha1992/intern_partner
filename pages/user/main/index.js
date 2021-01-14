@@ -26,13 +26,10 @@ export async function getServerSideProps({ req }) {
 }
 
 const { MainFooterActiveStore, ProposalStore } = useStore();
-const message = '알람알람';
 
 const MyCall = ({ data }) => {
   const [lists, setList] = useState(data);
   const router = useRouter();
-
-  const toNotificationServer = () => {};
 
   const goToDetail = (id) => {
     router?.push(`/user/main/detail/${id}`);
@@ -46,7 +43,6 @@ const MyCall = ({ data }) => {
         name={list.name}
         id={list.id}
         suggestions_count={list.suggestions_count}
-        toNotificationServer={toNotificationServer}
         key={list.id}
         carType={list.cars_model}
         carNumber={list.car_number}

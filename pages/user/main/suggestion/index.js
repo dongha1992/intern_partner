@@ -20,6 +20,7 @@ const Suggestion = ({ data }) => {
   const goToDetail = (id) => {
     router.push(`/user/main/suggestion/detail/${id}`);
   };
+  console.log(data);
 
   const CardLists = data.map((list) => {
     return (

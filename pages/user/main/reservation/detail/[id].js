@@ -20,7 +20,6 @@ const isReservation = true;
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
-
   const res = await callApi.get(`${SERVER_URL}/suggestion/${id}`);
   const list = await res.data;
   const proposal = { ...list.suggestion };
@@ -35,7 +34,8 @@ const ConfirmationDetail = ({ proposal, request }) => {
   const router = useRouter();
   const { MainTabActiveStore } = useStore();
   const { id } = router.query;
-
+  const request_id = request.id;
+  
   const goToDispatching = () => {
     //배차 완료는 request id를 사용해야 한다.
     const id = request.id;
@@ -87,9 +87,13 @@ const ConfirmationDetail = ({ proposal, request }) => {
           }}>
           요청상세
         </a>
-        <Link href='/user/main/reservation/detail/chat'>
-          <a>채팅</a>
-        </Link>
+
+        <a
+          onClick={() => {
+            router.push(`/user/main/reservation/detail/chat/${id}`);
+          }}>
+          채팅
+        </a>
       </div>
       <RequestInfo list={request && request} />
       <ProposalInfo

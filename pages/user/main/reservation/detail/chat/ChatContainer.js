@@ -2,6 +2,7 @@ import react, { Component, useState, useEffect } from 'react';
 import styles from './ChatContainer.scss';
 import ChatList from './ChatList';
 import ChatInput from './ChatInput';
+import cookie from 'js-cookie';
 import { useObserver } from 'mobx-react';
 import useStore from '../../../../../../stores';
 import io from 'socket.io-client';
@@ -10,10 +11,11 @@ import { SERVER_URL } from '../../../../../../config';
 const socket = io.connect(`${SERVER_URL}`);
 
 const ChatContainer = () => {
+  const userName = JSON.parse(cookie.get('user'));
   const { ChatStore } = useStore();
   const [room, setRoom] = useState(2);
   const [userId, setUserId] = useState(1);
-  const [user, setuser] = useState('동하');
+  const [user, setuser] = useState(userName.name);
   const [isJoin, setIsJoin] = useState(false);
   const [message, setMessage] = useState({
     request_id: room,

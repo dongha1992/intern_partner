@@ -10,7 +10,8 @@ import LogoutModal from './LogoutModal';
 const UserInformation = () => {
   const router = useRouter();
   const [isModal, setIsModal] = useState(false);
-
+  const user = JSON.parse(cookie.get('user'));
+  console.log(user);
   const pageList = MORE_PAGE_LIST.map((list, idx) => {
     return (
       <div className={styles.lists} key={list}>

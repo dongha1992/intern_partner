@@ -7,9 +7,6 @@ import DetailList from '../../../../../components/RequestDetail/DetailList';
 import { MY_INFORMATION_TITLE } from '../../../../../constants/main/MyInformationTitle';
 import { useObserver } from 'mobx-react';
 import useStore from '../../../../../stores';
-
-const { MyInformationUpdateStore } = useStore();
-
 import {
   USER_ID,
   PASSWORD,
@@ -56,13 +53,17 @@ import {
   COMPANY_IMPORT_CAR_NUMBER_NAME,
 } from '../../../../../constants/main/MyInformationNameForInput';
 
-const handleInfoChange = (e) => {
-  MyInformationUpdateStore.setValue(e);
-};
-
-const value = 'D';
-
 const MyInfo = () => {
+  const user = JSON.parse(cookie.get('user'));
+
+  const { MyInformationUpdateStore } = useStore();
+
+  const handleInfoChange = (e) => {
+    MyInformationUpdateStore.setValue(e);
+  };
+
+  const value = 'D';
+
   return useObserver(() => (
     <div className={styles.container}>
       <RequestDetailHeader title={MY_INFORMATION_TITLE} />

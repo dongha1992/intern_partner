@@ -89,7 +89,7 @@ class CreateAnAccount extends Component {
         let checkPasswordLength = form.companyUserPassword.value.length;
 
         if (checkPasswordNumber > 0 || checkPasswordLetter > 0) {
-          if (checkPasswordLength < 9) {
+          if (checkPasswordLength < 8) {
             this.setState({
               passwordValid: {
                 valid: form.companyUserPassword.status.error.valid,

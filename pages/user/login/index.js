@@ -39,6 +39,7 @@ class LoginPage extends Component {
         console.log(result);
         if (result.data.token) {
           cookie.set('token', result.data.token);
+          cookie.set('user', JSON.stringify(result.data.user));
           alert('로그인에 성공하셨습니다.');
           this.props.router.push('/user/main');
         }
@@ -67,7 +68,7 @@ class LoginPage extends Component {
 
           <img
             src='/1338.png'
-            srcSet='/1338@2x.png ,
+            srcSet='/1338@2x.png,
             /1338@3x.png'
             className={styles.logo_IMS}
           />
@@ -138,7 +139,7 @@ class LoginPage extends Component {
             />
             <img
               src='/creat-an-account.png'
-              srcSet='/creat-an-account@2x.png ,
+              srcSet='/creat-an-account@2x.png,
             /creat-an-account@3x.png'
               className={styles.signup_Button_text}
               onClick={() => {
