@@ -6,12 +6,14 @@ import { USER_INFORMATION_BUTTON } from '../../../../constants/main/UserInformat
 import { MORE_PAGE_LIST } from '../../../../constants/main/MorePageList';
 import { MainFooter } from '../../../../components/Footer';
 import LogoutModal from './LogoutModal';
+import cookie from 'js-cookie';
 
 const UserInformation = () => {
   const router = useRouter();
   const [isModal, setIsModal] = useState(false);
   const user = JSON.parse(cookie.get('user'));
   console.log(user);
+
   const pageList = MORE_PAGE_LIST.map((list, idx) => {
     return (
       <div className={styles.lists} key={list}>
@@ -45,8 +47,8 @@ const UserInformation = () => {
       <div className={styles.dividerTop} />
       <div className={styles.userInformationWrap}>
         <div className={styles.left}>
-          <div className={styles.userCompany}>IMS_USA2020</div>
-          <div className={styles.userName}>DONGHA KIM</div>
+          <div className={styles.userCompany}>{user.company_name}</div>
+          <div className={styles.userName}>{user.name}</div>
         </div>
         <div className={styles.right}>
           <input

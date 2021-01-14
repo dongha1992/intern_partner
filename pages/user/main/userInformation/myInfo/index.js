@@ -52,6 +52,7 @@ import {
   COMPANY_DOMESTIC_CAR_NUMBER_NAME,
   COMPANY_IMPORT_CAR_NUMBER_NAME,
 } from '../../../../../constants/main/MyInformationNameForInput';
+import cookie from 'js-cookie';
 
 const MyInfo = () => {
   const user = JSON.parse(cookie.get('user'));
@@ -62,14 +63,12 @@ const MyInfo = () => {
     MyInformationUpdateStore.setValue(e);
   };
 
-  const value = 'D';
-
   return useObserver(() => (
     <div className={styles.container}>
       <RequestDetailHeader title={MY_INFORMATION_TITLE} />
       <div className={styles.wrap}>
         <div className={styles.subject}>{ACCOUNT}</div>
-        <DetailList requestList={USER_ID} value={value} />
+        <UserInformationInput requestList={USER_ID} value={user.login_id} />
         <UserInformationInput
           requestList={PASSWORD}
           value={MyInformationUpdateStore.name}
@@ -93,7 +92,7 @@ const MyInfo = () => {
         <div className={styles.subject}>{BASIC_INFO}</div>
         <UserInformationInput
           requestList={USER_NAME}
-          value={MyInformationUpdateStore.name}
+          value={user.name}
           onChange={(e) => {
             handleInfoChange(e);
           }}
@@ -101,7 +100,7 @@ const MyInfo = () => {
         />
         <UserInformationInput
           requestList={USER_NUMBER}
-          value={MyInformationUpdateStore.name}
+          value={'010-1231-2322'}
           onChange={(e) => {
             handleInfoChange(e);
           }}
@@ -109,7 +108,7 @@ const MyInfo = () => {
         />
         <UserInformationInput
           requestList={USER_POSITION}
-          value={MyInformationUpdateStore.name}
+          value={user.position}
           onChange={(e) => {
             handleInfoChange(e);
           }}
@@ -117,7 +116,7 @@ const MyInfo = () => {
         />
         <UserInformationInput
           requestList={USER_EMAIL}
-          value={MyInformationUpdateStore.name}
+          value={'kamdunga@gmail.com'}
           onChange={(e) => {
             handleInfoChange(e);
           }}
@@ -130,7 +129,7 @@ const MyInfo = () => {
         <div className={styles.subject}>{BUSINESS_INFO}</div>
         <UserInformationInput
           requestList={COMPANY_NAME}
-          value={MyInformationUpdateStore.name}
+          value={user.company_name}
           onChange={(e) => {
             handleInfoChange(e);
           }}

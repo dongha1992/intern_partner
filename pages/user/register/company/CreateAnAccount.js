@@ -177,6 +177,9 @@ class CreateAnAccount extends Component {
       this.setState({
         isTyping: e,
       });
+      this.setState({
+        isIdDuplicate: true,
+      });
     }
   }
 

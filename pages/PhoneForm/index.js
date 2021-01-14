@@ -25,14 +25,12 @@ export default function PhoneForm() {
     <div className={styles.shadow_phone_form}>
       <img
         src='/2.png'
-        srcSet='/2@2x.png,
-                        /2@3x.png'
+        srcSet='/2@2x.png 2x, /2@3x.png 3x'
         className={styles.inner_logo}
       />
       <img
         src='/1.png'
-        srcSet='/1@2x.png,
-                        /1@3x.png '
+        srcSet='/1@2x.png 2x, /1@3x.png 3x'
         className={styles.inner_logo_dot}
       />
       <div>

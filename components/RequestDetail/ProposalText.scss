@@ -11,7 +11,7 @@
   text-align: left;
   color: #282828;
 }
-.proposal_text_container{
+.proposal_text_container {
   position: relative;
   margin-left: 15px;
   object-fit: contain;
@@ -24,16 +24,18 @@
   letter-spacing: normal;
   text-align: left;
   color: #bebdbd;
+  outline: none;
   .proposal_text_box {
     width: 344px;
     height: 152px;
     border: none;
     border-radius: 8px;
     background-color: #f6f6f6;
+    outline: none;
   }
   .byte {
     position: absolute;
-    top:119px;
+    top: 119px;
     right: 28px;
   }
 }

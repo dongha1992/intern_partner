@@ -8,13 +8,13 @@ export default function AppLogoBox(props) {
     {
       id: 1,
       src: '/ic-googleplay.png',
-      srcSet: '/ic-googleplay@2x.png, /ic-googleplay@3x.png',
+      srcSet: '/ic-googleplay@2x.png 2x, /ic-googleplay@3x.png 3x',
       textLogo: GOOGLE_PLAY,
     },
     {
       id: 2,
       src: '/ic-appstore.png',
-      srcSet: '/ic-appstore@2x.png, /ic-appstore@3x.png',
+      srcSet: '/ic-appstore@2x.png 2x, /ic-appstore@3x.png 3x',
       textLogo: APP_STORE,
     },
   ];

@@ -39,6 +39,7 @@ const ProposalInput = ({
             isProposalInput && onClick(e);
           }}
           image={image}
+          autoComplete='off'
         />
         {isButton && buttonValue ? (
           <div className={styles.button_wrap} onClick={onClick}>

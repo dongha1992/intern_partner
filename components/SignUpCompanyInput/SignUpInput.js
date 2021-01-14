@@ -50,6 +50,7 @@ export default function SignUpInput({
               onKeyPress={onKeyPress}
               value={searchProps ? searchProps : null}
               className={styles.user_input}
+              autoComplete='off'
             />
             <label
               htmlFor={id ? id : null}
@@ -72,6 +73,7 @@ export default function SignUpInput({
               value={isSubmit ? userSelectedAddress : value}
               className={styles.user_input}
               formValidation={formValidation}
+              autoComplete='off'
             />
             <label
               htmlFor={id ? id : null}
@@ -105,7 +107,7 @@ export default function SignUpInput({
           <div className={styles.image_wrap}>
             <img
               src='/194.png'
-              srcSet='/194@2x.png, /194@3x.png'
+              srcSet='/194@2x.png 2x, /194@3x.png 3x'
               className={styles.input_button}
             />
           </div>
